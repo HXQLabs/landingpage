@@ -1,6 +1,6 @@
 "use client";
 
-import { Moon, SunDim } from "lucide-react";
+import { IconMoon, IconSun } from "@tabler/icons-react";
 import { useState, useRef, useEffect } from "react";
 import { flushSync } from "react-dom";
 import { cn } from "@/lib/utils";
@@ -63,13 +63,13 @@ export const AnimatedThemeToggler = ({ className }: props) => {
       ref={buttonRef} 
       onClick={changeTheme} 
       className={cn(
-        "flex items-center justify-center transition-colors duration-200 cursor-pointer",
+        "flex items-center justify-center transition-all duration-300 ease-in-out cursor-pointer rounded-lg p-2 hover:bg-neutral-100 dark:hover:bg-neutral-800",
         className
       )}
       type="button"
       aria-label="Toggle theme"
     >
-      {isDarkMode ? <SunDim /> : <Moon />}
+      {isDarkMode ? <IconSun className="transition-all duration-300 ease-in-out" /> : <IconMoon className="transition-all duration-300 ease-in-out" />}
     </button>
   );
 };

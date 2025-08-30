@@ -1,5 +1,4 @@
-import { Features } from "@/components/sections/features-old";
-import FeaturesNew from "@/components/sections/features-new";
+import Features from "@/components/sections/features";
 import IntegrationsSection from "@/components/sections/integrations";
 import { Footer2 } from "@/components/sections/footer";
 import { Hero195 } from "@/components/sections/hero";
@@ -27,15 +26,14 @@ export default function Home() {
 
     
   <Features/>
-  <FeaturesNew />
   <IntegrationsSection />
   <PricingSection />
   <TestimonialsSection />
   <Benefits/>
   <PricingNewSection/>
   
-  <FaqSection />
-  <CTANew/>
+  {/* <FaqSection /> */}
+  {/* <CTANew/> */}
   <DeploymentFeatures/>
   {/* <Contact/> */}
   <Footer2/>

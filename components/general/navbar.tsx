@@ -10,10 +10,11 @@ import {
   MobileNavToggle,
   MobileNavMenu,
 } from "@/components/ui/resizable-navbar";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { HoverBorderGradient } from "@/components/ui/hover-border-gradient";
-import { IconRocket } from "@tabler/icons-react";
-import { ModeToggle } from "../ui/theme-toggle-button";
+import { IconRocket, IconSun, IconMoon } from "@tabler/icons-react";
+import { useTheme } from "next-themes";
+import { cn } from "@/lib/utils";
 
 
 // Component to handle the separator line visibility
@@ -23,6 +24,9 @@ const NavSeparator = ({ visible, className }: { visible?: boolean; className?: s
 };
 
 export function MainNavbar() {
+  const { theme, setTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
   const navItems = [
     {
       name:"About",
@@ -48,6 +52,39 @@ export function MainNavbar() {
 
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  // Theme Toggle Component
+  const ThemeToggle = ({ className }: { className?: string }) => {
+    if (!mounted) {
+      return (
+        <button className={cn(
+          "relative flex cursor-pointer items-center justify-center rounded-lg p-2 text-neutral-500 dark:text-neutral-400",
+          className
+        )}>
+          <div className="h-5 w-5" />
+        </button>
+      );
+    }
+
+    return (
+      <button 
+        onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+        className={cn(
+          "relative flex cursor-pointer items-center justify-center rounded-lg p-2 text-neutral-600 hover:bg-neutral-100 dark:text-neutral-400 dark:hover:bg-neutral-800 transition-all duration-200 ease-in-out",
+          className
+        )}
+        aria-label="Toggle theme"
+      >
+        <IconSun className="h-5 w-5 scale-100 rotate-0 transition-all duration-300 ease-in-out dark:scale-0 dark:-rotate-90" />
+        <IconMoon className="absolute h-5 w-5 scale-0 rotate-90 transition-all duration-300 ease-in-out dark:scale-100 dark:rotate-0" />
+        <span className="sr-only">Toggle theme</span>
+      </button>
+    );
+  };
+
   return (
     <Navbar className="fixed inset-x-0 top-0 z-40 w-full">
       {/* Desktop Navigation */}
@@ -57,7 +94,7 @@ export function MainNavbar() {
         <div className="relative z-50 flex items-center gap-4">
           {/* <NavbarButton> hi</NavbarButton>
            */}
-           <ModeToggle/>
+           <ThemeToggle />
 
           
           <NavbarButton variant="secondary">Login</NavbarButton>
@@ -98,7 +135,7 @@ export function MainNavbar() {
             </a>
           ))}
           <div className="flex w-full flex-col gap-4">
-            <ModeToggle />
+            <ThemeToggle className="w-full justify-start" />
             <NavbarButton
               onClick={() => setIsMobileMenuOpen(false)}
               variant="secondary"

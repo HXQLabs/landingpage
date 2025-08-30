@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import { cn } from '@/lib/utils';
 import { useTheme } from 'next-themes';
-import { Sun, Moon, Menu } from 'lucide-react';
+import { IconSun, IconMoon, IconMenu2 } from '@tabler/icons-react';
 import Link from 'next/link';
 
 const navigation = [
@@ -46,13 +46,13 @@ const ThemeToggle = () => {
   return (
     <button 
       onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-      className="hover:shadow-input relative flex cursor-pointer items-center justify-center rounded-xl p-2 text-neutral-500 dark:text-neutral-500"
+      className="relative flex cursor-pointer items-center justify-center rounded-xl p-2 text-neutral-500 hover:bg-neutral-100 dark:text-neutral-400 dark:hover:bg-neutral-800 transition-all duration-200"
     >
-      <Sun className={cn(
-        "h-4 w-4 scale-100 rotate-0 text-gray-600 transition-all dark:scale-0 dark:-rotate-90 dark:text-gray-300"
+      <IconSun className={cn(
+        "h-4 w-4 scale-100 rotate-0 text-gray-600 transition-all duration-300 ease-in-out dark:scale-0 dark:-rotate-90 dark:text-gray-300"
       )} />
-      <Moon className={cn(
-        "absolute h-4 w-4 scale-0 rotate-90 text-gray-600 transition-all dark:scale-100 dark:rotate-0 dark:text-gray-300"
+      <IconMoon className={cn(
+        "absolute h-4 w-4 scale-0 rotate-90 text-gray-600 transition-all duration-300 ease-in-out dark:scale-100 dark:rotate-0 dark:text-gray-300"
       )} />
       <span className="sr-only">Toggle theme</span>
     </button>
@@ -142,7 +142,7 @@ export default function NewNavbar() {
           aria-label="Toggle menu"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
         >
-          <Menu className="h-4 w-4 shrink-0 text-gray-600" />
+          <IconMenu2 className="h-4 w-4 shrink-0 text-gray-600" />
         </button>
 
         {/* Mobile Menu Dropdown */}

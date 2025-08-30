@@ -8,11 +8,9 @@ import {
   SquareKanban,
 } from "lucide-react";
 
-import { cn } from "@/lib/utils";
+
 import { Button } from "@/components/ui/button";
-import { HeroPill } from "@/components/ui/hero-pill";
 import LogoCloud from "../general/logocloud";
-import { ModeToggle } from "../ui/theme-toggle-button";
 import { AnnouncementBadge } from "../ui/announcement-badge";
 
 export interface Tab {
@@ -72,7 +70,6 @@ const Hero195 = ({
   return (
     <section className="relative w-full">
        {/* Horizontal divider */}
-       
 
       <div className="container mx-auto max-w-7xl">
         {/* Main content container with vertical borders */}
@@ -94,6 +91,8 @@ const Hero195 = ({
               {description}
               
             </p>
+
+
             
             <div className="mt-8 flex items-center gap-4">
               <Button 
@@ -106,18 +105,13 @@ const Hero195 = ({
                 <Button 
                   variant="outline" 
                   asChild
-                  className="rounded-lg px-6 py-3 text-sm font-medium border-gray-300 text-gray-700 hover:bg-gray-50 dark:border-gray-600 dark:text-gray-300 dark:hover:bg-gray-800"
+                  className="px-8 py-2 rounded-full bg-gradient-to-b from-blue-500 to-blue-600 text-white focus:ring-2 focus:ring-blue-400 hover:shadow-xl transition duration-200"
                 >
                   <a href={secondaryButtonUrl}>{secondaryButtonText}</a>
                 </Button>
               )}
             </div>
           </div>
-          <ModeToggle/>
-          
-          
-
-          
         </div>
       </div>
       
