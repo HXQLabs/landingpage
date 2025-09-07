@@ -145,7 +145,7 @@ const PricingCard = ({
   return (
     <div
       className={cn(
-        'relative flex flex-col gap-8 overflow-hidden rounded-2xl border p-6 shadow',
+        'relative flex flex-col gap-8 overflow-hidden rounded-4xl border p-6 shadow',
         isHighlighted
           ? 'bg-foreground text-background'
           : 'bg-background text-foreground',
