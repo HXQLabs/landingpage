@@ -1,14 +1,6 @@
 "use client";
 
-import {
-  BarChart,
-  Database,
-  Layers,
-  PieChart,
-  SquareKanban,
-} from "lucide-react";
-
-
+import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import LogoCloud from "../general/logocloud";
 import { AnnouncementBadge } from "../ui/announcement-badge";
@@ -29,34 +21,6 @@ export interface Hero195Props {
   tabs?: Tab[];
 }
 
-const defaultTabs: Tab[] = [
-  {
-    title: "Insights",
-    icon: <SquareKanban />,
-    image: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/dashboard/admin-dashboard-1.png",
-  },
-  {
-    title: "Metrics",
-    icon: <BarChart />,
-    image: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/dashboard/admin-dashboard-2.png",
-  },
-  {
-    title: "Trends",
-    icon: <PieChart />,
-    image: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/dashboard/admin-dashboard-3.png",
-  },
-  {
-    title: "Sources",
-    icon: <Database />,
-    image: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/dashboard/admin-users.png",
-  },
-  {
-    title: "Models",
-    icon: <Layers />,
-    image: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/dashboard/admin-developer.png",
-  },
-];
-
 const Hero195 = ({
   title = "Manage and simulate agentic workflows",
   description = "We empower developers and technical teams to create, simulate, and manage AI-driven workflows visually",
@@ -64,16 +28,13 @@ const Hero195 = ({
   primaryButtonUrl = "#",
   secondaryButtonUrl = "#",
   secondaryButtonText = "View pricing",
-  tabs = defaultTabs,
 }: Hero195Props) => {
 
   return (
     <section className="relative w-full">
-       {/* Horizontal divider */}
-
       <div className="container mx-auto max-w-7xl">
-        {/* Main content container with vertical borders */}
-        <div className="relative border-l border-r border-border">
+        {/* Main content container */}
+        <div className="relative">
           {/* Hero content section */}
           <div className="relative flex flex-col items-center justify-center px-4 py-16 md:py-32">
             <div className="flex justify-center mb-6">
@@ -81,7 +42,7 @@ const Hero195 = ({
             
             href="#"
             announcementType="🚀 New"
-            title="Startup V1 has raised $10M"
+            title="HelixQue V1 has raised $10M"
           />
             </div>
             <h1 className="text-center text-4xl font-medium tracking-tight text-black md:text-5xl lg:text-6xl dark:text-white mt-4">
@@ -115,20 +76,12 @@ const Hero195 = ({
         </div>
       </div>
       
-      {/* Horizontal divider */}
-      <div className="bg-gray-200 dark:bg-neutral-700 h-[1px] w-full" />
-      
       <div className="container mx-auto max-w-7xl">
-        <div className="relative border-l border-r border-gray-200 dark:border-neutral-700">
+        <div className="relative">
           {/* Dashboard preview section */}
           <div 
             className="relative bg-gray-50 dark:bg-zinc-800 p-8 md:p-12"
           >
-            {/* Corner markers */}
-            <div className="absolute top-0 left-0 w-2 h-2 bg-black dark:bg-white transform -translate-x-px -translate-y-px"></div>
-            <div className="absolute top-0 right-0 w-2 h-2 bg-black dark:bg-white transform translate-x-px -translate-y-px"></div>
-            <div className="absolute bottom-0 left-0 w-2 h-2 bg-black dark:bg-white transform -translate-x-px translate-y-px"></div>
-            <div className="absolute bottom-0 right-0 w-2 h-2 bg-black dark:bg-white transform translate-x-px translate-y-px"></div>
             
             <div className="relative group">
               {/* Subtle diagonal lines pattern background div with rounded corners */}
@@ -165,11 +118,13 @@ const Hero195 = ({
               
               <div className="relative group-hover:translate-x-4 group-hover:-translate-y-4 transition-transform duration-500 ease-out">
                 <div className="relative overflow-hidden rounded-lg border border-border bg-white dark:bg-black shadow-xl group-hover:shadow-2xl transition-shadow duration-500 ease-out">
-                  <img
+                  <Image
                     src="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/dashboard/admin-dashboard-1.png"
                     alt="Dashboard Insights"
                     className="w-full aspect-[16/10] object-cover"
-                    draggable="false"
+                    draggable={false}
+                    width={800}
+                    height={500}
                   />
                 </div>
               </div>
@@ -178,11 +133,8 @@ const Hero195 = ({
         </div>
       </div>
       
-      {/* Bottom horizontal divider */}
-      <div className="bg-gray-200 dark:bg-neutral-700 h-[1px] w-full" />
-      
       <div className="container mx-auto max-w-7xl">
-        <div className="relative border-l border-r border-gray-200 dark:border-neutral-700">
+        <div className="relative">
           {/* Rating section */}
           {/* <div className="px-4 py-8 text-center">
             <div className="flex items-center justify-center gap-2 text-sm text-gray-600 dark:text-gray-400">

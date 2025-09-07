@@ -1,6 +1,7 @@
 "use client";
 
 import React from 'react';
+import Image from 'next/image';
 
 const DeploymentFeatures = () => {
   return (
@@ -89,7 +90,7 @@ const DeploymentFeatures = () => {
                   {/* Git commands terminal */}
                   <div className="relative flex h-14 w-full rounded-lg bg-gradient-to-b from-white to-white p-2 shadow-lg md:h-40 dark:from-neutral-800 dark:to-neutral-700 flex-col items-start justify-center overflow-hidden px-2 font-mono text-neutral-800 dark:text-neutral-300">
                     <p className="bg-transparent text-[8px]">git add .</p>
-                    <p className="bg-transparent text-[8px]">git commit -m "update"</p>
+                    <p className="bg-transparent text-[8px]">git commit -m &quot;update&quot;</p>
                     <p className="bg-transparent text-[8px]">git push</p>
                   </div>
 
@@ -158,12 +159,11 @@ const DeploymentFeatures = () => {
             </div>
             <div className="relative h-full w-full overflow-hidden">
               <div className="ml-6 mt-2 h-full w-full rounded-lg border border-neutral-200 bg-neutral-100 p-4 dark:border-neutral-700 dark:bg-neutral-800">
-                <img 
+                <Image 
                   alt="Dashboard" 
                   loading="lazy" 
-                  width="500" 
-                  height="500" 
-                  decoding="async" 
+                  width={500} 
+                  height={500} 
                   className="w-full rounded-lg object-cover" 
                   src="https://assets.aceternity.com/pro/dashboard.webp"
                 />
@@ -205,12 +205,11 @@ const DeploymentFeatures = () => {
             </div>
             <div className="relative h-full w-full overflow-hidden">
               <div className="ml-6 mt-2 h-full w-full rounded-lg border border-neutral-200 bg-neutral-100 p-4 dark:border-neutral-700 dark:bg-neutral-800">
-                <img 
+                <Image 
                   alt="Dashboard" 
                   loading="lazy" 
-                  width="500" 
-                  height="500" 
-                  decoding="async" 
+                  width={500} 
+                  height={500} 
                   className="w-full rounded-lg object-cover" 
                   src="https://assets.aceternity.com/pro/dashboard.webp"
                 />

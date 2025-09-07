@@ -6,10 +6,7 @@ import { AnimatedShinyText } from '../magicui/animated-shiny-text';
 const IntegrationsSection = () => {
   return (
     <section>
-      {/* Top divider */}
-      {/* <div className="bg-gray-200 dark:bg-neutral-700 h-[1px] w-full" /> */}
-      
-      <div className="max-w-7xl mx-auto border-gray-200 dark:border-neutral-700 border-x">
+      <div className="max-w-7xl mx-auto">
       <div className="flex flex-col items-center pt-16">
         <AnimatedShinyText>
           How it works
@@ -191,9 +188,6 @@ const IntegrationsSection = () => {
         </div>
       </div>
       </div>
-      
-      {/* Bottom divider */}
-      <div className="bg-gray-200 dark:bg-neutral-700 h-[1px] w-full" />
     </section>
   );
 };

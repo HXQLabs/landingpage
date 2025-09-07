@@ -1,5 +1,6 @@
 "use client";
 import React from "react";
+import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { Marquee } from "@/components/magicui/marquee";
 import { AnimatedShinyText } from '../magicui/animated-shiny-text';
@@ -68,7 +69,7 @@ const ReviewCard = ({
       )}
     >
       <div className="flex flex-row items-center gap-2">
-        <img className="rounded-full" width="32" height="32" alt="" src={img} />
+        <Image className="rounded-full" width={32} height={32} alt="" src={img} />
         <div className="flex flex-col">
           <figcaption className="text-sm font-medium dark:text-white">
             {name}
@@ -87,7 +88,7 @@ export function TestimonialsSection() {
       {/* Top divider */}
       {/* <div className="bg-gray-200 dark:bg-neutral-700 h-[1px] w-full" /> */}
       
-      <div className="max-w-7xl mx-auto border-gray-200 dark:border-neutral-700 border-x">
+      <div className="max-w-7xl mx-auto">
       <div className="flex flex-col items-center pt-16">
         <AnimatedShinyText>
           Testimonials
@@ -113,11 +114,6 @@ export function TestimonialsSection() {
           <div className="pointer-events-none absolute inset-y-0 left-0 w-1/4 bg-gradient-to-r from-background"></div>
           <div className="pointer-events-none absolute inset-y-0 right-0 w-1/4 bg-gradient-to-l from-background"></div>
         </div>
-      </div>
-      
-      {/* Bottom divider */}
-      <div className="max-w-7xl mx-auto">
-        <div className="bg-gray-200 dark:bg-neutral-700 h-[1px] w-full" />
       </div>
     </section>
   );

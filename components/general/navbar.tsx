@@ -16,13 +16,6 @@ import { IconRocket, IconSun, IconMoon } from "@tabler/icons-react";
 import { useTheme } from "next-themes";
 import { cn } from "@/lib/utils";
 
-
-// Component to handle the separator line visibility
-const NavSeparator = ({ visible, className }: { visible?: boolean; className?: string }) => {
-  if (visible) return null; // Hide when scrolled
-  return <div className={`bg-gray-200 dark:bg-neutral-700 h-[1px] w-full ${className}`} />;
-};
-
 export function MainNavbar() {
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
@@ -108,7 +101,6 @@ export function MainNavbar() {
           </HoverBorderGradient>
         </div>
       </NavBody>
-      <NavSeparator className="hidden lg:block" />
 
       {/* Mobile Navigation */}
       <MobileNav>
@@ -155,7 +147,6 @@ export function MainNavbar() {
           </div>
         </MobileNavMenu>
       </MobileNav>
-      <NavSeparator className="lg:hidden" />
     </Navbar>
   );
 }

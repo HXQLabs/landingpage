@@ -1,5 +1,6 @@
 "use client";
 import React from "react";
+import Image from "next/image";
 import { AnimatePresence, motion } from "motion/react";
 import { CanvasRevealEffect } from "@/components/ui/canvas-reveal-effect";
 
@@ -11,7 +12,7 @@ export default function LogoCloud(){
             {/* Header */}
             <div className="px-4 py-8 text-center">
                 <h2 className="font-mono text-sm tracking-tight text-neutral-500 uppercase dark:text-gray-300">
-                    Trusted by Fast Growing Startups
+                    Trusted by Fast Growing Companies
                 </h2>
             </div>
             
@@ -27,7 +28,7 @@ export default function LogoCloud(){
                     onMouseLeave={() => setHoveredIndex(null)}
                 >
                     <div className="group flex min-h-32 items-center justify-center p-4 py-10 grayscale relative z-10">
-                        <img className="h-5 w-fit dark:invert object-contain transition-all duration-500" src="https://html.tailus.io/blocks/customers/nvidia.svg" alt="Nvidia Logo" height="20" width="auto" />
+                        <Image className="h-5 w-fit dark:invert object-contain transition-all duration-500" src="https://html.tailus.io/blocks/customers/nvidia.svg" alt="Nvidia Logo" height={20} width={100} />
                     </div>
                     <AnimatePresence>
                         {hoveredIndex === 0 && (
@@ -60,7 +61,7 @@ export default function LogoCloud(){
                     onMouseLeave={() => setHoveredIndex(null)}
                 >
                     <div className="group flex min-h-32 items-center justify-center p-4 py-10 grayscale relative z-10">
-                        <img className="h-4 w-fit dark:invert object-contain transition-all duration-500" src="https://html.tailus.io/blocks/customers/column.svg" alt="Column Logo" height="16" width="auto" />
+                        <Image className="h-4 w-fit dark:invert object-contain transition-all duration-500" src="https://html.tailus.io/blocks/customers/column.svg" alt="Column Logo" height={16} width={80} />
                     </div>
                     <AnimatePresence>
                         {hoveredIndex === 1 && (
@@ -93,7 +94,7 @@ export default function LogoCloud(){
                     onMouseLeave={() => setHoveredIndex(null)}
                 >
                     <div className="group flex min-h-32 items-center justify-center p-4 py-10 grayscale relative z-10">
-                        <img className="h-4 w-fit dark:invert object-contain transition-all duration-500" src="https://html.tailus.io/blocks/customers/github.svg" alt="GitHub Logo" height="16" width="auto" />
+                        <Image className="h-4 w-fit dark:invert object-contain transition-all duration-500" src="https://html.tailus.io/blocks/customers/github.svg" alt="GitHub Logo" height={16} width={80} />
                     </div>
                     <AnimatePresence>
                         {hoveredIndex === 2 && (
@@ -126,7 +127,7 @@ export default function LogoCloud(){
                     onMouseLeave={() => setHoveredIndex(null)}
                 >
                     <div className="group flex min-h-32 items-center justify-center p-4 py-10 grayscale relative z-10">
-                        <img className="h-5 w-fit dark:invert object-contain transition-all duration-500" src="https://html.tailus.io/blocks/customers/nike.svg" alt="Nike Logo" height="20" width="auto" />
+                        <Image className="h-5 w-fit dark:invert object-contain transition-all duration-500" src="https://html.tailus.io/blocks/customers/nike.svg" alt="Nike Logo" height={20} width={100} />
                     </div>
                     <AnimatePresence>
                         {hoveredIndex === 3 && (
@@ -159,7 +160,7 @@ export default function LogoCloud(){
                     onMouseLeave={() => setHoveredIndex(null)}
                 >
                     <div className="group flex min-h-32 items-center justify-center p-4 py-10 grayscale relative z-10">
-                        <img className="h-4 w-fit dark:invert object-contain transition-all duration-500" src="https://html.tailus.io/blocks/customers/laravel.svg" alt="Laravel Logo" height="16" width="auto" />
+                        <Image className="h-4 w-fit dark:invert object-contain transition-all duration-500" src="https://html.tailus.io/blocks/customers/laravel.svg" alt="Laravel Logo" height={16} width={80} />
                     </div>
                     <AnimatePresence>
                         {hoveredIndex === 4 && (
@@ -192,7 +193,7 @@ export default function LogoCloud(){
                     onMouseLeave={() => setHoveredIndex(null)}
                 >
                     <div className="group flex min-h-32 items-center justify-center p-4 py-10 grayscale relative z-10">
-                        <img className="h-7 w-fit dark:invert object-contain transition-all duration-500" src="https://html.tailus.io/blocks/customers/lilly.svg" alt="Lilly Logo" height="28" width="auto" />
+                        <Image className="h-7 w-fit dark:invert object-contain transition-all duration-500" src="https://html.tailus.io/blocks/customers/lilly.svg" alt="Lilly Logo" height={28} width={120} />
                     </div>
                     <AnimatePresence>
                         {hoveredIndex === 5 && (
@@ -225,7 +226,7 @@ export default function LogoCloud(){
                     onMouseLeave={() => setHoveredIndex(null)}
                 >
                     <div className="group flex min-h-32 items-center justify-center p-4 py-10 grayscale relative z-10">
-                        <img className="h-5 w-fit dark:invert object-contain transition-all duration-500" src="https://html.tailus.io/blocks/customers/lemonsqueezy.svg" alt="Lemon Squeezy Logo" height="20" width="auto" />
+                        <Image className="h-5 w-fit dark:invert object-contain transition-all duration-500" src="https://html.tailus.io/blocks/customers/lemonsqueezy.svg" alt="Lemon Squeezy Logo" height={20} width={100} />
                     </div>
                     <AnimatePresence>
                         {hoveredIndex === 6 && (
@@ -258,7 +259,7 @@ export default function LogoCloud(){
                     onMouseLeave={() => setHoveredIndex(null)}
                 >
                     <div className="group flex min-h-32 items-center justify-center p-4 py-10 grayscale relative z-10">
-                        <img className="h-6 w-fit dark:invert object-contain transition-all duration-500" src="https://html.tailus.io/blocks/customers/openai.svg" alt="OpenAI Logo" height="24" width="auto" />
+                        <Image className="h-6 w-fit dark:invert object-contain transition-all duration-500" src="https://html.tailus.io/blocks/customers/openai.svg" alt="OpenAI Logo" height={24} width={120} />
                     </div>
                     <AnimatePresence>
                         {hoveredIndex === 7 && (
@@ -291,7 +292,7 @@ export default function LogoCloud(){
                     onMouseLeave={() => setHoveredIndex(null)}
                 >
                     <div className="group flex min-h-32 items-center justify-center p-4 py-10 grayscale relative z-10">
-                        <img className="h-4 w-fit dark:invert object-contain transition-all duration-500" src="https://html.tailus.io/blocks/customers/tailwindcss.svg" alt="Tailwind CSS Logo" height="16" width="auto" />
+                        <Image className="h-4 w-fit dark:invert object-contain transition-all duration-500" src="https://html.tailus.io/blocks/customers/tailwindcss.svg" alt="Tailwind CSS Logo" height={16} width={80} />
                     </div>
                     <AnimatePresence>
                         {hoveredIndex === 8 && (
@@ -324,7 +325,7 @@ export default function LogoCloud(){
                     onMouseLeave={() => setHoveredIndex(null)}
                 >
                     <div className="group flex min-h-32 items-center justify-center p-4 py-10 grayscale relative z-10">
-                        <img className="h-5 w-fit dark:invert object-contain transition-all duration-500" src="https://html.tailus.io/blocks/customers/vercel.svg" alt="Vercel Logo" height="20" width="auto" />
+                        <Image className="h-5 w-fit dark:invert object-contain transition-all duration-500" src="https://html.tailus.io/blocks/customers/vercel.svg" alt="Vercel Logo" height={20} width={100} />
                     </div>
                     <AnimatePresence>
                         {hoveredIndex === 9 && (
@@ -357,7 +358,7 @@ export default function LogoCloud(){
                     onMouseLeave={() => setHoveredIndex(null)}
                 >
                     <div className="group flex min-h-32 items-center justify-center p-4 py-10 grayscale relative z-10">
-                        <img className="h-5 w-fit dark:invert object-contain transition-all duration-500" src="https://html.tailus.io/blocks/customers/zapier.svg" alt="Zapier Logo" height="20" width="auto" />
+                        <Image className="h-5 w-fit dark:invert object-contain transition-all duration-500" src="https://html.tailus.io/blocks/customers/zapier.svg" alt="Zapier Logo" height={20} width={100} />
                     </div>
                     <AnimatePresence>
                         {hoveredIndex === 10 && (

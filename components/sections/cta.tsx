@@ -89,7 +89,7 @@ export function CTANew() {
       {/* Testimonial - spans 1 column */}
       <div className="border-t md:border-t-0 md:border-l border-dashed p-8 md:p-14">
         <p className="text-base text-neutral-700 dark:text-neutral-200">
-          "This is the best product ever when it comes to shipping. Ten on ten recommended. I just can't wait to see what happens with this product."
+          &quot;This is the best product ever when it comes to shipping. Ten on ten recommended. I just can&apos;t wait to see what happens with this product.&quot;
         </p>
         <div className="flex flex-col text-sm items-start mt-4 gap-1">
           <p className="font-bold text-neutral-800 dark:text-neutral-200">Michael Scarn</p>

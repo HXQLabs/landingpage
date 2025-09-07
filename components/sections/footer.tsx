@@ -35,12 +35,10 @@ interface Footer2Props {
 }
 
 const Footer2 = ({
-  logo = footerData.logo,
   tagline = footerData.tagline,
   menuItems = footerData.menuItems,
   copyright = footerData.copyright,
   bottomLinks = footerData.bottomLinks,
-  brandText = footerData.brandText,
   socialIcons = footerData.socialIcons,
 }: Footer2Props) => {
 
@@ -53,17 +51,7 @@ const Footer2 = ({
             {/* Logo + Tagline + Social icons */}
             <div className="col-span-2 md:col-span-4 lg:col-span-1 space-y-6 lg:pr-8">
               <div className="flex items-center gap-3">
-                {/* <Logo url={logo.url}>
-                  <LogoImage
-                    src={logo.src}
-                    alt={logo.alt}
-                    title={logo.title}
-                    className="h-8 w-8 md:h-10 md:w-10"
-                  />
-                  <LogoText className="text-lg md:text-xl font-bold">
-                    {logo.title}
-                  </LogoText>
-                </Logo> */}
+                <h1> HelixQue</h1>
               </div>
 
               <p className="text-muted-foreground text-sm md:text-base max-w-sm lg:max-w-none">
@@ -151,7 +139,7 @@ const Footer2 = ({
           </h2> */}
 
 <InfiniteTextMarquee
-  text="STARTUP"
+  text="HELIXQUE"
   link="#"
   speed={50}
   tooltipText="It is Amazing!! 🤩🔥"

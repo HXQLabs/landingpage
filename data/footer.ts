@@ -1,9 +1,9 @@
 export const footerData = {
   logo: {
     src: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/block-1.svg",
-    alt: "Shortner",
-    title: "Shortner",
-    url: "https://shortner.com",
+    alt: "HelixQue",
+    title: "HelixQue",
+    url: "https://helixque.com",
   },
   tagline: "Simple and efficient URL shortening made easy.",
   menuItems: [
@@ -20,10 +20,10 @@ export const footerData = {
     {
       title: "Socials",
       links: [
-        { text: "Facebook", url: "https://facebook.com/shortner" },
-        { text: "Instagram", url: "https://instagram.com/shortner" },
-        { text: "Twitter", url: "https://twitter.com/shortner" },
-        { text: "LinkedIn", url: "https://linkedin.com/company/shortner" },
+        { text: "Facebook", url: "https://facebook.com/helixque" },
+        { text: "Instagram", url: "https://instagram.com/helixque" },
+        { text: "Twitter", url: "https://twitter.com/helixque" },
+        { text: "LinkedIn", url: "https://linkedin.com/company/helixque" },
       ],
     },
     {
@@ -43,28 +43,28 @@ export const footerData = {
       ],
     },
   ],
-  copyright: `© ${new Date().getFullYear()} Shortner. All rights reserved.`,
+  copyright: `© ${new Date().getFullYear()} HelixQue. All rights reserved.`,
   bottomLinks: [
     { text: "Terms and Conditions", url: "/terms" },
     { text: "Privacy Policy", url: "/privacy" },
     { text: "Cookie Policy", url: "/cookies" },
   ],
-  brandText: "SHORTNER",
+  brandText: "HELIXQUE",
   // Social icons for the logo section
   socialIcons: [
     { 
       name: "linkedin", 
-      url: "https://linkedin.com/company/shortner",
+      url: "https://linkedin.com/company/helixque",
       ariaLabel: "LinkedIn"
     },
     { 
       name: "github", 
-      url: "https://github.com/shortner",
+      url: "https://github.com/helixque",
       ariaLabel: "GitHub"
     },
     { 
       name: "x", 
-      url: "https://twitter.com/shortner",
+      url: "https://twitter.com/helixque",
       ariaLabel: "X (Twitter)"
     },
   ],

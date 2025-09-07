@@ -3,14 +3,11 @@ import IntegrationsSection from "@/components/sections/integrations";
 import { Footer2 } from "@/components/sections/footer";
 import { Hero195 } from "@/components/sections/hero";
 import TestimonialsSection from "@/components/sections/testimonials";
-import FaqSection from "@/components/sections/faq";
-import { CTANew } from "@/components/sections/cta";
 import PricingSection from "@/components/sections/pricing";
 import Benefits from "@/components/sections/benefits";
 import PricingNewSection from "@/components/sections/pricing-new";
 import DeploymentFeatures from "@/components/sections/deployment-features";
 // import Contact from "@/components/sections/contact";
-import { AnnouncementBadge } from "@/components/ui/announcement-badge";
 
 export default function Home() {
   return (

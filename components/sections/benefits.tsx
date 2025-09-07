@@ -4,10 +4,7 @@ import { AnimatedShinyText } from '../magicui/animated-shiny-text';
 const Benefits = () => {
   return (
     <section>
-      {/* Top divider */}
-      <div className="bg-gray-200 dark:bg-neutral-700 h-[1px] w-full" />
-      
-      <div className="max-w-7xl mx-auto border-gray-200 dark:border-neutral-700 relative overflow-hidden border-x px-4 py-20 md:px-8">
+      <div className="max-w-7xl mx-auto relative overflow-hidden px-4 py-20 md:px-8">
       <div className="relative flex flex-col items-center">
       <AnimatedShinyText>
           Benefits
@@ -263,9 +260,6 @@ const Benefits = () => {
         </div>
       </div>
       </div>
-      
-      {/* Bottom divider */}
-      <div className="bg-gray-200 dark:bg-neutral-700 h-[1px] w-full" />
     </section>
   );
 };

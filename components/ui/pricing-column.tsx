@@ -93,7 +93,7 @@ export function PricingColumn({
             )}
           </div>
         </div>
-        <Button variant={cta.variant} size="lg" asChild>
+        <Button variant={cta.variant === "glow" ? "default" : cta.variant} size="lg" asChild>
           <Link href={cta.href}>{cta.label}</Link>
         </Button>
         <p className="text-muted-foreground min-h-[40px] max-w-[220px] text-sm">

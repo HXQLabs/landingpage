@@ -3,7 +3,6 @@ import { ReactNode } from "react";
 import { siteConfig } from "@/config/site/siteConfig";
 import { cn } from "@/lib/utils";
 
-import LaunchUI from "@/components/logos/launch-ui";
 import {
   Footer,
   FooterBottom,
@@ -33,8 +32,6 @@ interface FooterProps {
 }
 
 export default function FooterSection({
-  logo = <LaunchUI />,
-  name = "Launch UI",
   columns = [
     {
       title: "Product",
@@ -75,8 +72,7 @@ export default function FooterSection({
           <FooterContent>
             <FooterColumn className="col-span-2 sm:col-span-3 md:col-span-1">
               <div className="flex items-center gap-2">
-                {logo}
-                <h3 className="text-xl font-bold">{name}</h3>
+                <h3 className="text-xl font-bold">HelixQue</h3>
               </div>
             </FooterColumn>
             {columns.map((column, index) => (

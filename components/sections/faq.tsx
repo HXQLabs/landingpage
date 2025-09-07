@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronDown, Mail, MinusIcon, PlusIcon } from 'lucide-react';
+import { ChevronDown, Mail } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 
@@ -216,10 +216,7 @@ export function FaqSection() {
 
   return (
     <section>
-      {/* Top divider */}
-      <div className="bg-gray-200 dark:bg-neutral-700 h-[1px] w-full" />
-      
-      <div className="max-w-7xl mx-auto border-l border-r border-gray-200 dark:border-neutral-700 py-16">
+      <div className="max-w-7xl mx-auto py-16">
       {/* Header - matching testimonials and pricing structure */}
       <div className="mx-auto max-w-3xl text-center space-y-4 sm:space-y-6">
         <p className="text-sm text-muted-foreground">FAQ</p>
@@ -292,9 +289,6 @@ export function FaqSection() {
         </div>
       </motion.div>
       </div>
-      
-      {/* Bottom divider */}
-      <div className="bg-gray-200 dark:bg-neutral-700 h-[1px] w-full" />
     </section>
   );
 }
