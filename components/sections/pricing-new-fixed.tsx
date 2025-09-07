@@ -76,7 +76,7 @@ const TIERS = [
 
 // Animated number component
 const AnimatedNumber = ({ value }: { value: number }) => {
-  const digits = value.toString().padStart(3, '0').split('');
+  const digits = value.toString().padStart(2, '0').split('');
   
   return (
     <div className="flex items-center">
