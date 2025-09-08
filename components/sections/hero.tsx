@@ -116,7 +116,7 @@ const Hero195 = ({
                 ></div>
               </div>
               
-              <div className="relative group-hover:translate-x-0 group-hover:-translate-y-0 transition-transform duration-500 ease-out">
+              <div className="relative group-hover:translate-x-4 group-hover:-translate-y-4 transition-transform duration-500 ease-out">
                 <div className="relative overflow-hidden rounded-lg border border-border bg-white dark:bg-black shadow-xl group-hover:shadow-2xl transition-shadow duration-500 ease-out">
                   <Image
                     src="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/dashboard/admin-dashboard-1.png"
