@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/image";
+// import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import LogoCloud from "../general/logocloud";
 import { AnnouncementBadge } from "../ui/announcement-badge";
