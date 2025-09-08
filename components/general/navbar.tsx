@@ -11,7 +11,7 @@ import {
   MobileNavMenu,
 } from "@/components/ui/resizable-navbar";
 import { useState, useEffect } from "react";
-import { HoverBorderGradient } from "@/components/ui/hover-border-gradient";
+// import { HoverBorderGradient } from "@/components/ui/hover-border-gradient";
 import { IconRocket, IconSun, IconMoon } from "@tabler/icons-react";
 import { useTheme } from "next-themes";
 import { cn } from "@/lib/utils";
@@ -91,14 +91,14 @@ export function MainNavbar() {
 
           
           <NavbarButton variant="secondary">Login</NavbarButton>
-          <HoverBorderGradient
+          {/* <HoverBorderGradient
             containerClassName="rounded-full"
             as="button"
             className="dark:bg-black bg-white text-black dark:text-white flex items-center space-x-1.5 px-3 py-1.5 text-sm"
           >
             <IconRocket className="h-4 w-4" />
             <span>Get Started</span>
-          </HoverBorderGradient>
+          </HoverBorderGradient> */}
         </div>
       </NavBody>
 
@@ -135,7 +135,7 @@ export function MainNavbar() {
             >
               Login
             </NavbarButton>
-            <HoverBorderGradient
+            {/* <HoverBorderGradient
               containerClassName="rounded-full w-full"
               as="button"
               className="dark:bg-black bg-white text-black dark:text-white flex items-center justify-center space-x-1.5 px-3 py-2 w-full text-sm"
@@ -143,7 +143,7 @@ export function MainNavbar() {
             >
               <IconRocket className="h-4 w-4" />
               <span>Get Started</span>
-            </HoverBorderGradient>
+            </HoverBorderGradient> */}
           </div>
         </MobileNavMenu>
       </MobileNav>
