@@ -221,11 +221,11 @@ export default function PricingSection() {
   return (
     <section>
       <div className="max-w-7xl mx-auto py-16">
-      {/* Header - matching testimonials structure */}
+      {/* Header - matching benefits structure */}
       <div className="mx-auto max-w-3xl text-center space-y-4 sm:space-y-6">
         <p className="text-sm text-muted-foreground">PRICING</p>
-        <h2 className="text-3xl font-medium md:text-5xl">Simple, transparent pricing</h2>
-        <p className="text-muted-foreground md:max-w-2xl mx-auto">
+        <h2 className="text-charcoal-700 text-center text-2xl font-medium tracking-tight md:text-3xl lg:text-4xl dark:text-neutral-100">Simple, transparent pricing</h2>
+        <p className="text-center text-sm font-medium tracking-tight text-gray-600 md:text-sm lg:text-base dark:text-gray-300 mx-auto max-w-lg">
           Choose the perfect plan for your needs. Start free, upgrade when you grow.
         </p>
       </div>

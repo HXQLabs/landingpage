@@ -4,6 +4,8 @@ import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import LogoCloud from "../general/logocloud";
 import { AnnouncementBadge } from "../ui/announcement-badge";
+// import HeroVideoDialog from "@/components/magicui/hero-video-dialog";
+import { Safari } from "@/components/magicui/safari";
 
 export interface Tab {
   title: string;
@@ -79,54 +81,61 @@ const Hero195 = ({
       <div className="container mx-auto max-w-7xl">
         <div className="relative">
           {/* Dashboard preview section */}
-          <div 
-            className="relative bg-gray-50 dark:bg-zinc-800 p-8 md:p-12"
-          >
-            
-            <div className="relative group">
-              {/* Subtle diagonal lines pattern background div with rounded corners */}
-              <div className="absolute inset-0 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500 ease-out overflow-hidden">
-                {/* Light mode subtle diagonal lines - only +45 degrees */}
-                <div 
-                  className="absolute inset-0 dark:hidden rounded-lg"
-                  style={{
-                    backgroundImage: `repeating-linear-gradient(
-                      45deg,
-                      rgba(0, 0, 0, 0.06) 0px,
-                      rgba(0, 0, 0, 0.06) 1px,
-                      transparent 1px,
-                      transparent 8px
-                    )`,
-                    backgroundColor: 'rgba(156, 163, 175, 0.03)'
-                  }}
-                ></div>
-                {/* Dark mode subtle diagonal lines - only +45 degrees */}
-                <div 
-                  className="absolute inset-0 hidden dark:block rounded-lg"
-                  style={{
-                    backgroundImage: `repeating-linear-gradient(
-                      45deg,
-                      rgba(255, 255, 255, 0.12) 0px,
-                      rgba(255, 255, 255, 0.12) 1px,
-                      transparent 1px,
-                      transparent 8px
-                    )`,
-                    backgroundColor: '#3a3a3a'
-                  }}
-                ></div>
-              </div>
+          <div className="relative p-8 md:p-12">
+            {/* Outer div with slanting lines pattern - direct container for image */}
+            <div className="relative rounded-lg p-6 overflow-hidden">
+              {/* Light mode diagonal lines pattern */}
+              <div 
+                className="absolute inset-0 dark:hidden rounded-lg"
+                style={{
+                  backgroundImage: `repeating-linear-gradient(
+                    45deg,
+                    rgba(0, 0, 0, 0.06) 0px,
+                    rgba(0, 0, 0, 0.06) 1px,
+                    transparent 1px,
+                    transparent 8px
+                  )`,
+                  backgroundColor: 'rgba(156, 163, 175, 0.03)'
+                }}
+              ></div>
+              {/* Dark mode diagonal lines pattern */}
+              <div 
+                className="absolute inset-0 hidden dark:block rounded-lg"
+                style={{
+                  backgroundImage: `repeating-linear-gradient(
+                    45deg,
+                    rgba(255, 255, 255, 0.12) 0px,
+                    rgba(255, 255, 255, 0.12) 1px,
+                    transparent 1px,
+                    transparent 8px
+                  )`,
+                  backgroundColor: '#3a3a3a'
+                }}
+              ></div>
               
-              <div className="relative group-hover:translate-x-4 group-hover:-translate-y-4 transition-transform duration-500 ease-out">
-                <div className="relative overflow-hidden rounded-lg border border-border bg-white dark:bg-black shadow-xl group-hover:shadow-2xl transition-shadow duration-500 ease-out">
-                  <Image
-                    src="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/dashboard/admin-dashboard-1.png"
-                    alt="Dashboard Insights"
-                    className="w-full aspect-[16/10] object-cover"
-                    draggable={false}
-                    width={800}
-                    height={500}
-                  />
-                </div>
+              {/* Inner div containing the Safari component - no middle gray layer */}
+              <div className="relative overflow-hidden rounded-lg">
+                <Safari 
+                  url="helixque.vercel.app" 
+                  className="size-full"
+                  imageSrc="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/dashboard/admin-dashboard-1.png"
+                />
+                {/* Commented out HeroVideoDialog components
+                <HeroVideoDialog
+                  className="block dark:hidden [&_img]:shadow-none [&_img]:border-none"
+                  animationStyle="from-center"
+                  videoSrc="https://www.youtube.com/embed/qh3NGpYRG3I?si=4rb-zSdDkVK9qxxb"
+                  thumbnailSrc="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/dashboard/admin-dashboard-1.png"
+                  thumbnailAlt="Dashboard Insights - Light Mode"
+                />
+                <HeroVideoDialog
+                  className="hidden dark:block [&_img]:shadow-none [&_img]:border-none"
+                  animationStyle="from-center"
+                  videoSrc="https://www.youtube.com/embed/qh3NGpYRG3I?si=4rb-zSdDkVK9qxxb"
+                  thumbnailSrc="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/dashboard/admin-dashboard-1.png"
+                  thumbnailAlt="Dashboard Insights - Dark Mode"
+                />
+                */}
               </div>
             </div>
           </div>
