@@ -6,6 +6,7 @@ import LogoCloud from "../general/logocloud";
 import { AnnouncementBadge } from "../ui/announcement-badge";
 // import HeroVideoDialog from "@/components/magicui/hero-video-dialog";
 import { Safari } from "@/components/magicui/safari";
+import { ThemeToggleButton1 } from "../utility/theme-toggle";
 
 export interface Tab {
   title: string;
@@ -33,19 +34,23 @@ const Hero195 = ({
 }: Hero195Props) => {
 
   return (
-    <section className="relative w-full">
-      <div className="container mx-auto max-w-7xl">
+    <section className="relative w-full overflow-hidden">
+      
+      {/* Content overlay */}
+      <div className="relative z-10">
+        <div className="container mx-auto max-w-7xl">
         {/* Main content container */}
         <div className="relative">
           {/* Hero content section */}
           <div className="relative flex flex-col items-center justify-center px-4 py-16 md:py-32">
-            <div className="flex justify-center mb-6">
+                        <div className="flex justify-center mb-6">
             <AnnouncementBadge
             
             href="#"
             announcementType="🚀 New"
             title="HelixQue V1 has raised $10M"
           />
+          
             </div>
             <h1 className="text-center text-4xl font-medium tracking-tight text-black md:text-5xl lg:text-6xl dark:text-white mt-4">
               {title}
@@ -54,9 +59,8 @@ const Hero195 = ({
               {description}
               
             </p>
-
-
             
+             <ThemeToggleButton1 className="w-12 h-12"/>            
             <div className="mt-8 flex items-center gap-4">
               <Button 
                 asChild 
@@ -163,6 +167,7 @@ const Hero195 = ({
           <LogoCloud/>
         </div>
       </div>
+    </div>
     </section>
   );
 };
