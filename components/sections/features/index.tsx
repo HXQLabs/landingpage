@@ -256,22 +256,20 @@ const Feature1 = () => {
           </TimelineContent>
         </article>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-3 sm:gap-4 px-2 sm:px-0">
+        <div className="grid grid-cols-12 gap-4">
           {/* Global User Network */}
           <TimelineContent
             as="div"
             animationNum={0}
             timelineRef={featuresRef}
             customVariants={revealVariants}
-            className="col-span-1 md:col-span-1 lg:col-span-5"
+            className="lg:col-span-5 sm:col-span-6 col-span-12 relative w-full h-[350px] rounded-xl overflow-hidden border border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-900"
           >
-            <div className="relative w-full h-[250px] sm:h-[280px] md:h-[320px] lg:h-[380px] rounded-xl overflow-hidden border border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-900 hover:shadow-lg transition-shadow duration-300">
-              <GlobalUserNetwork 
-                timelineRef={featuresRef}
-                animationNum={0}
-                customVariants={revealVariants}
-              />
-            </div>
+            <GlobalUserNetwork 
+              timelineRef={featuresRef}
+              animationNum={0}
+              customVariants={revealVariants}
+            />
           </TimelineContent>
 
           {/* Usage Stats */}
@@ -280,15 +278,13 @@ const Feature1 = () => {
             animationNum={1}
             timelineRef={featuresRef}
             customVariants={revealVariants}
-            className="col-span-1 md:col-span-1 lg:col-span-3"
+            className="lg:col-span-3 sm:col-span-6 col-span-12 border flex flex-col justify-between rounded-lg p-4 relative border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-900 h-[350px]"
           >
-            <div className="relative flex flex-col justify-between overflow-hidden rounded-lg border border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-900 p-3 sm:p-4 min-h-[250px] sm:min-h-[280px] lg:min-h-[380px] hover:shadow-lg transition-shadow duration-300">
-              <UsageStats 
-                timelineRef={featuresRef}
-                animationNum={1}
-                customVariants={revealVariants}
-              />
-            </div>
+            <UsageStats 
+              timelineRef={featuresRef}
+              animationNum={1}
+              customVariants={revealVariants}
+            />
           </TimelineContent>
 
           {/* Memberships */}
@@ -297,15 +293,13 @@ const Feature1 = () => {
             animationNum={2}
             timelineRef={featuresRef}
             customVariants={revealVariants}
-            className="col-span-1 md:col-span-2 lg:col-span-4"
+            className="lg:col-span-4 sm:col-span-6 col-span-12 border rounded-lg p-4 group border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-900 h-[350px]"
           >
-            <div className="border rounded-lg p-3 sm:p-4 md:p-5 group border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-900 min-h-[250px] sm:min-h-[280px] lg:min-h-[380px] hover:shadow-lg transition-shadow duration-300">
-              <Memberships 
-                timelineRef={featuresRef}
-                animationNum={2}
-                customVariants={revealVariants}
-              />
-            </div>
+            <Memberships 
+              timelineRef={featuresRef}
+              animationNum={2}
+              customVariants={revealVariants}
+            />
           </TimelineContent>
 
           {/* Remote Connectivity */}
@@ -314,15 +308,13 @@ const Feature1 = () => {
             animationNum={3}
             timelineRef={featuresRef}
             customVariants={revealVariants}
-            className="col-span-1 sm:col-span-2 lg:col-span-7"
+            className="lg:col-span-7 sm:col-span-6 col-span-12 relative border p-4 rounded-xl overflow-hidden border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-900 h-[350px]"
           >
-            <div className="relative border p-2 sm:p-3 md:p-4 rounded-xl overflow-hidden border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-900 hover:shadow-lg transition-shadow duration-300">
-              <RemoteConnectivity 
-                timelineRef={featuresRef}
-                animationNum={3}
-                customVariants={revealVariants}
-              />
-            </div>
+            <RemoteConnectivity 
+              timelineRef={featuresRef}
+              animationNum={3}
+              customVariants={revealVariants}
+            />
           </TimelineContent>
 
           {/* Real Time Chat */}
@@ -331,15 +323,13 @@ const Feature1 = () => {
             animationNum={4}
             timelineRef={featuresRef}
             customVariants={revealVariants}
-            className="col-span-1 md:col-span-2 lg:col-span-5"
+            className="lg:col-span-5 sm:col-span-6 col-span-12 relative border p-4 rounded-xl overflow-hidden border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-900 h-[350px]"
           >
-            <div className="relative border p-2 sm:p-3 md:p-4 rounded-xl overflow-hidden border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-900 min-h-[350px] sm:min-h-[400px] lg:min-h-[450px] hover:shadow-lg transition-shadow duration-300">
-              <RealTimeChat 
-                timelineRef={featuresRef}
-                animationNum={4}
-                customVariants={revealVariants}
-              />
-            </div>
+            <RealTimeChat 
+              timelineRef={featuresRef}
+              animationNum={4}
+              customVariants={revealVariants}
+            />
           </TimelineContent>
         </div>
 

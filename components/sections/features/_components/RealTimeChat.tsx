@@ -23,23 +23,22 @@ const RealTimeChat: React.FC<RealTimeChatProps> = ({
   return (
     <>
       {/* Header */}
-      <article className="absolute right-0 top-0 left-0 w-full bg-gradient-to-b from-white via-white to-transparent dark:from-neutral-900 dark:via-neutral-900 dark:to-transparent p-2 sm:p-3 md:p-4 pb-16 sm:pb-20 md:pb-24 z-10">
-        <h3 className="px-1 pt-1 text-black dark:text-white text-base sm:text-lg md:text-xl lg:text-2xl font-medium leading-tight">
+      <article className="absolute right-0 top-0 left-0 w-full bg-gradient-to-b from-white via-white to-transparent dark:from-neutral-900 dark:via-neutral-900 dark:to-transparent p-2 pb-12 z-10">
+        <h3 className="px-1 pt-1 text-black dark:text-white text-lg font-medium leading-tight">
           Real Time Chat
         </h3>
-        <p className="mt-1 px-1 pb-1 font-normal text-gray-600 dark:text-gray-400 text-xs sm:text-sm w-full">
-          Interactive chat experience with smooth animations and real-time
-          messaging capabilities.
+        <p className="mt-1 px-1 pb-1 font-normal text-gray-600 dark:text-gray-400 text-xs w-full">
+          Interactive chat experience with smooth animations.
         </p>
       </article>
 
       {/* Chat Interface */}
-      <div className="mt-16 sm:mt-20 md:mt-24 flex w-full max-w-full flex-col overflow-hidden rounded-xl bg-white dark:bg-neutral-800 shadow-lg mx-auto">
+      <div className="mt-12 flex w-full max-w-full flex-col overflow-hidden rounded-xl bg-white dark:bg-neutral-800 shadow-lg mx-auto">
         {/* Messages Area */}
-        <div className="flex-1 space-y-2 sm:space-y-3 p-2 sm:p-3 md:p-4 overflow-hidden max-h-[200px] sm:max-h-[240px]">
+        <div className="flex-1 space-y-2 p-3 overflow-hidden max-h-[160px]">
           {/* Agent message */}
           <motion.div
-            className="mr-auto relative max-w-[85%] sm:max-w-[80%] rounded-lg bg-gray-100 dark:bg-neutral-700 p-2 sm:p-3 text-gray-800 dark:text-gray-200 text-[10px] sm:text-xs md:text-sm"
+            className="mr-auto relative max-w-[85%] rounded-lg bg-gray-100 dark:bg-neutral-700 p-2 text-gray-800 dark:text-gray-200 text-xs"
             variants={messageVariants}
             initial="hidden"
             animate="visible"
@@ -90,7 +89,7 @@ const RealTimeChat: React.FC<RealTimeChatProps> = ({
 
         {/* Chat Input Area */}
         <motion.div
-          className="flex items-center gap-1 sm:gap-1.5 md:gap-2 border-t border-gray-200 dark:border-neutral-600 p-2 sm:p-3 md:p-4"
+          className="flex items-center gap-2 border-t border-gray-200 dark:border-neutral-600 p-2"
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 4.8, duration: 0.5 }}
@@ -98,20 +97,20 @@ const RealTimeChat: React.FC<RealTimeChatProps> = ({
           <motion.input
             type="text"
             placeholder="Type your message..."
-            className="flex-1 rounded-lg border border-gray-300 dark:border-neutral-600 bg-gray-100 dark:bg-neutral-700 text-gray-900 dark:text-gray-100 placeholder-gray-500 dark:placeholder-gray-400 px-2 sm:px-3 md:px-4 py-1 sm:py-1.5 md:py-2 text-[10px] sm:text-xs md:text-sm focus:outline-none focus:ring-1 sm:focus:ring-2 focus:ring-blue-500"
+            className="flex-1 rounded-lg border border-gray-300 dark:border-neutral-600 bg-gray-100 dark:bg-neutral-700 text-gray-900 dark:text-gray-100 placeholder-gray-500 dark:placeholder-gray-400 px-3 py-1.5 text-xs focus:outline-none focus:ring-1 focus:ring-blue-500"
             initial={{ width: "60%" }}
             animate={{ width: "100%" }}
             transition={{ delay: 5.0, duration: 0.6 }}
           />
           <motion.button
-            className="flex h-6 w-6 sm:h-8 sm:w-8 md:h-10 md:w-10 items-center justify-center rounded-lg bg-blue-600 text-white hover:bg-blue-700 focus:outline-none focus:ring-1 sm:focus:ring-2 focus:ring-blue-500 focus:ring-offset-1"
+            className="flex h-8 w-8 items-center justify-center rounded-lg bg-blue-600 text-white hover:bg-blue-700 focus:outline-none focus:ring-1 focus:ring-blue-500 focus:ring-offset-1"
             initial={{ scale: 0, rotate: 180 }}
             animate={{ scale: 1, rotate: 0 }}
             transition={{ delay: 5.2, duration: 0.4, type: "spring" }}
             whileHover={{ scale: 1.05, rotate: 5 }}
             whileTap={{ scale: 0.95 }}
           >
-            <ArrowRight className="h-3 w-3 sm:h-4 sm:w-4 md:h-5 md:w-5" />
+            <ArrowRight className="h-4 w-4" />
           </motion.button>
         </motion.div>
       </div>
