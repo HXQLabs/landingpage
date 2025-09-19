@@ -4,17 +4,15 @@ import ShimmerButton from "@/components/ui/buttons/shimmer-button";
 import { cn } from "@/lib/utils";
 import { ChevronsRight } from "lucide-react";
 import { LayoutGroup, motion } from "motion/react";
-import HomeHeader from "@/components/common/header2";
 import NewItemsLoading from "@/components/utils/new-items-loading";
 import TextRotate from "@/components/fancy/text/text-rotate";
-import Image from "next/image";
+import { Safari } from "@/components/magicui/safari";
 
 const index = () => {
-  const words = ["Better", "Perfect", "Modern", "Unique"];
+  const words = ["professionals", "interviewers", "investors"];
   return (
     <div className="relative">
-      <HomeHeader />
-      <section className="h-auto min-h-screen overflow-hidden relative pb-20 dark:bg-black bg-white transition-colors duration-300 -mt-20 pt-20">
+      <section className="h-auto min-h-screen overflow-hidden relative pb-20 dark:bg-black bg-white transition-colors duration-300 pt-20">
         <div className="absolute inset-0 -z-0 h-full w-full dark:bg-[radial-gradient(#1d1d1d_1px,transparent_1px)] bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px]"></div>
         <div className="absolute inset-0 top-0 left-0 h-full w-full items-center px-5 py-24 bg-gradient-to-t dark:from-black from-white from-0% to-transparent to-60%"></div>
 
@@ -68,10 +66,10 @@ const index = () => {
             </defs>
           </svg>
         </div>
-        <article className="grid 2xl:pt-32 xl:pt-28 lg:pt-24 md:pt-20 pt-16 pb-8 sm:pb-12 lg:pb-16 relative dark:text-white text-gray-900 z-[2] px-4 sm:px-6 lg:px-0 transition-colors duration-300">
+        <article className="grid 2xl:pt-12 xl:pt-10 lg:pt-8 md:pt-6 pt-4 pb-8 sm:pb-12 lg:pb-16 relative dark:text-white text-gray-900 z-[2] px-4 sm:px-6 lg:px-0 transition-colors duration-300">
           <NewItemsLoading />
           <h1 className="xl:text-7xl lg:text-6xl md:text-5xl sm:text-4xl text-3xl text-center font-semibold tracking-tight dark:text-white text-gray-900">
-            <span className="xl:text-7xl lg:text-6xl md:text-5xl sm:text-4xl text-3xl dark:text-gray-100 text-gray-800">Don&apos;t Just Ship Website,</span>{" "}
+            <span className="xl:text-7xl lg:text-6xl md:text-5xl sm:text-4xl text-3xl dark:text-gray-100 text-gray-800">Professional Networking</span>{" "}
             <LayoutGroup>
               <motion.span className="relative translate-x-0 flex gap-4 justify-center dark:text-white text-gray-900 flex-wrap mt-2" layout>
                 <motion.span
@@ -79,7 +77,7 @@ const index = () => {
                   layout
                   transition={{ type: "spring", damping: 30, stiffness: 400 }}
                 >
-                  Ship{" "}
+                  for{" "}
                 </motion.span>
                 <TextRotate
                   texts={words}
@@ -91,24 +89,13 @@ const index = () => {
                   staggerDuration={0.025}
                   splitLevelClassName="overflow-hidden pb-0.5 sm:pb-1 md:pb-1"
                   transition={{ type: "spring", damping: 30, stiffness: 400 }}
-                  rotationInterval={2000}
+                  rotationInterval={3000}
                 />
-                <motion.span
-                  className="pt-0.5 sm:pt-1 md:pt-2"
-                  layout
-                  transition={{ type: "spring", damping: 30, stiffness: 400 }}
-                >
-                  {" "}Ones.
-                </motion.span>
               </motion.span>
             </LayoutGroup>
           </h1>
           <p className="mx-auto lg:w-[700px] md:w-[85%] w-[95%] text-center lg:text-lg md:text-base sm:text-sm text-sm mt-4 sm:mt-5 mb-6 sm:mb-8 dark:text-gray-300 text-gray-600 transition-colors duration-300">
-            50+ Stunning Sections and Templates Powered by{" "}
-            <strong>React</strong>, <strong>TypeScript</strong>,
-            <strong> Tailwind CSS</strong>, and <strong> Tailwind CSS</strong>.
-            Save countless hours⏳, craft eye-catching landing pages, and turn
-            visitors into loyal customers
+            Connect with professionals, practice mock interviews, and pitch to VCs — all on one platform designed for career growth.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-2 justify-center items-center mb-8 sm:mb-12 lg:mb-16">
             <ShimmerButton
@@ -119,26 +106,23 @@ const index = () => {
               background={"#334cec"}
             >
               <span className="whitespace-pre-wrap text-center text-sm font-medium leading-none tracking-tight text-white dark:from-white dark:to-slate-900/10 sm:text-base lg:text-lg">
-                Get Unlimited Access
+                Get Started for Free
               </span>
             </ShimmerButton>
 
             <Button className="rounded-full px-4 h-12 w-full sm:w-auto dark:bg-gray-800 dark:text-white dark:border-gray-700 bg-white text-gray-900 border-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors duration-300">
-              Browse Templates
+              Star on GitHub
               <ChevronsRight className="dark:text-white text-gray-900" />
             </Button>
           </div>
           
           {/* Dashboard Mockup Image */}
-          <figure className="relative max-w-6xl mx-auto p-3 sm:p-4 lg:p-6 backdrop-blur-lg dark:bg-white/5 bg-black/5 rounded-lg transition-colors duration-300">
+          <figure className="relative max-w-6xl mx-auto p-3 sm:p-4 lg:p-6 backdrop-blur-lg dark:bg-white/5 bg-black/5 rounded-lg transition-colors duration-300 before:absolute before:inset-0 before:bg-[linear-gradient(45deg,transparent_25%,rgba(0,0,0,0.03)_25%,rgba(0,0,0,0.03)_50%,transparent_50%,transparent_75%,rgba(0,0,0,0.03)_75%)] dark:before:bg-[linear-gradient(45deg,transparent_25%,rgba(255,255,255,0.03)_25%,rgba(255,255,255,0.03)_50%,transparent_50%,transparent_75%,rgba(255,255,255,0.03)_75%)] before:[background-size:8px_8px] before:rounded-lg before:pointer-events-none">
             <div className="relative z-10 rounded-lg overflow-hidden border dark:border-neutral-800 border-neutral-200 shadow-2xl dark:shadow-neutral-900/50 shadow-gray-500/20">
-              <Image
-                src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80"
-                alt="Dashboard Preview"
-                className="w-full h-auto rounded-lg"
-                width={2340}
-                height={1560}
-                priority
+              <Safari 
+                url="helixque.vercel.app" 
+                imageSrc="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80"
+                className="w-full h-auto"
               />
               {/* Overlay for better integration */}
               <div className="absolute inset-0 bg-gradient-to-t dark:from-black/20 from-white/20 to-transparent rounded-lg"></div>

@@ -1,5 +1,7 @@
 @import "tailwindcss";
 @import "tw-animate-css";
+@import 'fumadocs-ui/css/neutral.css';
+@import 'fumadocs-ui/css/preset.css';
 
 @custom-variant dark (&:is(.dark *));
 
@@ -280,5 +282,26 @@
     100% {
       offset-distance: 100%;
     }
+  }
+  /* .shiki > div > button {
+    border-top-left-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+  } */
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+
+  .shiki > div > button {
+    border-top-left-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
   }
 }

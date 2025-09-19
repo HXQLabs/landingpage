@@ -22,7 +22,8 @@ const COLORS: Colors = {
   color16: '#290ECB',
   color17: '#3F4CC0',
 };
-const GitHubButton: React.FC = () => {
+
+const GitHubIconButton: React.FC = () => {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
@@ -30,7 +31,7 @@ const GitHubButton: React.FC = () => {
       <a
         href='https://github.com/ui-layouts/uilayouts'
         target='_blank'
-        className='relative inline-block w-auto min-w-[160px] h-[2.7em] mx-auto group dark:bg-black bg-white dark:border-white border-black border-2 rounded-lg'
+        className='relative inline-block w-12 h-[2.7em] mx-auto group dark:bg-black bg-white dark:border-white border-black border-2 rounded-lg'
       >
         <div className='absolute w-[112.81%] h-[128.57%] top-[8.57%] left-1/2 -translate-x-1/2 filter blur-[19px] opacity-70'>
           <span className='absolute inset-0 rounded-lg bg-[#d9d9d9] filter blur-[6.5px]'></span>
@@ -55,14 +56,13 @@ const GitHubButton: React.FC = () => {
         </div>
         <button
           className='absolute inset-0 rounded-lg bg-transparent cursor-pointer'
-          aria-label='Get Started'
+          aria-label='Star on GitHub'
           type='button'
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
         >
-          <span className=' flex items-center justify-center px-4 gap-2 rounded-lg group-hover:text-yellow-400 text-white text-sm font-semibold tracking-wide whitespace-nowrap'>
-            <Github className='inline-block group-hover:fill-yellow-400 fill-white w-5 h-5 flex-shrink-0' />
-            <span>Star on GitHub</span>
+          <span className=' flex items-center justify-center px-2 gap-2 rounded-lg group-hover:text-yellow-400 text-white text-xl font-semibold tracking-wide whitespace-nowrap'>
+            <Github className='inline-block group-hover:fill-yellow-400 fill-white w-6 h-6 flex-shrink-0' />
           </span>
         </button>
       </a>
@@ -70,4 +70,4 @@ const GitHubButton: React.FC = () => {
   );
 };
 
-export default GitHubButton;
+export default GitHubIconButton;

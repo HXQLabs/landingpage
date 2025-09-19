@@ -1,75 +1,30 @@
 "use client";
-import { TimelineContent } from "@/components/ui/timeline-animation";
-import { ArrowRight, PencilLine, Globe } from "lucide-react";
+import React, { useRef } from "react";
+import { 
+  MessageSquare,
+  Users,
+  Presentation,
+  Brain,
+  Calendar,
+  ShieldCheck,
+  ArrowRight
+} from "lucide-react";
 import { motion } from "motion/react";
-import { useRef, forwardRef } from "react";
 import Pill from "@/components/ui/pill";
-import { OrbitingCircles } from "@/components/magicui/orbiting-circles";
-import { AnimatedBeam } from "@/components/magicui/animated-beam";
-import { cn } from "@/lib/utils";
+import { TimelineContent } from "@/components/ui/timeline-animation";
+import { ColoredSpotlightItem } from "@/components/ui/colored-spotlight";
+import OpenSourceSection from "./open-source";
 
-// User components representing different nations
-const UserIcons = {
-  usa: () => (
-    <div className="flex items-center justify-center w-10 h-10 bg-blue-500 rounded-full">
-      <span className="text-white text-sm font-semibold">🇺🇸</span>
-    </div>
-  ),
-  uk: () => (
-    <div className="flex items-center justify-center w-10 h-10 bg-red-500 rounded-full">
-      <span className="text-white text-sm font-semibold">🇬🇧</span>
-    </div>
-  ),
-  japan: () => (
-    <div className="flex items-center justify-center w-10 h-10 bg-red-600 rounded-full">
-      <span className="text-white text-sm font-semibold">🇯🇵</span>
-    </div>
-  ),
-  germany: () => (
-    <div className="flex items-center justify-center w-10 h-10 bg-yellow-500 rounded-full">
-      <span className="text-white text-sm font-semibold">🇩🇪</span>
-    </div>
-  ),
-  india: () => (
-    <div className="flex items-center justify-center w-10 h-10 bg-orange-500 rounded-full">
-      <span className="text-white text-sm font-semibold">🇮🇳</span>
-    </div>
-  ),
-  brazil: () => (
-    <div className="flex items-center justify-center w-10 h-10 bg-green-500 rounded-full">
-      <span className="text-white text-sm font-semibold">🇧🇷</span>
-    </div>
-  ),
-  canada: () => (
-    <div className="flex items-center justify-center w-10 h-10 bg-red-400 rounded-full">
-      <span className="text-white text-sm font-semibold">🇨🇦</span>
-    </div>
-  ),
-  australia: () => (
-    <div className="flex items-center justify-center w-10 h-10 bg-blue-400 rounded-full">
-      <span className="text-white text-sm font-semibold">🇦🇺</span>
-    </div>
-  ),
-};
+// Import only the main feature section components
+import GlobalUserNetwork from "./_components/GlobalUserNetwork";
+import UsageStats from "./_components/UsageStats";
+import Memberships from "./_components/Memberships";
+import RemoteConnectivity from "./_components/RemoteConnectivity";
+import RealTimeChat from "./_components/RealTimeChat";
 
-const Circle = forwardRef<
-  HTMLDivElement,
-  { className?: string; children?: React.ReactNode }
->(({ className, children }, ref) => {
-  return (
-    <div
-      ref={ref}
-      className={cn(
-        "z-10 flex size-12 items-center justify-center rounded-full border-2 border-border bg-white dark:bg-neutral-800 p-3 shadow-[0_0_20px_-12px_rgba(0,0,0,0.8)]",
-        className,
-      )}
-    >
-      {children}
-    </div>
-  );
-});
 
-Circle.displayName = "Circle";
+
+
 
 const Icons = {
   notion: () => (
@@ -156,7 +111,7 @@ const Icons = {
         </filter>
       </defs>
       <path
-        d="m54.532 138.45 2.235 1.324c9.387 5.571 20.15 8.518 31.126 8.523h.023c33.707 0 61.139-27.426 61.153-61.135.006-16.335-6.349-31.696-17.895-43.251A60.75 60.75 0 0 0 87.94 25.983c-33.733 0-61.166 27.423-61.178 61.13a60.98 60.98 0 0 0 9.349 32.535l1.455 2.312-6.179 22.558zm-40.811 23.544L24.16 123.88c-6.438-11.154-9.825-23.808-9.821-36.772.017-40.556 33.021-73.55 73.578-73.55 19.681.01 38.154 7.669 52.047 21.572s21.537 32.383 21.53 52.037c-.018 40.553-33.027 73.553-73.578 73.553h-.032c-12.313-.005-24.412-3.094-35.159-8.954zm0 0"
+        d="m54.532 138.45 2.235 1.324c9.387 5.571 20.15 8.518 31.126 8.523h.023c33.707 0 61.139-27.426 61.153-61.135.006-16.335-6.349-31.696-17.895-43.251A60.75 60.75 0 0 0 87.94 25.983c-33.733 0-61.166 27.423-61.178 61.13a60.98 60.98 0 0 0 9.349 32.535l1.455 2.312-6.179 22.558zm-40.811 23.544L24.16 123.88c-6.438-11.154-9.825-23.808-9.821-36.772.017-40.556 33.021-73.55 73.578-73.55 19.681.01 38.154 7.669 52.047 21.572s21.537 32.383 21.53 52.037c-.018 40.553-33.027 73.553-73.578 73.553h-.032c-12.313-.005-24.412-3.094-35.159-8.954z"
         fill="#b3b3b3"
         filter="url(#a)"
       />
@@ -169,7 +124,7 @@ const Icons = {
         fill="url(#linearGradient1780)"
       />
       <path
-        d="M87.184 25.227c-33.733 0-61.166 27.423-61.178 61.13a60.98 60.98 0 0 0 9.349 32.535l1.455 2.313-6.179 22.558 23.146-6.069 2.235 1.324c9.387 5.571 20.15 8.517 31.126 8.523h.023c33.707 0 61.14-27.426 61.153-61.135a60.75 60.75 0 0 0-17.895-43.251 60.75 60.75 0 0 0-43.235-17.928z"
+        d="M87.184 25.227c-33.733 0-61.166 27.423-61.178 61.13a60.98 60.98 0 0 0 9.349 32.535l1.455 2.312-6.179 22.558 23.146-6.069 2.235 1.324c9.387 5.571 20.15 8.517 31.126 8.523h.023c33.707 0 61.14-27.426 61.153-61.135a60.75 60.75 0 0 0-17.895-43.251 60.75 60.75 0 0 0-43.235-17.928z"
         fill="url(#b)"
       />
       <path
@@ -211,7 +166,7 @@ const Icons = {
         opacity=".05"
       />
       <path
-        d="M34.992,17.792c-0.319,0-0.63,0.107-0.899,0.31l-5.697,4.218	c-0.216,0.163-0.468,0.248-0.732,0.248c-0.259,0-0.504-0.082-0.71-0.236l-3.973-2.991c-0.719-0.535-1.568-0.817-2.457-0.817	c-1.405,0-2.696,0.705-3.455,1.887l-1.21,1.891l-4.115,6.688c-0.297,0.465-0.32,1.033-0.058,1.511c0.266,0.486,0.787,0.8,1.325,0.8	c0.319,0,0.63-0.107,0.899-0.31l5.697-4.218c0.216-0.163,0.468-0.248,0.732-0.248c0.259,0,0.504,0.082,0.71,0.236l3.973,2.991	c0.719,0.535,1.568,0.817,2.457,0.817c1.405,0,2.696-0.705,3.455-1.887l1.21-1.891l4.115-6.688c0.297-0.465,0.32-1.033,0.058-1.511	C36.051,18.106,35.531,17.792,34.992,17.792L34.992,17.792z"
+        d="M34.992,17.792c-0.319,0-0.63,0.107-0.899,0.31l-5.697,4.218	c-0.216,0.163-0.468,0.248-0.732,0.248c-0.259,0-0.504-0.082-0.71-0.236l-3.973-2.991c-0.719-0.535-1.568-0.817-2.457-0.817	c-1.405,0-2.696,0.705-3.455,1.887l-1.21,1.891l-4.115,6.688c-0.297,0.465-0.32,1.033-0.058,1.511c0.266,0.486,0.787,0.8,1.325,0.8	c0.319,0,0.63-0.107,0.899-0.31l5.697-4.218c0.216-0.163,0.468-0.248,0.732-0.248c0.259,0,0.504-0.082,0.71-0.236l3.973,2.991	c0.719,0.535,1.568,0.817,2.457,0.817c1.405,0,2.696-0.705,3.455-1.887l1.21-1.891l4.115-6.688c0.297-0.465,0.32-1.033,0.058-1.511	C36.051,18.106,35.531,17.792,34.992,17.792L34.992,17.792z"
         opacity=".07"
       />
       <path
@@ -248,14 +203,8 @@ const Icons = {
 
 const Feature1 = () => {
   const featuresRef = useRef<HTMLDivElement>(null);
-  const containerRef = useRef<HTMLDivElement>(null);
-  const div1Ref = useRef<HTMLDivElement>(null);
-  const div2Ref = useRef<HTMLDivElement>(null);
-  const div3Ref = useRef<HTMLDivElement>(null);
-  const div4Ref = useRef<HTMLDivElement>(null);
-  const div5Ref = useRef<HTMLDivElement>(null);
-  const div6Ref = useRef<HTMLDivElement>(null);
-  const div7Ref = useRef<HTMLDivElement>(null);
+
+
 
   const revealVariants = {
     visible: (i: number) => ({
@@ -274,407 +223,282 @@ const Feature1 = () => {
     },
   };
 
-  // Chat message variants
-  const messageVariants = {
-    hidden: { x: -20, opacity: 0 },
-    visible: { x: 0, opacity: 1 },
-  };
-  const colorClasses = {
-    green: "before:bg-green-500 shadow-green-500/20",
-    orange: "before:bg-orange-500 shadow-orange-500/20",
-    blue: "before:bg-blue-500 shadow-blue-500/20",
-  };
+
 
   return (
     <div className="w-full min-h-screen relative bg-white dark:bg-black">
-      <section className="max-w-7xl mx-auto p-4 relative z-10" ref={featuresRef}>
-        <article className="max-w-5xl mx-auto py-10 text-center space-y-2 px-8">
-          {/* Add the pill at the top */}
-          <div className="flex justify-center mb-6">
-            <Pill variant="primary">
-              Features
-            </Pill>
+      <section
+        className="max-w-7xl mx-auto p-4 relative z-10"
+        ref={featuresRef}
+      >
+        <article className="max-w-5xl mx-auto py-6 sm:py-8 md:py-10 text-center space-y-2 px-4 sm:px-6 md:px-8">
+          <div className="flex justify-center mb-4 sm:mb-6">
+            <Pill variant="primary">Features</Pill>
           </div>
-          
+
           <TimelineContent
             as="h1"
             animationNum={0}
             timelineRef={featuresRef}
             customVariants={revealVariants}
-            className="md:text-5xl sm:text-4xl text-3xl font-medium text-black dark:text-white"
+            className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-medium text-black dark:text-white leading-tight"
           >
-            Seamlessly Integrated, <br />
-            Powerful Features
+            Professional Networking <br />
           </TimelineContent>
           <TimelineContent
             as="p"
             animationNum={1}
             timelineRef={featuresRef}
             customVariants={revealVariants}
-            className="text-gray-600 dark:text-gray-400 sm:text-base text-sm sm:w-[70%] w-full mx-auto"
+            className="text-gray-600 dark:text-gray-400 text-sm sm:text-base max-w-2xl mx-auto"
           >
-            Discover the tools that elevate your experience—AI-powered insights,
-            real-time user states, flexible memberships, instant chat, and
-            seamless remote connectivity.
+            Connect with industry professionals, practice mock interviews, and pitch to VCs—all in one platform designed to accelerate your career growth.
           </TimelineContent>
         </article>
-        <div className="grid grid-cols-12 gap-4">
-        {/* Global User Network */}
-        <TimelineContent
-          as="div"
-          animationNum={0}
-          timelineRef={featuresRef}
-          customVariants={revealVariants}
-          className="lg:col-span-5 sm:col-span-6 col-span-12 relative w-full h-[350px] rounded-xl overflow-hidden border border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-900"
-        >
-          <div className="relative flex h-full w-full items-center justify-center">
-            {/* Center Logo */}
-            <div className="flex items-center justify-center w-20 h-20 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full z-10">
-              <Globe className="w-10 h-10 text-white" />
-            </div>
-            
-            {/* Outer orbit */}
-            <OrbitingCircles iconSize={50} radius={140} duration={20}>
-              <UserIcons.usa />
-              <UserIcons.uk />
-              <UserIcons.japan />
-              <UserIcons.germany />
-              <UserIcons.india />
-            </OrbitingCircles>
-            
-            {/* Inner orbit */}
-            <OrbitingCircles iconSize={45} radius={100} reverse speed={1.5} duration={15}>
-              <UserIcons.brazil />
-              <UserIcons.canada />
-              <UserIcons.australia />
-            </OrbitingCircles>
-          </div>
 
-          <article className="absolute right-0 bottom-0 left-0 w-full bg-gradient-to-t from-white via-white to-transparent dark:from-neutral-900 dark:via-neutral-900 dark:to-transparent p-6 pt-[100px] z-10">
-            <h3 className="px-1 pt-1 text-black dark:text-white text-2xl font-medium">
-              Global User Network
-            </h3>
-            <p className="mt-1 px-1 pb-1 font-normal text-gray-600 dark:text-gray-400 text-sm w-full">
-              Connect with users from around the world. Our platform brings together diverse communities in a seamless experience.
-            </p>
-          </article>
-        </TimelineContent>
-
-        {/* Usage Stats */}
-        <TimelineContent
-          as="div"
-          animationNum={1}
-          timelineRef={featuresRef}
-          customVariants={revealVariants}
-          className="lg:col-span-3 sm:col-span-6 col-span-12 border flex flex-col justify-between rounded-lg p-4 relative border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-900"
-        >
-          <div
-            className="absolute inset-0 z-0 rounded-lg"
-            style={{
-              background:
-                "radial-gradient(125% 125% at 50% 10%, #ffffff00 40%, #6366f1 100%)",
-            }}
-          />
-          <motion.div
-            className="flex -space-x-3 relative z-10"
-            initial={{ x: -30, opacity: 0 }}
-            animate={{ x: 0, opacity: 1 }}
-            transition={{ delay: 1.8, duration: 0.6 }}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-3 sm:gap-4 px-2 sm:px-0">
+          {/* Global User Network */}
+          <TimelineContent
+            as="div"
+            animationNum={0}
+            timelineRef={featuresRef}
+            customVariants={revealVariants}
+            className="col-span-1 md:col-span-1 lg:col-span-5"
           >
-            {[
-              "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?q=80&w=200",
-              "https://images.unsplash.com/photo-1617171594279-3aa1f300a0f2?q=80&w=200",
-              "https://images.unsplash.com/photo-1659228135452-c4c7b5118047?q=80&w=200",
-            ].map((src, i) => (
-              <motion.img
-                key={i}
-                src={src}
-                width={24}
-                height={24}
-                className="rounded-xl border-4 border-white dark:border-neutral-800 h-14 w-14 object-cover"
-                initial={{ scale: 0, rotate: 180 }}
-                animate={{ scale: 1, rotate: 0 }}
-                transition={{
-                  delay: 2.0 + i * 0.2,
-                  duration: 0.5,
-                  type: "spring",
-                  stiffness: 200,
-                }}
+            <div className="relative w-full h-[250px] sm:h-[280px] md:h-[320px] lg:h-[380px] rounded-xl overflow-hidden border border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-900 hover:shadow-lg transition-shadow duration-300">
+              <GlobalUserNetwork 
+                timelineRef={featuresRef}
+                animationNum={0}
+                customVariants={revealVariants}
               />
-            ))}
-          </motion.div>
-          <motion.div
-            initial={{ y: 20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: 2.6, duration: 0.5 }}
-            className="relative z-10"
-          >
-            <motion.h1
-              className="text-4xl font-semibold sm:pt-0 pt-20 text-white"
-              initial={{ scale: 0.8 }}
-              animate={{ scale: 1 }}
-              transition={{ delay: 2.8, duration: 0.3, type: "spring" }}
-            >
-              10M+
-            </motion.h1>
-            <p className="text-sm text-gray-200 dark:text-gray-300">
-              Used by millions of teams and professionals
-            </p>
-          </motion.div>
-        </TimelineContent>
+            </div>
+          </TimelineContent>
 
-        {/* Memberships */}
-        <TimelineContent
-          as="div"
-          animationNum={2}
-          timelineRef={featuresRef}
-          customVariants={revealVariants}
-          className="lg:col-span-4 sm:col-span-6 col-span-12 border rounded-lg p-4 group border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-900"
-        >
-          <motion.h1
-            className="text-4xl font-semibold text-black dark:text-white"
-            initial={{ y: -10, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: 1.6, duration: 0.5 }}
+          {/* Usage Stats */}
+          <TimelineContent
+            as="div"
+            animationNum={1}
+            timelineRef={featuresRef}
+            customVariants={revealVariants}
+            className="col-span-1 md:col-span-1 lg:col-span-3"
           >
-            Memberships
-          </motion.h1>
-          <motion.p
-            className="text-sm text-gray-600 dark:text-gray-400"
-            initial={{ y: -10, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: 1.8, duration: 0.5 }}
+            <div className="relative flex flex-col justify-between overflow-hidden rounded-lg border border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-900 p-3 sm:p-4 min-h-[250px] sm:min-h-[280px] lg:min-h-[380px] hover:shadow-lg transition-shadow duration-300">
+              <UsageStats 
+                timelineRef={featuresRef}
+                animationNum={1}
+                customVariants={revealVariants}
+              />
+            </div>
+          </TimelineContent>
+
+          {/* Memberships */}
+          <TimelineContent
+            as="div"
+            animationNum={2}
+            timelineRef={featuresRef}
+            customVariants={revealVariants}
+            className="col-span-1 md:col-span-2 lg:col-span-4"
           >
-            Generate revenue by creating memberships
-          </motion.p>
-          <div className="space-y-2 mt-6">
-            {[
-              {
-                title: "Monthly",
-                desc: "$19 per month, unlimited",
-                color: "green",
-                rotation: 0,
-              },
-              {
-                title: "Trial",
-                desc: "Free for 30 days",
-                color: "orange",
-                rotation: 3,
-              },
-              {
-                title: "Yearly",
-                desc: "$100 per year, unlimited",
-                color: "blue",
-                rotation: -1,
-              },
-            ].map((item, i) => (
-              <motion.div
-                key={i}
-                className={`flex gap-2 justify-between items-center bg-neutral-50 dark:bg-neutral-800 p-2 rounded-xl border border-neutral-200 dark:border-neutral-600 shadow-lg pl-7 relative before:content-[''] before:absolute before:left-2.5 before:rounded-md before:top-1.5 before:w-1.5 before:h-[80%] ${colorClasses[item.color as keyof typeof colorClasses]} group-hover:rotate-0 transition-all`}
-                style={{
-                  rotate: `${item.rotation}deg`,
-                  boxShadow: `0 10px 15px -3px rgb(${item.color === "green" ? "34 197 94" : item.color === "orange" ? "249 115 22" : "59 130 246"} / 0.1)`,
-                }}
-                initial={{ x: -30, opacity: 0, rotate: item.rotation + 10 }}
-                animate={{ x: 0, opacity: 1, rotate: item.rotation }}
-                transition={{
-                  delay: i * 0.2,
-                  duration: 0.6,
-                  type: "spring",
-                  stiffness: 100,
-                }}
-                whileHover={{ rotate: 0 }}
-              >
-                <div>
-                  <h3 className="font-semibold text-black dark:text-white">{item.title}</h3>
-                  <p className="text-sm text-gray-600 dark:text-gray-400">{item.desc}</p>
-                </div>
-                <ArrowRight className="text-black dark:text-white" />
-              </motion.div>
-            ))}
+            <div className="border rounded-lg p-3 sm:p-4 md:p-5 group border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-900 min-h-[250px] sm:min-h-[280px] lg:min-h-[380px] hover:shadow-lg transition-shadow duration-300">
+              <Memberships 
+                timelineRef={featuresRef}
+                animationNum={2}
+                customVariants={revealVariants}
+              />
+            </div>
+          </TimelineContent>
+
+          {/* Remote Connectivity */}
+          <TimelineContent
+            as="div"
+            animationNum={3}
+            timelineRef={featuresRef}
+            customVariants={revealVariants}
+            className="col-span-1 sm:col-span-2 lg:col-span-7"
+          >
+            <div className="relative border p-2 sm:p-3 md:p-4 rounded-xl overflow-hidden border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-900 hover:shadow-lg transition-shadow duration-300">
+              <RemoteConnectivity 
+                timelineRef={featuresRef}
+                animationNum={3}
+                customVariants={revealVariants}
+              />
+            </div>
+          </TimelineContent>
+
+          {/* Real Time Chat */}
+          <TimelineContent
+            as="div"
+            animationNum={4}
+            timelineRef={featuresRef}
+            customVariants={revealVariants}
+            className="col-span-1 md:col-span-2 lg:col-span-5"
+          >
+            <div className="relative border p-2 sm:p-3 md:p-4 rounded-xl overflow-hidden border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-900 min-h-[350px] sm:min-h-[400px] lg:min-h-[450px] hover:shadow-lg transition-shadow duration-300">
+              <RealTimeChat 
+                timelineRef={featuresRef}
+                animationNum={4}
+                customVariants={revealVariants}
+              />
+            </div>
+          </TimelineContent>
+        </div>
+
+        {/* Everything You Need to Succeed Section */}
+        <article className="w-full max-w-7xl mx-auto py-8 sm:py-12 md:py-16 text-center space-y-6 sm:space-y-8 px-4 sm:px-6 lg:px-8 mt-16 sm:mt-20 md:mt-24">
+          <div className="flex justify-center mb-6">
+            <Pill variant="primary">Professional Success</Pill>
           </div>
-        </TimelineContent>
 
-        <TimelineContent
-          as="div"
-          animationNum={3}
-          timelineRef={featuresRef}
-          customVariants={revealVariants}
-          className="lg:col-span-7 sm:col-span-6 col-span-12 relative border p-4 rounded-xl overflow-hidden border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-900"
-        >
-          <article className="w-full bg-gradient-to-t font-helvetica from-white via-white to-transparent dark:from-neutral-900 dark:via-neutral-900 dark:to-transparent">
-            <h3 className="px-1 pt-1 text-black dark:text-white text-2xl font-medium">
-              Remote Connectivity
-            </h3>
-            <p className="mt-1 px-1 pb-1 font-normal text-gray-600 dark:text-gray-400 text-sm w-full">
-              Break free from traditional boundaries. Connect multiple platforms and services seamlessly through our unified network.
-            </p>
-          </article>
+          <TimelineContent
+            as="h2"
+            animationNum={5}
+            timelineRef={featuresRef}
+            customVariants={revealVariants}
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-medium text-black dark:text-white leading-tight"
+          >
+            Accelerate Your Career Journey
+          </TimelineContent>
           
-          <div
-            className="relative flex h-[300px] w-full items-center justify-center overflow-hidden"
-            ref={containerRef}
+          <TimelineContent
+            as="p"
+            animationNum={6}
+            timelineRef={featuresRef}
+            customVariants={revealVariants}
+            className="text-gray-600 dark:text-gray-400 text-base sm:text-lg lg:text-xl max-w-4xl mx-auto leading-relaxed"
           >
-            <div className="flex size-full max-w-lg flex-row items-stretch justify-between gap-10">
-              <div className="flex flex-col justify-center gap-2">
-                <Circle ref={div1Ref}>
-                  <Icons.googleDrive />
-                </Circle>
-                <Circle ref={div2Ref}>
-                  <Icons.notion />
-                </Circle>
-                <Circle ref={div3Ref}>
-                  <Icons.whatsapp />
-                </Circle>
-                <Circle ref={div4Ref}>
-                  <Icons.messenger />
-                </Circle>
-                <Circle ref={div5Ref}>
-                  <Icons.googleDrive />
-                </Circle>
-              </div>
-              <div className="flex flex-col justify-center">
-                <Circle ref={div6Ref} className="size-16">
-                  <Icons.openai />
-                </Circle>
-              </div>
-              <div className="flex flex-col justify-center">
-                <Circle ref={div7Ref}>
-                  <Icons.user />
-                </Circle>
-              </div>
-            </div>
+            HelixQue combines the power of random professional connections with structured career development—network authentically, interview confidently, and pitch successfully.
+          </TimelineContent>
 
-            <AnimatedBeam
-              containerRef={containerRef}
-              fromRef={div1Ref}
-              toRef={div6Ref}
-            />
-            <AnimatedBeam
-              containerRef={containerRef}
-              fromRef={div2Ref}
-              toRef={div6Ref}
-            />
-            <AnimatedBeam
-              containerRef={containerRef}
-              fromRef={div3Ref}
-              toRef={div6Ref}
-            />
-            <AnimatedBeam
-              containerRef={containerRef}
-              fromRef={div4Ref}
-              toRef={div6Ref}
-            />
-            <AnimatedBeam
-              containerRef={containerRef}
-              fromRef={div5Ref}
-              toRef={div6Ref}
-            />
-            <AnimatedBeam
-              containerRef={containerRef}
-              fromRef={div6Ref}
-              toRef={div7Ref}
-            />
-          </div>
-        </TimelineContent>
-
-        {/* Real Time Chat */}
-        <TimelineContent
-          as="div"
-          animationNum={4}
-          timelineRef={featuresRef}
-          customVariants={revealVariants}
-          className="lg:col-span-5 sm:col-span-6 col-span-12 relative border p-4 rounded-xl overflow-hidden border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-900"
-        >
-          <div className="flex w-full max-w-md flex-col overflow-hidden rounded-xl bg-white dark:bg-neutral-800 shadow-lg">
-            {/* Messages Area */}
-            <div className="flex-1 space-y-4 p-4 overflow-hidden">
-              {/* Agent/Other person's message */}
-              <motion.div
-                className="mr-auto relative max-w-[80%] rounded-lg bg-gray-100 dark:bg-neutral-700 p-3 text-gray-800 dark:text-gray-200"
-                variants={messageVariants}
-                initial="hidden"
-                animate="visible"
-                transition={{
-                  delay: 3.2,
-                  duration: 0.5,
-                  ease: "easeOut",
-                }}
-              >
-                Hey! I see that your last transaction was a dining purchase, which qualifies for 5x
-                points, but only for Platinum Status Tier members. You are currently in the{" "}
-                <span className="font-semibold text-blue-500 border-b border-dashed border-blue-500">
-                  Gold Status Tier
-                </span>
-                , which means you currently earn 3x points on dining transactions.
-                <motion.button
-                  className="absolute -bottom-2 right-0 flex items-center gap-1 rounded-full bg-blue-500 px-2 py-1 text-xs text-white shadow-sm hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
-                  initial={{ scale: 0, rotate: 180 }}
-                  animate={{ scale: 1, rotate: 0 }}
-                  transition={{ delay: 4.6, duration: 0.4, type: "spring" }}
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  <PencilLine className="h-3 w-3" />
-                  Adjust tone
-                </motion.button>
-              </motion.div>
-
-              {/* Our message (user's response) */}
-              <motion.div
-                className="ml-auto relative max-w-[80%] rounded-lg bg-blue-500 p-3 text-white"
-                variants={messageVariants}
-                initial="hidden"
-                animate="visible"
-                transition={{
-                  delay: 3.8,
-                  duration: 0.5,
-                  ease: "easeOut",
-                }}
-              >
-                That&apos;s great to know! How can I upgrade to the Platinum Status Tier to get those 5x points on dining?
-              </motion.div>
-            </div>
-
-            {/* Chat Input Area */}
-            <motion.div
-              className="flex items-center gap-2 border-t border-gray-200 dark:border-neutral-600 p-4"
-              initial={{ y: 20, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ delay: 4.8, duration: 0.5 }}
+          {/* Feature Cards Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 lg:gap-8 mt-12 sm:mt-16 max-w-none">
+            {/* Mock Interviews */}
+            <ColoredSpotlightItem 
+              spotlightColor="rgba(59, 130, 246, 0.15)"
+              enableScrollSpotlight={true}
+              className="group relative p-6 sm:p-8 lg:p-6 xl:p-8 rounded-2xl bg-white/80 dark:bg-neutral-900/80 backdrop-blur-sm border border-neutral-200/50 dark:border-neutral-700/50 shadow-lg hover:shadow-xl transition-all duration-300 flex flex-col h-full"
             >
-              <motion.input
-                type="text"
-                placeholder="Type your message..."
-                className="flex-1 rounded-lg border border-gray-300 dark:border-neutral-600 bg-gray-100 dark:bg-neutral-700 text-gray-900 dark:text-gray-100 placeholder-gray-500 dark:placeholder-gray-400 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                initial={{ width: "60%" }}
-                animate={{ width: "100%" }}
-                transition={{ delay: 5.0, duration: 0.6 }}
-              />
-              <motion.button
-                className="flex h-10 w-10 items-center justify-center rounded-lg bg-blue-600 text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
-                initial={{ scale: 0, rotate: 180 }}
-                animate={{ scale: 1, rotate: 0 }}
-                transition={{ delay: 5.2, duration: 0.4, type: "spring" }}
-                whileHover={{ scale: 1.1, rotate: 10 }}
-                whileTap={{ scale: 0.9 }}
-              >
-                <ArrowRight className="h-5 w-5" />
-              </motion.button>
+              <div className="flex items-center justify-center w-14 h-14 sm:w-16 sm:h-16 lg:w-14 lg:h-14 xl:w-16 xl:h-16 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl mb-4 sm:mb-6 group-hover:scale-110 transition-transform duration-300">
+                <MessageSquare className="w-7 h-7 sm:w-8 sm:h-8 lg:w-7 lg:h-7 xl:w-8 xl:h-8 text-white" />
+              </div>
+              <h3 className="text-lg sm:text-xl lg:text-lg xl:text-xl font-semibold text-black dark:text-white mb-3">
+                Real-World Interview Practice
+              </h3>
+              <p className="text-gray-600 dark:text-gray-400 text-sm sm:text-base lg:text-sm xl:text-base leading-relaxed flex-grow">
+                Practice interviews with industry professionals and hiring managers. Get actionable feedback and build confidence for your next big opportunity.
+              </p>
+            </ColoredSpotlightItem>
+
+            {/* Professional Networking */}
+            <ColoredSpotlightItem 
+              spotlightColor="rgba(34, 197, 94, 0.15)"
+              enableScrollSpotlight={true}
+              className="group relative p-6 sm:p-8 lg:p-6 xl:p-8 rounded-2xl bg-white/80 dark:bg-neutral-900/80 backdrop-blur-sm border border-neutral-200/50 dark:border-neutral-700/50 shadow-lg hover:shadow-xl transition-all duration-300 flex flex-col h-full"
+            >
+              <div className="flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-green-500 to-green-600 rounded-xl mb-4 sm:mb-6 group-hover:scale-110 transition-transform duration-300">
+                <Users className="w-6 h-6 sm:w-8 sm:h-8 text-white" />
+              </div>
+              <h3 className="text-lg sm:text-xl font-semibold text-black dark:text-white mb-3">
+                Smart Professional Matching
+              </h3>
+              <p className="text-gray-600 dark:text-gray-400 text-sm sm:text-base leading-relaxed">
+                Connect with verified professionals in your industry through our intelligent matching system. Build meaningful relationships that drive career growth.
+              </p>
+            </ColoredSpotlightItem>
+
+            {/* VC Pitching */}
+            <ColoredSpotlightItem 
+              spotlightColor="rgba(147, 51, 234, 0.15)"
+              enableScrollSpotlight={true}
+              className="group relative p-6 sm:p-8 lg:p-6 xl:p-8 rounded-2xl bg-white/80 dark:bg-neutral-900/80 backdrop-blur-sm border border-neutral-200/50 dark:border-neutral-700/50 shadow-lg hover:shadow-xl transition-all duration-300 flex flex-col h-full"
+            >
+              <div className="flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-purple-500 to-purple-600 rounded-xl mb-4 sm:mb-6 group-hover:scale-110 transition-transform duration-300">
+                <Presentation className="w-6 h-6 sm:w-8 sm:h-8 text-white" />
+              </div>
+              <h3 className="text-lg sm:text-xl font-semibold text-black dark:text-white mb-3">
+                Investor Pitch Practice
+              </h3>
+              <p className="text-gray-600 dark:text-gray-400 text-sm sm:text-base leading-relaxed">
+                Perfect your startup pitch with real VCs and seasoned entrepreneurs. Receive insider feedback to refine your message before crucial investor meetings.
+              </p>
+            </ColoredSpotlightItem>
+
+            {/* AI-Powered Feedback */}
+            <ColoredSpotlightItem 
+              spotlightColor="rgba(251, 146, 60, 0.15)"
+              enableScrollSpotlight={true}
+              className="group relative p-6 sm:p-8 lg:p-6 xl:p-8 rounded-2xl bg-white/80 dark:bg-neutral-900/80 backdrop-blur-sm border border-neutral-200/50 dark:border-neutral-700/50 shadow-lg hover:shadow-xl transition-all duration-300 flex flex-col h-full"
+            >
+              <div className="flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-orange-500 to-orange-600 rounded-xl mb-4 sm:mb-6 group-hover:scale-110 transition-transform duration-300">
+                <Brain className="w-6 h-6 sm:w-8 sm:h-8 text-white" />
+              </div>
+              <h3 className="text-lg sm:text-xl font-semibold text-black dark:text-white mb-3">
+                AI-Powered Feedback
+              </h3>
+              <p className="text-gray-600 dark:text-gray-400 text-sm sm:text-base leading-relaxed">
+                Receive instant AI analysis of your communication style, body language, and content to improve your performance.
+              </p>
+            </ColoredSpotlightItem>
+
+            {/* Scheduled Sessions */}
+            <ColoredSpotlightItem 
+              spotlightColor="rgba(99, 102, 241, 0.15)"
+              enableScrollSpotlight={true}
+              className="group relative p-6 sm:p-8 lg:p-6 xl:p-8 rounded-2xl bg-white/80 dark:bg-neutral-900/80 backdrop-blur-sm border border-neutral-200/50 dark:border-neutral-700/50 shadow-lg hover:shadow-xl transition-all duration-300 flex flex-col h-full"
+            >
+              <div className="flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-indigo-500 to-indigo-600 rounded-xl mb-4 sm:mb-6 group-hover:scale-110 transition-transform duration-300">
+                <Calendar className="w-6 h-6 sm:w-8 sm:h-8 text-white" />
+              </div>
+              <h3 className="text-lg sm:text-xl font-semibold text-black dark:text-white mb-3">
+                Scheduled Sessions
+              </h3>
+              <p className="text-gray-600 dark:text-gray-400 text-sm sm:text-base leading-relaxed">
+                Book sessions in advance or join spontaneous meetings. Flexible scheduling to fit your busy professional life.
+              </p>
+            </ColoredSpotlightItem>
+
+            {/* Professional Verification */}
+            <ColoredSpotlightItem 
+              spotlightColor="rgba(16, 185, 129, 0.15)"
+              enableScrollSpotlight={true}
+              className="group relative p-6 sm:p-8 lg:p-6 xl:p-8 rounded-2xl bg-white/80 dark:bg-neutral-900/80 backdrop-blur-sm border border-neutral-200/50 dark:border-neutral-700/50 shadow-lg hover:shadow-xl transition-all duration-300 flex flex-col h-full"
+            >
+              <div className="flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-xl mb-4 sm:mb-6 group-hover:scale-110 transition-transform duration-300">
+                <ShieldCheck className="w-6 h-6 sm:w-8 sm:h-8 text-white" />
+              </div>
+              <h3 className="text-lg sm:text-xl font-semibold text-black dark:text-white mb-3">
+                Professional Verification
+              </h3>
+              <p className="text-gray-600 dark:text-gray-400 text-sm sm:text-base leading-relaxed">
+                All users are verified professionals, ensuring high-quality interactions and meaningful connections.
+              </p>
+            </ColoredSpotlightItem>
+          </div>
+
+          {/* Call to Action */}
+          <div className="mt-12 sm:mt-16 p-6 sm:p-8 rounded-2xl border border-neutral-200 dark:border-neutral-700  dark:from-neutral-900 dark:to-neutral-800">
+            <h3 className="text-xl sm:text-2xl font-semibold text-black dark:text-white mb-4">
+              Get Referred by Proving Yourself to Professionals
+            </h3>
+            <p className="text-gray-600 dark:text-gray-400 text-sm sm:text-base max-w-2xl mx-auto leading-relaxed">
+              Stand out in the professional world by demonstrating your skills and expertise. 
+              Build meaningful connections that can lead to career opportunities and referrals.
+            </p>
+            <motion.div 
+              className="mt-6"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <button className="inline-flex items-center gap-2 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-xl transition-colors">
+                Start Building Your Network
+                <ArrowRight className="w-4 h-4" />
+              </button>
             </motion.div>
           </div>
+        </article>
 
-          <article className="absolute right-0 top-0 left-0 w-full bg-gradient-to-b from-white via-white to-transparent dark:from-neutral-900 dark:via-neutral-900 dark:to-transparent p-6 pb-[100px] z-10">
-            <h3 className="px-1 pt-1 text-black dark:text-white text-2xl font-medium">
-              Real Time Chat
-            </h3>
-            <p className="mt-1 px-1 pb-1 font-normal text-gray-600 dark:text-gray-400 text-sm w-full">
-              This component displays an interactive stack of cards with smooth
-              hover animations, gradients, and blur effects.
-            </p>
-          </article>
-        </TimelineContent>
-      </div>
+        {/* Open Source Section */}
+        <OpenSourceSection />
+
       </section>
     </div>
   );

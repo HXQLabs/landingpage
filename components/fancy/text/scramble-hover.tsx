@@ -159,7 +159,6 @@ const ScrambleHover: React.FC<ScrambleHoverProps> = ({
     sequential,
     revealDirection,
     maxIterations,
-    revealedIndices,
   ])
 
   return (
