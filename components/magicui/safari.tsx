@@ -12,6 +12,7 @@ export interface SafariProps extends SVGProps<SVGSVGElement> {
 }
 
 
+
 export function Safari({
   imageSrc,
   videoSrc,
