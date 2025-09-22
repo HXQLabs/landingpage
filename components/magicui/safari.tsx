@@ -11,6 +11,7 @@ export interface SafariProps extends SVGProps<SVGSVGElement> {
   mode?: SafariMode;
 }
 
+
 export function Safari({
   imageSrc,
   videoSrc,
