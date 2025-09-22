@@ -120,7 +120,7 @@ export default function OpensourceSection() {
             customVariants={revealVariants}
             className="text-gray-600 dark:text-gray-300 mb-8"
           >
-            Join them and be part of the Serenity UI community!
+            Join and be a part of the HXQLabs community!
           </TimelineContent>
 
           {/* Community avatars display */}
@@ -135,7 +135,7 @@ export default function OpensourceSection() {
             <div className="flex justify-center">
               <AvatarCircles
                 numPeople={0}
-                avatarUrls={communityAvatars}
+                avatarUrls={communityAvatars.slice(0,5)}
                 className="scale-125"
               />
             </div>
@@ -143,8 +143,8 @@ export default function OpensourceSection() {
             {/* Second row with additional avatars */}
             <div className="flex justify-center">
               <AvatarCircles
-                numPeople={47}
-                avatarUrls={communityAvatars.slice(0, 5)}
+                numPeople={50}
+                avatarUrls={communityAvatars.slice(0, 4)}
                 className="scale-110"
               />
             </div>
@@ -170,7 +170,7 @@ export default function OpensourceSection() {
           >
             <ShimmerButton
               onClick={() => window.open("https://github.com/yourusername/yourrepo", "_blank")}
-              className="inline-flex items-center gap-3 bg-gray-900 dark:bg-white text-white dark:text-black px-8 py-4 rounded-xl font-semibold text-lg hover:bg-gray-800 dark:hover:bg-gray-100 transition-all duration-200"
+              className="inline-flex items-center gap-3 bg-gray-900 dark:bg-white text-white dark:text-white px-8 py-4 rounded-xl font-semibold text-lg hover:bg-gray-800 dark:hover:bg-gray-100 transition-all duration-200"
             >
               <Github className="w-6 h-6" />
               Star on GitHub
