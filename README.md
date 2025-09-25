@@ -39,5 +39,3 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 <a href="https://github.com/HXQLabs/landingpage/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=HXQLabs/landingpage" />
 </a>
-
-Made with [contrib.rocks](https://contrib.rocks).
