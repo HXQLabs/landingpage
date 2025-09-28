@@ -5,12 +5,13 @@ import { cn } from "@/lib/utils";
 import { motion, AnimatePresence } from "motion/react";
 import Link from "next/link";
 import { Badge } from "../ui/badge";
+import { Button } from "../ui/button";
 
-interface BadtzHeaderProps {
+interface HelixQueHeaderProps {
   className?: string;
 }
 
-export default function BadtzHeader({ className }: BadtzHeaderProps) {
+export default function HelixQueHeader({ className }: HelixQueHeaderProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const [pillStyle, setPillStyle] = useState({ left: 0, width: 0 });
@@ -30,7 +31,7 @@ export default function BadtzHeader({ className }: BadtzHeaderProps) {
     }
   };
 
-  const BadtzLogo = () => (
+  const HelixQueLogo = () => (
     <div className="text-foreground flex items-end gap-2.5 [&_svg]:h-5">
       <img 
         src="/logo.svg" 
@@ -40,10 +41,10 @@ export default function BadtzHeader({ className }: BadtzHeaderProps) {
         className="h-5 w-auto"
       />
       <div className="relative">
-        <span className="font-heading text-lg leading-none font-semibold">HelixQue</span>
+        <span className="hidden sm:block font-heading text-lg leading-none font-semibold">HelixQue</span>
         <Badge
           variant="secondary" 
-          className="absolute -top-1 -right-1 translate-x-full text-[8px] px-0.5 py-0 h-auto"
+          className="hidden sm:block absolute -top-1 -right-1 translate-x-full text-[8px] px-0.5 py-0 h-auto"
         >
           Beta
         </Badge>
@@ -65,7 +66,7 @@ export default function BadtzHeader({ className }: BadtzHeaderProps) {
           {/* Desktop Logo */}
           <div className="hidden md:flex">
             <Link href="/" className="transition-opacity duration-200 hover:opacity-80">
-              <BadtzLogo />
+              <HelixQueLogo />
             </Link>
           </div>
 
@@ -138,7 +139,7 @@ export default function BadtzHeader({ className }: BadtzHeaderProps) {
                 <span className="sr-only">Toggle Menu</span>
               </button>
               <Link href="/" className="transition-opacity duration-200 hover:opacity-80">
-                <BadtzLogo />
+                <HelixQueLogo />
               </Link>
             </div>
           </div>
@@ -150,16 +151,16 @@ export default function BadtzHeader({ className }: BadtzHeaderProps) {
             aria-label="Authentication"
           >
           
-            <button 
-              className="inline-flex items-center justify-center gap-2 font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive bg-secondary text-secondary-foreground hover:bg-secondary/80 py-2 has-[>svg]:px-3 h-8 rounded-lg px-4 text-[13.5px] whitespace-nowrap shadow-[inset_0_1px_0_0_#FFFFFF20]"
+            <Button 
+              className="cursor-pointer inline-flex items-center  justify-center gap-2 font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive bg-secondary text-secondary-foreground hover:bg-secondary/80 py-2 has-[>svg]:px-3 h-8 rounded-lg px-4 text-[13.5px] whitespace-nowrap shadow-[inset_0_1px_0_0_#FFFFFF20]"
             >
               Sign Up
-            </button>
-            <button 
-              className="inline-flex items-center justify-center gap-2 font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive bg-primary text-primary-foreground hover:bg-primary/90 py-2 has-[>svg]:px-3 h-8 rounded-lg px-4 text-[13.5px] whitespace-nowrap shadow-[inset_0_1px_0_0_#FFFFFF20]"
+            </Button>
+            <Button 
+              className="cursor-pointer inline-flex items-center justify-center gap-2 font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive bg-primary text-primary-foreground hover:bg-primary/90 py-2 has-[>svg]:px-3 h-8 rounded-lg px-4 text-[13.5px] whitespace-nowrap shadow-[inset_0_1px_0_0_#FFFFFF20]"
             >
               Sign In
-            </button>
+            </Button>
             
           </nav>
         </div>
@@ -201,7 +202,7 @@ export default function BadtzHeader({ className }: BadtzHeaderProps) {
               <div className="relative flex items-center justify-between p-4 border-b border-border">
                 <div className="flex items-center">
                   <Link href="/" onClick={() => setIsMenuOpen(false)}>
-                    <BadtzLogo />
+                    <HelixQueLogo />
                   </Link>
                 </div>
                 

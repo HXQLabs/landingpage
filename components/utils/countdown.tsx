@@ -79,26 +79,26 @@ export function Countdown({ className }: CountdownProps) {
 
   return (
     <div className={cn("flex justify-center", className)}>
-      <div className="flex flex-col items-center">
-        <span className="text-muted-foreground bg-secondary rounded-t-md border border-b-0 border-dashed px-3 py-0.5 text-center text-[13px] shadow-[0_0_24px_#b9e7ec017_inset]">
-          Offer ends in:
+      <div className="flex flex-col items-center w-full max-w-xs sm:max-w-sm">
+        <span className="text-muted-foreground bg-secondary rounded-t-md border border-b-0 border-dashed px-2 sm:px-3 py-0.5 text-center text-[11px] sm:text-[13px] shadow-[0_0_24px_#b9e7ec017_inset] w-full">
+          Hacktober starts in:
         </span>
-        <div className="divide-border bg-secondary flex items-center divide-x overflow-hidden rounded-md border text-sm tabular-nums">
-          <span className="flex h-8 items-center justify-center p-2 px-3 shadow-[0_0_24px_#b9e7ec10_inset]">
-            {timeLeft.days}
-            <span className="text-muted-foreground">d</span>
+        <div className="divide-border bg-secondary flex items-center divide-x overflow-hidden rounded-md border text-xs sm:text-sm tabular-nums w-full">
+          <span className="flex h-7 sm:h-8 items-center justify-center flex-1 p-1 sm:p-2 shadow-[0_0_24px_#b9e7ec10_inset]">
+            <span className="text-xs sm:text-sm font-medium">{timeLeft.days}</span>
+            <span className="text-muted-foreground text-[10px] sm:text-xs ml-0.5">d</span>
           </span>
-          <span className="flex h-8 items-center justify-center p-2 shadow-[0_0_24px_#b9e7ec10_inset]">
-            {timeLeft.hours.toString().padStart(2, "0")}
-            <span className="text-muted-foreground">h</span>
+          <span className="flex h-7 sm:h-8 items-center justify-center flex-1 p-1 sm:p-2 shadow-[0_0_24px_#b9e7ec10_inset]">
+            <span className="text-xs sm:text-sm font-medium">{timeLeft.hours.toString().padStart(2, "0")}</span>
+            <span className="text-muted-foreground text-[10px] sm:text-xs ml-0.5">h</span>
           </span>
-          <span className="flex h-8 items-center justify-center p-2 shadow-[0_0_24px_#b9e7ec10_inset]">
-            {timeLeft.minutes.toString().padStart(2, "0")}
-            <span className="text-muted-foreground">m</span>
+          <span className="flex h-7 sm:h-8 items-center justify-center flex-1 p-1 sm:p-2 shadow-[0_0_24px_#b9e7ec10_inset]">
+            <span className="text-xs sm:text-sm font-medium">{timeLeft.minutes.toString().padStart(2, "0")}</span>
+            <span className="text-muted-foreground text-[10px] sm:text-xs ml-0.5">m</span>
           </span>
-          <span className="flex h-8 items-center justify-center p-2 shadow-[0_0_24px_#b9e7ec10_inset]">
-            {timeLeft.seconds.toString().padStart(2, "0")}
-            <span className="text-muted-foreground">s</span>
+          <span className="flex h-7 sm:h-8 items-center justify-center flex-1 p-1 sm:p-2 shadow-[0_0_24px_#b9e7ec10_inset]">
+            <span className="text-xs sm:text-sm font-medium">{timeLeft.seconds.toString().padStart(2, "0")}</span>
+            <span className="text-muted-foreground text-[10px] sm:text-xs ml-0.5">s</span>
           </span>
         </div>
       </div>

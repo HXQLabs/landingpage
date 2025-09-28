@@ -1,10 +1,14 @@
-
+"use client";
 import React from "react";
 import { Safari } from "@/components/magicui/safari";
 import { Announcement, AnnouncementTag, AnnouncementTitle } from "@/components/ui/kibo-ui/announcement";
 import { ArrowUpRightIcon } from "lucide-react";
+import { LayoutGroup, motion } from "motion/react";
+import TextRotate from "@/components/fancy/text/text-rotate";
+import Link from "next/link";
 
 const Hero = () => {
+  const words = ["professionals", "interviewers", "investors"];
   return (
     <section
       aria-label="Hero banner"
@@ -12,21 +16,10 @@ const Hero = () => {
     >
       <div className="mx-auto max-w-5xl py-16 sm:py-28">
         <div className="flex justify-center pb-8">
-          {/* <div className="text-muted-foreground bg-secondary/50 hover:bg-secondary/70 shadow-border relative rounded-full border px-3 py-1 text-sm shadow-xs transition-colors duration-300">
-            Announcing our next.{' '}
-            <a
-              href="#"
-              className="text-primary"
-              aria-label="Read announcement details"
-            >
-              <span aria-hidden="true" className="absolute inset-0"></span>
-              Read more
-            </a>
-          </div> */}
           <Announcement>
-            <AnnouncementTag>Latest update</AnnouncementTag>
+            <AnnouncementTag>Now Live</AnnouncementTag>
             <AnnouncementTitle>
-              New feature added
+              Professional Networking Platform 
               <ArrowUpRightIcon className="shrink-0 text-muted-foreground" size={16} />
             </AnnouncementTitle>
           </Announcement>
@@ -34,25 +27,51 @@ const Hero = () => {
         </div>
         <div className="relative z-1 mx-auto max-w-3xl text-center">
           <h1 className="text-foreground mt-6 bg-gradient-to-tr from-neutral-300 to-white bg-clip-text text-[clamp(40px,10vw,44px)] leading-[1.2] font-bold tracking-tighter text-balance sm:text-6xl sm:text-[64px] dark:text-transparent">
-            Streamline Your Email Management Effortlessly
+            Professional Networking 
+            <br/>
+          
+            <LayoutGroup>
+              <motion.span className="relative translate-x-0 flex gap-2 justify-center flex-wrap items-center" layout>
+                <motion.span
+                  className="text-white"
+                  layout
+                  transition={{ type: "spring", damping: 30, stiffness: 400 }}
+
+                >
+                  for
+                </motion.span>
+                <TextRotate
+                  texts={words}
+                  mainClassName="text-white dark:text-black px-3 bg-black dark:bg-white overflow-hidden py-1.5 justify-center rounded-lg"
+                  staggerFrom={"last"}
+                  initial={{ y: "100%" }}
+                  animate={{ y: 0 }}
+                  exit={{ y: "-120%" }}
+                  staggerDuration={0.025}
+                  splitLevelClassName="overflow-hidden pb-0.5"
+                  transition={{ type: "spring", damping: 30, stiffness: 400 }}
+                  rotationInterval={3000}
+                />
+              </motion.span>
+            </LayoutGroup>
           </h1>
           <p className="text-muted-foreground mx-auto mt-6 leading-7 font-normal text-balance sm:w-[660px] sm:text-[18px] md:mt-8">
-            Centralize your messages, automate tasks, and collaborate seamlessly with an intuitive platform designed to boost your productivity.
+            Connect with professionals, practice mock interviews, and pitch to VCs — all on one platform designed for career growth.
           </p>
           <div className="mt-8 flex items-center justify-center gap-x-6">
-            <a
+            <Link
               href="#"
-              aria-label="Get started with our platform"
+              aria-label="Get started with Helixque"
               className="from-primary/90 to-primary durration-300 text-primary-foreground flex h-10 items-center rounded-3xl bg-linear-to-t px-6 text-sm font-medium shadow-[inset_0_1px_0_0_#FFFFFF20] transition-colors"
             >
-              Get started
-            </a>
-            <a
-              href="#"
+              Get Started for Free
+            </Link>
+            <Link
+              href="https://github.com/orgs/HXQLabs/repositories"
               className="text-foreground group/hero flex items-center gap-1 text-sm leading-none font-medium"
-              aria-label="Learn more about our platform features"
+              aria-label="Learn more about professional networking"
             >
-              Learn more{' '}
+              Star on GitHub{' '}
               <span aria-hidden="true">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -71,7 +90,7 @@ const Hero = () => {
                   <path d="m9 18 6-6-6-6"></path>
                 </svg>
               </span>
-            </a>
+            </Link>
           </div>
         </div>
         <div
