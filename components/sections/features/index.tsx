@@ -87,11 +87,11 @@ const FeaturesSection = () => {
   return (
   <section className="container mx-auto flex w-full max-w-5xl flex-col items-center justify-start !px-4 py-16 text-center md:py-32">
     <div className="flex flex-col items-center text-center">
-      <h2 className="leading-tighter font-gilroy max-w-2xl bg-gradient-to-b from-gray-900/90 via-gray-800 to-gray-700/80 dark:from-white/80 dark:via-white dark:to-white/60 bg-clip-text text-5xl font-semibold tracking-tight text-pretty text-transparent lg:leading-[1.1] xl:text-6xl/[4rem] xl:tracking-tighter">
-        Highlight your website in a second
+            <h2 className="leading-tighter font-gilroy max-w-2xl bg-gradient-to-b from-gray-900/90 via-gray-800 to-gray-700/80 dark:from-white/80 dark:via-white dark:to-white/60 bg-clip-text text-5xl font-semibold tracking-tight text-pretty text-transparent lg:leading-[1.1] xl:text-6xl/[4rem] xl:tracking-tighter">
+        Grow Your Career
       </h2>
       <p className="text-muted-foreground text-base tracking-tight mt-4 max-w-2xl">
-        Seamlessly integrate our components into your existing projects. Works with any React setup, from fresh Next.js apps to legacy codebases.
+        Professional networking made simple.
       </p>
     </div>
 
@@ -134,9 +134,9 @@ const FeaturesSection = () => {
         <CursorCard borderColor={theme === "dark" ? "#262626" : "#e5e5e5"} className="h-full md:w-[55%] w-full rounded-xl p-7 shadow-md bg-white dark:bg-neutral-950 border-gray-200 dark:border-neutral-800 overflow-hidden">
           <div className="h-full flex flex-col">
             <div className="mb-4 text-left">
-              <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">Lightning-Fast React Components</h3>
+              <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">Smart Matching Algorithm</h3>
               <p className="text-muted-foreground text-sm">
-                Production-optimized. Fits any stack — from fresh Next.js apps to legacy React.
+                Get matched with the right professionals.
               </p>
             </div>
             <div className="flex-1 relative overflow-hidden rounded-lg">
@@ -152,9 +152,9 @@ const FeaturesSection = () => {
         <CursorCard borderColor={theme === "dark" ? "#262626" : "#e5e5e5"} className="h-full md:w-[55%] w-full rounded-xl p-7 shadow-md bg-white dark:bg-neutral-950 border-gray-200 dark:border-neutral-800 overflow-hidden">
           <div className="h-full flex flex-col">
             <div className="mb-4 text-left">
-              <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">Helixque Anonymous Connections</h3>
+              <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">Professional Networking Sessions</h3>
               <p className="text-muted-foreground text-sm">
-                Connect anonymous users instantly with chat, video calls, audio calls, and skip functionality - just like Omegle but better.
+                Mock interviews, pitch sessions, and mentoring.
               </p>
             </div>
             <div className="flex-1 relative overflow-hidden rounded-lg min-h-[200px]">
@@ -167,8 +167,8 @@ const FeaturesSection = () => {
         <CursorCard borderColor={theme === "dark" ? "#262626" : "#e5e5e5"} className="h-full md:w-[45%] w-full rounded-xl p-4 md:p-7 shadow-md bg-white dark:bg-neutral-950 border-gray-200 dark:border-neutral-800 overflow-hidden">
           <div className="h-full flex flex-col">
             <div className="mb-3 md:mb-4 text-left">
-              <h3 className="text-base md:text-lg font-semibold text-gray-900 dark:text-white mb-1 md:mb-2">Real Time Chat</h3>
-              <p className="text-muted-foreground text-xs md:text-sm">Interactive chat preview with smooth animations.</p>
+              <h3 className="text-base md:text-lg font-semibold text-gray-900 dark:text-white mb-1 md:mb-2">Real time chats</h3>
+              <p className="text-muted-foreground text-xs md:text-sm">Instant professional connections.</p>
             </div>
             <div className="flex-1 flex flex-col rounded-lg overflow-hidden relative">
               <div className="flex-1 p-3 md:p-4 space-y-4 md:space-y-6 overflow-y-auto min-h-0">
@@ -181,8 +181,8 @@ const FeaturesSection = () => {
                     <span className="text-gray-900 dark:text-white text-[10px] md:text-xs font-medium">Anonymous</span>
                     <span className="text-muted-foreground text-[10px] md:text-xs">2:30 PM</span>
                   </div>
-                  <div className="rounded-lg bg-gray-200 dark:bg-neutral-800 w-fit max-w-[85%] border border-gray-300 dark:border-neutral-700 p-2 md:p-2.5 text-[10px] md:text-xs text-gray-900 dark:text-white text-left leading-relaxed">
-                    Raising $2M seed. ARR $500K, 40% MoM growth 📈
+                                    <div className="rounded-lg bg-gray-200 dark:bg-neutral-800 w-fit max-w-[85%] border border-gray-300 dark:border-neutral-700 p-2 md:p-2.5 text-[10px] md:text-xs text-gray-900 dark:text-white text-left leading-relaxed">
+                    Hey, are you ready to take interview.
                   </div>
                 </motion.div>
 
@@ -192,11 +192,11 @@ const FeaturesSection = () => {
                   transition={{ delay: 0.3, duration: 0.4 }}
                   className="mb-1 md:mb-2"
                 >
-                  <div className="rounded-lg mb-1 ml-auto w-fit max-w-[85%] bg-blue-600 p-2 md:p-2.5 text-[10px] md:text-xs text-white text-left leading-relaxed">
-                    Great metrics! What's your CAC vs competitors?
+                                    <div className="rounded-lg mb-1 ml-auto w-fit max-w-[85%] bg-blue-600 p-2 md:p-2.5 text-[10px] md:text-xs text-white text-left leading-relaxed">
+                    Yes let's connect now.
                   </div>
                   <div className="flex items-center justify-end gap-1.5 md:gap-2">
-                    <span className="text-gray-900 dark:text-white text-[10px] md:text-xs font-medium">You</span>
+                    <span className="text-gray-900 dark:text-white text-[10px] md:text-xs font-medium">Me</span>
                     <span className="text-muted-foreground text-[10px] md:text-xs">2:31 PM</span>
                   </div>
                 </motion.div>
@@ -210,7 +210,7 @@ const FeaturesSection = () => {
               >
                 <motion.input
                   type="text"
-                  placeholder="What's your go-to-market strategy?"
+                  placeholder="Type your message..."
                   className="flex-1 rounded-lg border border-gray-300 dark:border-neutral-600 bg-white dark:bg-neutral-800 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-neutral-400 px-2.5 md:px-3 py-1.5 md:py-2 text-[10px] md:text-xs focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                 />
                 <motion.button

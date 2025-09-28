@@ -4,7 +4,7 @@ import ShimmerButton from "@/components/ui/buttons/shimmer-button";
 import { cn } from "@/lib/utils";
 import { ChevronsRight } from "lucide-react";
 import { LayoutGroup, motion } from "motion/react";
-import HomeHeader from "@/components/common/header2";
+
 import NewItemsLoading from "@/components/utils/new-items-loading";
 import TextRotate from "@/components/fancy/text/text-rotate";
 import { Safari } from "@/components/magicui/safari";

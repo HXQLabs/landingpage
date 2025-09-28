@@ -78,7 +78,7 @@ export function BannerCountdown({ className }: BannerCountdownProps) {
 
   return (
     <div className={cn("flex items-center gap-1 text-xs", className)}>
-      <span className="text-white/80 hidden sm:inline">Offer ends in:</span>
+      <span className="text-white/80  sm:inline">Hacktober starts in:</span>
       <div className="flex items-center gap-0.5 bg-white/10 rounded px-2 py-0.5 backdrop-blur-sm">
         <span className="tabular-nums text-white font-medium">
           {timeLeft.days}d

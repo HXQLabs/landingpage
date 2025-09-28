@@ -3,6 +3,7 @@ import React from "react";
 import {ChevronRight, Users, Activity, Hash, Star } from "lucide-react";
 import { Icons } from '@/components/ui/icons';
 import { BorderBeam } from '@/components/ui/border-beam';
+import Link from "next/link";
 
 export function CTANew() {
   return (
@@ -24,8 +25,8 @@ export function CTANew() {
 
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-3 w-full lg:w-auto">
-              <a 
-                href="https://discord.gg/your-server" 
+              <Link 
+                href="https://discord.gg/XC4YsUBg2" 
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group/cta-button bg-[#5865f2] text-white hover:bg-[#4752c4] font-medium flex h-10 items-center justify-center gap-2 rounded-full px-6 text-sm shadow-none transition-colors duration-300 w-full sm:w-auto"
@@ -33,17 +34,17 @@ export function CTANew() {
                 <Icons.discord className="w-4 h-4" />
                 Join Discord
                 <ChevronRight className="h-4 w-4 transition-transform duration-300 group-hover/cta-button:translate-x-1" />
-              </a>
+              </Link>
               
-              <a 
-                href="https://github.com/your-repo/issues" 
+              <Link 
+                href="https://github.com/HXQLabs/Helixque/issues" 
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group/cta-button bg-neutral-200 dark:bg-neutral-700 text-neutral-900 dark:text-white hover:bg-neutral-300 dark:hover:bg-neutral-600 font-medium flex h-10 items-center justify-center gap-2 rounded-full px-6 text-sm shadow-none transition-colors duration-300 w-full sm:w-auto"
               >
                 <Icons.github className="w-4 h-4" />
                 Report Issues
-              </a>
+              </Link>
             </div>
           </div>
 
