@@ -1,4 +1,4 @@
-import Icons from "../global/icons";
+import { Icons } from "../utils/icons";
 import { ArrowUpRight } from "lucide-react";
 import { Pill, PillIndicator } from "../ui/kibo-ui/pill";
 import { Badge } from "../ui/badge";
@@ -92,12 +92,12 @@ const StickyFooter = () => {
                   <li>
                     <Link 
                       href="https://hacktoberfest.com" 
-                      className="flex items-center gap-2 text-muted-foreground hover:text-[#FF6B35] transition-colors duration-200 group" 
+                      className="flex items-center gap-2 text-muted-foreground hover:text-[#5A5AB5] transition-colors duration-200 group" 
                       aria-label="Hacktoberfest" 
                       target="_blank" 
                       rel="noopener noreferrer"
                     >
-                      <Icons.hacktoberfest className="h-4 w-4 text-muted-foreground group-hover:text-[#FF6B35]" />
+                      <Icons.hacktoberfest className="h-4 w-4" />
                       <span className="text-sm font-medium">Hacktoberfest</span>
                       <ArrowUpRight className="h-3 w-3 opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
                     </Link>

@@ -1,11 +1,11 @@
 "use client";
 import React from "react";
 import {ChevronRight, Users, Activity, Hash, Star } from "lucide-react";
-import { Icons } from '@/components/ui/icons';
+import { Icons } from '@/components/utils/icons';
 import { BorderBeam } from '@/components/ui/border-beam';
 import Link from "next/link";
 
-export function CTANew() {
+export function CTASection() {
   return (
     <section className="px-4 py-8 md:py-12">
       <div className="bg-neutral-100 dark:bg-neutral-900 relative mx-auto max-w-6xl rounded-2xl border border-neutral-200 dark:border-neutral-800 px-4 py-8 md:py-12">

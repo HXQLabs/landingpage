@@ -3,7 +3,7 @@
 import React from 'react';
 import { motion } from 'motion/react';
 import { Heart } from "lucide-react";
-import { Icons } from '@/components/ui/icons';
+import { Icons } from '@/components/utils/icons';
 import { 
   AvatarGroup, 
   AvatarGroupTooltip, 
@@ -147,7 +147,7 @@ const PerformanceRadarChart = () => (
   </div>
 );
 
-const OpensourceSection = () => (
+export const OpensourceSection = () => (
   <section className="container mx-auto flex w-full max-w-5xl flex-col items-center justify-start !px-4 py-16 text-center md:py-32 bg-white dark:bg-neutral-950">
     <div className="flex flex-col items-center text-center">
       <h2 className="leading-tighter font-gilroy max-w-2xl bg-gradient-to-b from-neutral-900/80 via-neutral-900 to-neutral-900/60 dark:from-white/80 dark:via-white dark:to-white/60 bg-clip-text text-5xl font-semibold tracking-tight text-pretty text-transparent lg:leading-[1.1] xl:text-6xl/[4rem] xl:tracking-tighter">
@@ -222,5 +222,3 @@ const OpensourceSection = () => (
 
   </section>
   );
-
-export default OpensourceSection;

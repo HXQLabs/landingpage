@@ -72,7 +72,7 @@ const MapComponent = () => {
   );
 };
 
-const FeaturesSection = () => {
+export const FeaturesSection = () => {
   const { theme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
@@ -233,4 +233,3 @@ const FeaturesSection = () => {
   );
 };
 
-export default FeaturesSection;

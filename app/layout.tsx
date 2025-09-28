@@ -4,7 +4,7 @@ import type { ReactNode } from "react";
 import "./globals.css";
 import { ThemeProvider } from "@/components/utils/theme-provider";
 import StickyFooter from "@/components/common/footer";
-import { LayoutWrapper, MainContentWrapper } from "@/components/common/layout-wrapper";
+import { AppLayout } from "@/components/common/app-layout";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -82,12 +82,9 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <LayoutWrapper />
-
-          {/* Main content with proper spacing */}
-          <MainContentWrapper>
+          <AppLayout>
             {children}
-          </MainContentWrapper>
+          </AppLayout>
 
           {/* Footer */}
           <StickyFooter />

@@ -18,6 +18,13 @@ bun.lock
 /.next/
 /out/
 
+# lock files
+package-lock.json
+pnpm-lock.yaml
+yarn.lock
+bun.lockb
+deno.lock
+
 # production
 /build
 

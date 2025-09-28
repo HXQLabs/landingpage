@@ -6,6 +6,11 @@ import { motion, AnimatePresence } from "motion/react";
 import Link from "next/link";
 import { Badge } from "../ui/badge";
 import { Button } from "../ui/button";
+import { GithubStarButton } from "./github-star-button";
+import { DiscordButton } from "./discord-button";
+import { SimpleThemeToggle } from "./simple-theme-toggle";
+import { VerticalSeparator } from "./vertical-separator";
+import { Icons } from "../utils/icons";
 
 interface HelixQueHeaderProps {
   className?: string;
@@ -31,7 +36,7 @@ export default function HelixQueHeader({ className }: HelixQueHeaderProps) {
     }
   };
 
-  const HelixQueLogo = () => (
+  const HelixQueLogo = ({ showFullLogo = false }: { showFullLogo?: boolean }) => (
     <div className="text-foreground flex items-end gap-2.5 [&_svg]:h-5">
       <img 
         src="/logo.svg" 
@@ -41,10 +46,10 @@ export default function HelixQueHeader({ className }: HelixQueHeaderProps) {
         className="h-5 w-auto"
       />
       <div className="relative">
-        <span className="hidden sm:block font-heading text-lg leading-none font-semibold">HelixQue</span>
+        <span className={`${showFullLogo ? 'block' : 'hidden sm:block'} font-heading text-lg leading-none font-semibold`}>HelixQue</span>
         <Badge
           variant="secondary" 
-          className="hidden sm:block absolute -top-1 -right-1 translate-x-full text-[8px] px-0.5 py-0 h-auto"
+          className={`${showFullLogo ? 'block' : 'hidden sm:block'} absolute -top-1 -right-1 translate-x-full text-[8px] px-0.5 py-0 h-auto`}
         >
           Beta
         </Badge>
@@ -53,10 +58,10 @@ export default function HelixQueHeader({ className }: HelixQueHeaderProps) {
   );
 
   const navigationItems = [
-    { href: "/docs", label: "Documentation" },
     { href: "/changelog", label: "Changelog" },
     { href: "/announcements", label: "Announcements" },
-    { href: "/resources", label: "Resources" }
+    { href: "/stats", label: "Statistics" },
+    { href: "/hacktoberfest", label: "Hacktoberfest", isSpecial: true }
   ];
 
   return (
@@ -91,9 +96,13 @@ export default function HelixQueHeader({ className }: HelixQueHeaderProps) {
                 >
                   <Link 
                     href={item.href} 
-                    className="text-[13.5px] text-muted-foreground hover:text-foreground transition-all duration-300 ease-out relative"
+                    className={`text-[13.5px] transition-all duration-300 ease-out relative ${
+                      item.isSpecial 
+                        ? "text-orange-600 hover:text-orange-700 dark:text-orange-400 dark:hover:text-orange-300 font-semibold" 
+                        : "text-muted-foreground hover:text-foreground"
+                    }`}
                   >
-                    {item.label}
+                    {item.label}{item.isSpecial && " 🔥"}
                   </Link>
                 </li>
               ))}
@@ -125,112 +134,106 @@ export default function HelixQueHeader({ className }: HelixQueHeaderProps) {
           </nav>
 
           {/* Mobile Menu */}
-          <div className="flex md:hidden">
-            <div className="flex items-center gap-3">
+          <div className="flex md:hidden w-full justify-between items-center">
+            <Link href="/" className="transition-opacity duration-200 hover:opacity-80">
+              <HelixQueLogo showFullLogo={true} />
+            </Link>
+            <div className="flex items-center gap-2">
+              <SimpleThemeToggle className="h-[32px] px-2" />
               <button 
-                className="flex items-center [&_svg]:size-5 transition-opacity duration-200 hover:opacity-70" 
-                aria-label="Open menu" 
+                className="flex items-center [&_svg]:size-5 transition-all duration-200 hover:opacity-70" 
+                aria-label={isMenuOpen ? "Close menu" : "Open menu"}
                 aria-expanded={isMenuOpen}
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
               >
-                <div className="transition-transform duration-200" style={{ transform: isMenuOpen ? 'rotate(90deg)' : 'rotate(0deg)' }}>
-                  <Menu size={22} />
+                <div 
+                  className="transition-all duration-300 ease-in-out" 
+                  style={{ 
+                    transform: isMenuOpen ? 'rotate(90deg)' : 'rotate(0deg)',
+                    transformOrigin: 'center'
+                  }}
+                >
+                  {isMenuOpen ? <X size={22} /> : <Menu size={22} />}
                 </div>
                 <span className="sr-only">Toggle Menu</span>
               </button>
-              <Link href="/" className="transition-opacity duration-200 hover:opacity-80">
-                <HelixQueLogo />
-              </Link>
             </div>
           </div>
 
-          {/* Auth Buttons */}
-          
+          {/* Navigation Buttons - Hidden on Mobile */}
           <nav 
-            className="flex items-center gap-3 text-sm font-medium" 
-            aria-label="Authentication"
+            className="hidden md:flex items-center gap-3 text-sm font-medium" 
+            aria-label="Navigation actions"
           >
-          
-            <Button 
-              className="cursor-pointer inline-flex items-center  justify-center gap-2 font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive bg-secondary text-secondary-foreground hover:bg-secondary/80 py-2 has-[>svg]:px-3 h-8 rounded-lg px-4 text-[13.5px] whitespace-nowrap shadow-[inset_0_1px_0_0_#FFFFFF20]"
-            >
-              Sign Up
-            </Button>
-            <Button 
-              className="cursor-pointer inline-flex items-center justify-center gap-2 font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive bg-primary text-primary-foreground hover:bg-primary/90 py-2 has-[>svg]:px-3 h-8 rounded-lg px-4 text-[13.5px] whitespace-nowrap shadow-[inset_0_1px_0_0_#FFFFFF20]"
-            >
-              Sign In
-            </Button>
-            
+            <GithubStarButton />
+            <DiscordButton />
+            <VerticalSeparator />
+            <SimpleThemeToggle />
           </nav>
         </div>
       </div>
 
-      {/* Mobile Menu Overlay and Drawer */}
+      {/* Mobile Menu Dropdown */}
       <AnimatePresence>
         {isMenuOpen && (
           <>
             {/* Overlay */}
             <motion.div 
-              className="fixed inset-0 z-50 bg-black/50 md:hidden"
+              className="fixed inset-0 z-40 bg-black/20 md:hidden"
               onClick={() => setIsMenuOpen(false)}
               aria-hidden="true"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              transition={{ duration: 0.2 }}
+              transition={{ duration: 0.15 }}
             />
             
-            {/* Mobile Menu Drawer */}
+            {/* Mobile Menu Dropdown */}
             <motion.div
               role="dialog"
               id="mobile-menu"
               aria-modal="true"
               aria-label="Mobile menu"
-              className="fixed inset-y-0 left-0 z-50 h-full w-3/4 max-w-72 border-r border-border bg-background shadow-xl md:hidden"
-              initial={{ x: "-100%" }}
-              animate={{ x: 0 }}
-              exit={{ x: "-100%" }}
+              className="absolute top-full left-0 right-0 z-50 bg-background/70 backdrop-blur-sm shadow-lg rounded-b-xl mx-2 border border-border/20 border-t-0 md:hidden"
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
               transition={{
                 type: "spring",
-                stiffness: 300,
+                stiffness: 400,
                 damping: 30,
                 mass: 0.8,
               }}
             >
-              {/* Header with Close Button */}
-              <div className="relative flex items-center justify-between p-4 border-b border-border">
-                <div className="flex items-center">
-                  <Link href="/" onClick={() => setIsMenuOpen(false)}>
-                    <HelixQueLogo />
-                  </Link>
-                </div>
-                
-                {/* Close Button */}
-                <button
-                  type="button"
-                  className="rounded-xs opacity-70 hover:opacity-100 focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:outline-none disabled:pointer-events-none ring-offset-background hover:rotate-90 transition-all duration-200"
-                  onClick={() => setIsMenuOpen(false)}
-                  aria-label="Close menu"
-                >
-                  <X className="size-6" />
-                  <span className="sr-only">Close</span>
-                </button>
-              </div>
-
               {/* Navigation Content */}
-              <div className="pt-2 pb-4 px-0">
-                <div className="flex flex-col space-y-1 items-stretch">
-                  {navigationItems.map((item) => (
+              <div className="px-3 py-4">
+                <div className="flex flex-col">
+                  {navigationItems.map((item, index) => (
                     <Link 
                       key={item.href}
                       href={item.href}
-                      className="text-muted-foreground py-2 text-base hover:text-foreground transition-all duration-200 rounded-lg px-4 hover:bg-muted/50 text-left"
+                      className={`py-3 px-4 text-sm font-medium transition-all duration-200 rounded-lg hover:bg-muted/50 text-left ${
+                        item.isSpecial 
+                          ? "text-orange-600 hover:text-orange-700 dark:text-orange-400 dark:hover:text-orange-300 font-semibold" 
+                          : "text-muted-foreground hover:text-foreground"
+                      }`}
                       onClick={() => setIsMenuOpen(false)}
                     >
-                      {item.label}
+                      {item.label}{item.isSpecial && " 🔥"}
                     </Link>
                   ))}
+                  
+                  {/* Mobile Navigation Buttons */}
+                  <div className="flex flex-col gap-3 pt-4 mt-2 px-1">
+                    <div className="flex items-center justify-center gap-4">
+                      <div onClick={() => setIsMenuOpen(false)}>
+                        <GithubStarButton className="flex-1 justify-center h-10" />
+                      </div>
+                      <div onClick={() => setIsMenuOpen(false)}>
+                        <DiscordButton className="flex-1 justify-center h-10" />
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
 
