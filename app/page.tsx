@@ -7,7 +7,7 @@ export default function Home() {
   return (
     <div className="flex flex-col">
       <Hero />
-      <FeaturesSection />
+      {/* <FeaturesSection /> */}
       <OpensourceSection/>
       <CTANew />
     </div>
