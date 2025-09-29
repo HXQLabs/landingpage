@@ -24,6 +24,10 @@ export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   viewportFit: "cover",
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
+    { media: "(prefers-color-scheme: dark)", color: "#0b0b0b" },
+  ],
 };
 
 export const metadata: Metadata = {
@@ -40,6 +44,8 @@ export const metadata: Metadata = {
     "learners",
     "collaboration",
   ],
+  // Base URL for resolving relative Open Graph / Twitter image paths
+  metadataBase: new URL("https://helixque.com"),
   authors: [{ name: "Helixque Team" }],
   openGraph: {
     title: "Helixque - Professional Networking Platform",
@@ -94,10 +100,6 @@ export const metadata: Metadata = {
   manifest: "/site.webmanifest",
 
   // Browser UI color
-  themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
-    { media: "(prefers-color-scheme: dark)", color: "#0b0b0b" },
-  ],
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {
