@@ -15,12 +15,12 @@ export function CTASection() {
           <div className="flex flex-col justify-center items-center lg:items-start text-center lg:text-left px-6 lg:pl-12 lg:pr-8 h-full py-8 lg:py-12">
             {/* Main Heading - Opensource Style */}
             <h2 className="leading-tighter font-gilroy max-w-2xl bg-gradient-to-b from-neutral-900/80 via-neutral-900 to-neutral-900/60 dark:from-white/80 dark:via-white dark:to-white/60 bg-clip-text text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight text-pretty text-transparent lg:leading-[1.1] xl:text-5xl xl:tracking-tighter mb-6 lg:mb-8">
-              Have suggestions or improvements?
+              Join the Community
                 </h2>
 
             {/* Description - Opensource Style */}
             <p className="text-muted-foreground text-sm md:text-base tracking-tight max-w-xl lg:max-w-2xl mb-8 lg:mb-12">
-              Join our Discord community to share feedback, request features, and help us make the product better together.
+              Have suggestions or improvements? Share feedback, request features, and help us shape the roadmap.
             </p>
 
             {/* CTA Buttons */}
@@ -77,7 +77,7 @@ export function CTASection() {
                         <Users className="w-3 h-3 md:w-4 md:h-4 text-green-500" />
                         <span className="text-xs md:text-sm text-muted-foreground">Online Members</span>
                       </div>
-                      <span className="font-semibold text-foreground text-xs md:text-sm">1,247</span>
+                      <span className="font-semibold text-foreground text-xs md:text-sm">118</span>
                     </div>
 
                     <div className="flex items-center justify-between">
@@ -85,7 +85,7 @@ export function CTASection() {
                         <Activity className="w-3 h-3 md:w-4 md:h-4 text-blue-500" />
                         <span className="text-xs md:text-sm text-muted-foreground">Total Members</span>
                       </div>
-                      <span className="font-semibold text-foreground text-xs md:text-sm">5,892</span>
+                      <span className="font-semibold text-foreground text-xs md:text-sm">524</span>
                     </div>
 
                     <div className="flex items-center justify-between">
@@ -93,7 +93,7 @@ export function CTASection() {
                         <Hash className="w-3 h-3 md:w-4 md:h-4 text-purple-500" />
                         <span className="text-xs md:text-sm text-muted-foreground">Channels</span>
                       </div>
-                      <span className="font-semibold text-foreground text-xs md:text-sm">24</span>
+                      <span className="font-semibold text-foreground text-xs md:text-sm">18</span>
                     </div>
 
                     <div className="flex items-center justify-between">
@@ -101,7 +101,7 @@ export function CTASection() {
                         <Star className="w-3 h-3 md:w-4 md:h-4 text-yellow-500" />
                         <span className="text-xs md:text-sm text-muted-foreground">Server Level</span>
                       </div>
-                      <span className="font-semibold text-foreground text-xs md:text-sm">Level 3</span>
+                      <span className="font-semibold text-foreground text-xs md:text-sm">—</span>
                     </div>
             </div>
 

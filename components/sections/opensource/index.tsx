@@ -154,7 +154,7 @@ export const OpensourceSection = () => (
         Built by professionals, for professionals
       </h2>
       <p className="text-muted-foreground text-base tracking-tight mt-4 max-w-2xl">
-        Join thousands of professionals contributing to our networking ecosystem. Connect with industry experts, practice together, and grow your career.
+        Join an early community of developers, designers, founders, and learners practicing together in a safe, structured environment. Share knowledge, grow your network, and improve with every conversation.
       </p>
           </div>
           

@@ -91,7 +91,7 @@ export const FeaturesSection = () => {
         Grow Your Career
       </h2>
       <p className="text-muted-foreground text-base tracking-tight mt-4 max-w-2xl">
-        Professional networking made simple.
+        Skip cold outreach. Set your skills and preferences, get matched in seconds, and have meaningful conversations mock interviews, mentoring, code reviews, or pitch practice.
       </p>
     </div>
 
@@ -102,9 +102,9 @@ export const FeaturesSection = () => {
         <CursorCard borderColor={theme === "dark" ? "#262626" : "#e5e5e5"} className="h-full md:w-[45%] w-full rounded-xl p-7 shadow-md bg-white dark:bg-neutral-950 border-gray-200 dark:border-neutral-800 overflow-hidden">
         <div className="h-full flex flex-col">
             <div className="mb-4 text-left">
-              <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">Join HelixQue</h3>
+              <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">Professional Profile</h3>
               <p className="text-muted-foreground text-sm">
-                Build your professional profile.
+                Build a credible profile so matches understand your background and what you're looking for learning, mentoring, or collaboration.
               </p>
             </div>
             <div className="flex-1 flex items-center justify-center rounded-lg relative min-h-[240px] overflow-hidden">
@@ -118,7 +118,7 @@ export const FeaturesSection = () => {
                 </div>
                 <div className="space-y-2">
                   <div className="text-gray-900 dark:text-white text-sm font-medium">Professional Profile</div>
-                  <div className="text-muted-foreground text-xs">Skills • Experience • Goals</div>
+                  <div className="text-muted-foreground text-xs">Skills • Languages • Experience Level • Goals</div>
                 </div>
                 <div className="flex gap-2 justify-center">
                   <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
@@ -136,7 +136,7 @@ export const FeaturesSection = () => {
             <div className="mb-4 text-left">
               <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">Smart Matching Algorithm</h3>
               <p className="text-muted-foreground text-sm">
-                Get matched with the right professionals.
+                Filter by <strong>skills</strong>, <strong>industry</strong>, and <strong>language</strong>. Balance experience levels for better conversations. Randomized pairing to reduce bias.
               </p>
             </div>
             <div className="flex-1 relative overflow-hidden rounded-lg">
@@ -154,7 +154,7 @@ export const FeaturesSection = () => {
             <div className="mb-4 text-left">
               <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">Professional Networking Sessions</h3>
               <p className="text-muted-foreground text-sm">
-                Mock interviews, pitch sessions, and mentoring.
+                Mock interviews (behavioral & technical), pair programming, portfolio critique, and startup pitch practice with feedback etc.
               </p>
             </div>
             <div className="flex-1 relative overflow-hidden rounded-lg min-h-[200px]">
@@ -178,11 +178,11 @@ export const FeaturesSection = () => {
                   transition={{ delay: 0.1, duration: 0.4 }}
                 >
                   <div className="flex items-center gap-1.5 md:gap-2 mb-1.5 md:mb-2">
-                    <span className="text-gray-900 dark:text-white text-[10px] md:text-xs font-medium">Anonymous</span>
+                    <span className="text-gray-900 dark:text-white text-[10px] md:text-xs font-medium">Peer</span>
                     <span className="text-muted-foreground text-[10px] md:text-xs">2:30 PM</span>
                   </div>
                                     <div className="rounded-lg bg-gray-200 dark:bg-neutral-800 w-fit max-w-[85%] border border-gray-300 dark:border-neutral-700 p-2 md:p-2.5 text-[10px] md:text-xs text-gray-900 dark:text-white text-left leading-relaxed">
-                    Hey, are you ready to take interview.
+                    Hey up for a quick mock interview focusing on React and Node.js?
                   </div>
                 </motion.div>
 
@@ -193,10 +193,10 @@ export const FeaturesSection = () => {
                   className="mb-1 md:mb-2"
                 >
                                     <div className="rounded-lg mb-1 ml-auto w-fit max-w-[85%] bg-blue-600 p-2 md:p-2.5 text-[10px] md:text-xs text-white text-left leading-relaxed">
-                    Yes let's connect now.
+                    Sure. Let's start with state management in React and API design on the backend.
                   </div>
                   <div className="flex items-center justify-end gap-1.5 md:gap-2">
-                    <span className="text-gray-900 dark:text-white text-[10px] md:text-xs font-medium">Me</span>
+                    <span className="text-gray-900 dark:text-white text-[10px] md:text-xs font-medium">You</span>
                     <span className="text-muted-foreground text-[10px] md:text-xs">2:31 PM</span>
                   </div>
                 </motion.div>

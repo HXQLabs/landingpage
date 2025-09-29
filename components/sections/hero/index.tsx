@@ -8,7 +8,7 @@ import TextRotate from "@/components/fancy/text/text-rotate";
 import Link from "next/link";
 
 export const HeroSection = () => {
-  const words = ["professionals", "interviewers", "investors"];
+  const words = ["builders", "learners", "mentors"];
   return (
     <section
       aria-label="Hero banner"
@@ -18,28 +18,22 @@ export const HeroSection = () => {
         <div className="flex justify-center pb-8">
           <Announcement>
             <AnnouncementTag>Now Live</AnnouncementTag>
-            <AnnouncementTitle>
-              Professional Networking Platform 
-              <ArrowUpRightIcon className="shrink-0 text-muted-foreground" size={16} />
-            </AnnouncementTitle>
+            <Link href="/changelog" passHref>
+              <AnnouncementTitle className="flex items-center gap-1 cursor-pointer hover:text-primary transition-colors">
+                <p className="group-hover:underline underline-offset-4 flex flex-wrap gap-1 items-center">Check out our latest updates</p>
+                <ArrowUpRightIcon className="shrink-0 text-muted-foreground" size={16} />
+              </AnnouncementTitle>
+            </Link>
           </Announcement>
 
         </div>
         <div className="relative z-1 mx-auto max-w-3xl text-center">
           <h1 className="text-foreground mt-6 bg-gradient-to-tr from-neutral-300 to-white bg-clip-text text-[clamp(40px,10vw,44px)] leading-[1.2] font-bold tracking-tighter text-balance sm:text-6xl sm:text-[64px] dark:text-transparent">
-            Professional Networking 
+            Professional networking for
             <br/>
           
             <LayoutGroup>
               <motion.span className="relative translate-x-0 flex gap-2 justify-center flex-wrap items-center" layout>
-                <motion.span
-                  className="text-white"
-                  layout
-                  transition={{ type: "spring", damping: 30, stiffness: 400 }}
-
-                >
-                  for
-                </motion.span>
                 <TextRotate
                   texts={words}
                   mainClassName="text-white dark:text-black px-3 bg-black dark:bg-white overflow-hidden py-1.5 justify-center rounded-lg"
@@ -56,42 +50,48 @@ export const HeroSection = () => {
             </LayoutGroup>
           </h1>
           <p className="text-muted-foreground mx-auto mt-6 leading-7 font-normal text-balance sm:w-[660px] sm:text-[18px] md:mt-8">
-            Connect with professionals, practice mock interviews, and pitch to VCs — all on one platform designed for career growth.
+            Match instantly by <strong>skills</strong>, <strong>industry</strong>, and <strong>language</strong>. Learn, mentor, and collaborate through text or video without the awkwardness.
           </p>
-          <div className="mt-8 flex items-center justify-center gap-x-6">
-            <Link
-              href="#"
-              aria-label="Get started with Helixque"
-              className="from-primary/90 to-primary durration-300 text-primary-foreground flex h-10 items-center rounded-3xl bg-linear-to-t px-6 text-sm font-medium shadow-[inset_0_1px_0_0_#FFFFFF20] transition-colors"
-            >
-              Get Started for Free
-            </Link>
-            <Link
-              href="https://github.com/orgs/HXQLabs/repositories"
-              className="text-foreground group/hero flex items-center gap-1 text-sm leading-none font-medium"
-              aria-label="Learn more about professional networking"
-            >
-              Star on GitHub{' '}
-              <span aria-hidden="true">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="16"
-                  height="16"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className="mt-0.5 transition-transform duration-300 group-hover/hero:translate-x-1.5"
-                  role="img"
-                  aria-label="Arrow pointing right"
-                >
-                  <path d="m9 18 6-6-6-6"></path>
-                </svg>
-              </span>
-            </Link>
+          <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row sm:gap-x-6">
+            <div className="flex items-center gap-x-4">
+              <Link
+                href="#"
+                aria-label="Get started with Helixque"
+                className="from-primary/90 to-primary durration-300 text-primary-foreground flex h-10 items-center rounded-3xl bg-linear-to-t px-6 text-sm font-medium shadow-[inset_0_1px_0_0_#FFFFFF20] transition-colors"
+              >
+                Get Started for Free
+              </Link>
+              <Link
+                href="https://github.com/orgs/HXQLabs/repositories"
+                className="text-foreground group/hero flex items-center gap-1 text-sm leading-none font-medium"
+                aria-label="Learn more about professional networking"
+              >
+                Star on GitHub{' '}
+                <span aria-hidden="true">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="mt-0.5 transition-transform duration-300 group-hover/hero:translate-x-1.5"
+                    role="img"
+                    aria-label="Arrow pointing right"
+                  >
+                    <path d="m9 18 6-6-6-6"></path>
+                  </svg>
+                </span>
+              </Link>
+            </div>
+           
           </div>
+          <p className="text-muted-foreground text-xs mt-4">
+            Free to start • No credit card required
+          </p>
         </div>
         <div
           className="after:border-primary/20 after:bg-secondary pointer-events-none absolute top-[340px] h-[400px] w-full max-w-5xl overflow-hidden mask-[radial-gradient(50%_50%,white,transparent)] before:absolute before:inset-y-0 before:-right-[200%] before:-left-[200%] before:h-[200%] before:bg-[radial-gradient(circle_at_bottom_center,var(--primary),transparent_90%)] before:opacity-25 after:absolute after:top-1/5 after:-left-1/2 after:aspect-[1/0.7] after:w-[200%] after:rounded-[100%] after:border-t sm:top-[300px] sm:after:top-1/2"

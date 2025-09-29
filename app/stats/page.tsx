@@ -16,7 +16,7 @@ import { DynamicRoundedPieChart } from "@/components/ui/dynamic-rounded-pie-char
 import { DynamicStrokeMultipleRadarChart } from "@/components/ui/dynamic-stroke-multiple-radar-chart";
 
 // GitHub organization name - update this to your organization
-const GITHUB_ORG = "badtzx0";
+const GITHUB_ORG = "HXQLabs";
 
 interface Repository {
   id: string;

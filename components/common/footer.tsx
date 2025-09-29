@@ -43,7 +43,7 @@ const StickyFooter = () => {
             
             <div className="space-y-4">
               <p className="text-muted-foreground text-sm leading-relaxed max-w-sm">
-                Connect with professionals, practice mock interviews, and pitch to VCs on our platform designed for career growth.
+                Match instantly by skills, industry, and language. Learn, mentor, and collaborate through text or video on our professional networking platform.
               </p>
               
               {/* Status Indicator */}
