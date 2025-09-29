@@ -44,6 +44,9 @@ export default function ChangelogPage() {
             <p className="text-muted-foreground text-base tracking-tight mt-6 max-w-2xl mx-auto sm:text-lg">
               Stay up to date with all the latest features, improvements, and bug fixes in HelixQue.
             </p>
+            <p className="text-muted-foreground text-base tracking-tight mt-6 max-w-2xl mx-auto sm:text-lg">
+              We moved from vercel to netlify due to the socket waking up issue
+            </p>
           </div>
         </div>
       </div>
