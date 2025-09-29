@@ -57,9 +57,6 @@ export default function AnnouncementsPage() {
             <p className="text-muted-foreground text-base tracking-tight mt-6 max-w-2xl mx-auto sm:text-lg">
               Stay informed with the latest updates, important notices, and announcements from HelixQue.
             </p>
-            <p className="text-muted-foreground text-base tracking-tight mt-6 max-w-2xl mx-auto sm:text-lg">
-              Only your profile photo and username is taken from your Linkedin profile rest all data is yours.
-            </p>
           </div>
         </div>
       </div>
