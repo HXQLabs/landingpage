@@ -1,13 +1,24 @@
 import type { Metadata, Viewport } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Instrument_Sans, Instrument_Serif } from "next/font/google";
 import type { ReactNode } from "react";
 import "./globals.css";
 import { ThemeProvider } from "@/components/utils/theme-provider";
 import StickyFooter from "@/components/common/footer";
 import { AppLayout } from "@/components/common/app-layout";
 
-const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
-const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"] });
+const instrumentSans = Instrument_Sans({ 
+  variable: "--font-instrument-sans", 
+  subsets: ["latin"],
+  display: "swap"
+});
+
+const instrumentSerif = Instrument_Serif({ 
+  variable: "--font-instrument-serif", 
+  subsets: ["latin"],
+  weight: ["400"],
+  style: ["normal", "italic"],
+  display: "swap"
+});
 
 export const viewport: Viewport = {
   width: "device-width",
@@ -93,7 +104,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${instrumentSans.variable} ${instrumentSerif.variable} font-sans antialiased`}
         suppressHydrationWarning
       >
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
