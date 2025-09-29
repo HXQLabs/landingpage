@@ -15,8 +15,7 @@ import {
   ChartTooltip,
   ChartTooltipContent,
 } from "@/components/ui/chart";
-import { Badge } from "@/components/ui/badge";
-import { TrendingDown, TrendingUp } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 interface ChartData {
   month: string;
@@ -28,7 +27,7 @@ interface DynamicDottedMultiLineChartProps {
   data?: ChartData[];
   title?: string;
   description?: string;
-  trend?: number;
+  className?: string;
 }
 
 const chartConfig = {
@@ -46,7 +45,7 @@ export function DynamicDottedMultiLineChart({
   data,
   title = "Downloads Trend",
   description = "January - June 2024",
-  trend = -5.2
+  className,
 }: DynamicDottedMultiLineChartProps) {
   const defaultData = [
     { month: "January", desktop: 186, mobile: 87 },
@@ -58,29 +57,11 @@ export function DynamicDottedMultiLineChart({
   ];
 
   const chartData = data || defaultData;
-  const isPositiveTrend = trend > 0;
 
   return (
-    <Card>
+    <Card className={cn(className)}>
       <CardHeader>
-        <CardTitle>
-          {title}
-          <Badge
-            variant="outline"
-            className={`${
-              isPositiveTrend 
-                ? "text-green-500 bg-green-500/10" 
-                : "text-red-500 bg-red-500/10"
-            } border-none ml-2`}
-          >
-            {isPositiveTrend ? (
-              <TrendingUp className="h-4 w-4" />
-            ) : (
-              <TrendingDown className="h-4 w-4" />
-            )}
-            <span>{isPositiveTrend ? '+' : ''}{trend}%</span>
-          </Badge>
-        </CardTitle>
+        <CardTitle>{title}</CardTitle>
         <CardDescription>{description}</CardDescription>
       </CardHeader>
       <CardContent>

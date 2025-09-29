@@ -14,8 +14,7 @@ import {
   ChartTooltip,
   ChartTooltipContent,
 } from "@/components/ui/chart";
-import { Badge } from "@/components/ui/badge";
-import { TrendingUp, TrendingDown } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 interface ChartData {
   month: string;
@@ -27,25 +26,25 @@ interface DynamicStrokeMultipleRadarChartProps {
   data?: ChartData[];
   title?: string;
   description?: string;
-  trend?: number;
+  className?: string;
 }
 
 const chartConfig = {
   desktop: {
-    label: "Desktop",
+    label: "Issues",
     color: "var(--chart-1)",
   },
   mobile: {
-    label: "Mobile",
+    label: "PRs",
     color: "var(--chart-4)",
   },
 } satisfies ChartConfig;
 
 export function DynamicStrokeMultipleRadarChart({ 
   data,
-  title = "Performance Metrics",
-  description = "Showing total visitors for the last 6 months",
-  trend = 5.2
+  title = "Issues vs PRs",
+  description = "Contribution activity over the last 6 months",
+  className
 }: DynamicStrokeMultipleRadarChartProps) {
   const defaultData = [
     { month: "January", desktop: 186, mobile: 92 },
@@ -57,29 +56,11 @@ export function DynamicStrokeMultipleRadarChart({
   ];
 
   const chartData = data || defaultData;
-  const isPositiveTrend = trend > 0;
 
   return (
-    <Card>
+    <Card className={cn(className)}>
       <CardHeader className="items-center pb-4">
-        <CardTitle>
-          {title}
-          <Badge
-            variant="outline"
-            className={`${
-              isPositiveTrend 
-                ? "text-green-500 bg-green-500/10" 
-                : "text-red-500 bg-red-500/10"
-            } border-none ml-2`}
-          >
-            {isPositiveTrend ? (
-              <TrendingUp className="h-4 w-4" />
-            ) : (
-              <TrendingDown className="h-4 w-4" />
-            )}
-            <span>{isPositiveTrend ? '+' : ''}{trend}%</span>
-          </Badge>
-        </CardTitle>
+        <CardTitle>{title}</CardTitle>
         <CardDescription>
           {description}
         </CardDescription>

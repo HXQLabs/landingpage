@@ -1,10 +1,11 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { ChevronDown, GitFork, Star, Eye, Download, Loader2 } from "lucide-react";
+import { ChevronDown, GitFork, Star, Eye, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { fetchAll } from "@/lib/github";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -25,20 +26,19 @@ interface Repository {
   stars: number;
   forks: number;
   watchers: number;
-  downloads: number;
   language: string | null;
   lastUpdated: string;
   full_name: string;
   html_url: string;
+  topics: string[];
 }
 
 // Generate dynamic chart data based on repository
-const generateChartData = (repo: Repository) => {
-  // Generate data based on repository metrics for more realistic charts
+const generateChartData = (repo: Repository, monthlyData?: { month: string; issues: number; prs: number; }[]) => {
+  // Generate line chart data based on stars/forks activity
   const starsFactor = Math.max(repo.stars / 1000, 1);
   const forksFactor = Math.max(repo.forks / 100, 1);
   
-  // Generate line chart data based on stars/forks activity
   const lineChart = [
     { month: "January", desktop: Math.floor(starsFactor * 50 + Math.random() * 100), mobile: Math.floor(forksFactor * 30 + Math.random() * 50) },
     { month: "February", desktop: Math.floor(starsFactor * 75 + Math.random() * 100), mobile: Math.floor(forksFactor * 45 + Math.random() * 50) },
@@ -48,16 +48,12 @@ const generateChartData = (repo: Repository) => {
     { month: "June", desktop: Math.floor(starsFactor * 70 + Math.random() * 100), mobile: Math.floor(forksFactor * 60 + Math.random() * 50) },
   ];
 
-  // Generate pie chart data based on language and popularity
-  const languages = [
-    { browser: repo.language || "JavaScript", visitors: Math.floor(repo.downloads * 0.6), fill: "var(--color-chrome)" },
-    { browser: "TypeScript", visitors: Math.floor(repo.downloads * 0.25), fill: "var(--color-safari)" },
-    { browser: "CSS", visitors: Math.floor(repo.downloads * 0.1), fill: "var(--color-firefox)" },
-    { browser: "Other", visitors: Math.floor(repo.downloads * 0.05), fill: "var(--color-edge)" },
-  ];
-
-  // Generate radar chart data based on repository metrics
-  const radarChart = [
+  // Generate radar chart data based on PRs vs Issues if available, otherwise fallback to stars/forks
+  const radarChart = monthlyData ? monthlyData.map(item => ({
+    month: item.month,
+    desktop: item.issues,
+    mobile: item.prs
+  })) : [
     { month: "January", desktop: Math.floor(starsFactor * 0.8 + Math.random() * 50), mobile: Math.floor(forksFactor * 0.6 + Math.random() * 30) },
     { month: "February", desktop: Math.floor(starsFactor * 1.2 + Math.random() * 50), mobile: Math.floor(forksFactor * 0.9 + Math.random() * 30) },
     { month: "March", desktop: Math.floor(starsFactor * 0.9 + Math.random() * 50), mobile: Math.floor(forksFactor * 0.7 + Math.random() * 30) },
@@ -68,7 +64,6 @@ const generateChartData = (repo: Repository) => {
 
   return {
     lineChart,
-    pieChart: languages,
     radarChart,
   };
 };
@@ -78,6 +73,9 @@ export default function StatsPage() {
   const [selectedRepo, setSelectedRepo] = useState<Repository | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [languagesData, setLanguagesData] = useState<Record<string, number> | null>(null);
+  const [monthlyIssuesPrs, setMonthlyIssuesPrs] = useState<{ month: string; issues: number; prs: number; }[] | null>(null);
+  const [topics, setTopics] = useState<string[]>([]);
 
   // Fetch repositories from GitHub API
   useEffect(() => {
@@ -107,11 +105,11 @@ export default function StatsPage() {
           stars: repo.stargazers_count,
           forks: repo.forks_count,
           watchers: repo.watchers_count,
-          downloads: Math.floor(Math.random() * 1000000) + 10000, // Mock download data
           language: repo.language || "Unknown",
           lastUpdated: new Date(repo.updated_at).toISOString().split('T')[0],
           full_name: repo.full_name,
           html_url: repo.html_url,
+          topics: repo.topics || [],
         }));
         
         setRepositories(transformedRepos);
@@ -129,7 +127,75 @@ export default function StatsPage() {
     fetchRepositories();
   }, []);
 
-  const chartData = selectedRepo ? generateChartData(selectedRepo) : null;
+  // Fetch languages and topics for the selected repository
+  useEffect(() => {
+    const fetchLanguagesAndTopics = async () => {
+      if (!selectedRepo) return;
+      try {
+        const [langsRes, repoRes] = await Promise.all([
+          fetch(`https://api.github.com/repos/${selectedRepo.full_name}/languages`),
+          fetch(`https://api.github.com/repos/${selectedRepo.full_name}`)
+        ]);
+        
+        if (!langsRes.ok || !repoRes.ok) throw new Error(`Failed to fetch repo data`);
+        
+        const langs = await langsRes.json();
+        const repoData = await repoRes.json();
+        
+        setLanguagesData(langs as Record<string, number>);
+        setTopics(repoData.topics || []);
+      } catch (e) {
+        console.error('Error fetching languages/topics', e);
+        setLanguagesData(null);
+        setTopics([]);
+      }
+    };
+    fetchLanguagesAndTopics();
+  }, [selectedRepo]);
+
+  // Fetch PRs and Issues counts via GitHub search API and distribute by recent months for visualization
+  useEffect(() => {
+    const fetchIssuesAndPRs = async () => {
+      if (!selectedRepo) return;
+      try {
+        const repo = selectedRepo.full_name;
+        const since = new Date();
+        since.setMonth(since.getMonth() - 5);
+        const sinceISO = since.toISOString().split('T')[0];
+
+        const [issuesRes, prsRes] = await Promise.all([
+          fetch(`https://api.github.com/search/issues?q=repo:${repo}+type:issue+created:>=${sinceISO}&per_page=1`),
+          fetch(`https://api.github.com/search/issues?q=repo:${repo}+type:pr+created:>=${sinceISO}&per_page=1`),
+        ]);
+
+        if (!issuesRes.ok || !prsRes.ok) throw new Error('Failed to fetch PR/Issue totals');
+        const issuesJson = await issuesRes.json();
+        const prsJson = await prsRes.json();
+        const totalIssues: number = issuesJson.total_count || 0;
+        const totalPrs: number = prsJson.total_count || 0;
+
+        // Distribute totals across last 6 months proportionally (simple decreasing weights)
+        const months = Array.from({ length: 6 }, (_, i) => {
+          const d = new Date();
+          d.setMonth(d.getMonth() - (5 - i));
+          return d.toLocaleString(undefined, { month: 'short' });
+        });
+
+        const weights = [0.1, 0.12, 0.15, 0.18, 0.2, 0.25];
+        const issuesByMonth = weights.map(w => Math.round(totalIssues * w));
+        const prsByMonth = weights.map(w => Math.round(totalPrs * w));
+
+        const distributed = months.map((m, idx) => ({ month: m, issues: issuesByMonth[idx], prs: prsByMonth[idx] }));
+        setMonthlyIssuesPrs(distributed);
+      } catch (e) {
+        console.error('Error fetching PRs/Issues', e);
+        setMonthlyIssuesPrs(null);
+      }
+    };
+    fetchIssuesAndPRs();
+  }, [selectedRepo]);
+
+  const chartData = selectedRepo ? generateChartData(selectedRepo, monthlyIssuesPrs || undefined) : null;
 
   const formatNumber = (num: number) => {
     if (num >= 1000000) {
@@ -278,18 +344,6 @@ export default function StatsPage() {
                   </div>
                 </CardContent>
               </Card>
-              
-              <Card>
-                <CardContent className="p-6">
-                  <div className="flex items-center justify-between">
-                    <div>
-                      <p className="text-sm text-muted-foreground">Downloads</p>
-                      <p className="text-2xl font-bold">{formatNumber(selectedRepo.downloads)}</p>
-                    </div>
-                    <Download className="h-8 w-8 text-purple-500" />
-                  </div>
-                </CardContent>
-              </Card>
             </div>
 
             {/* Repository Info Card */}
@@ -309,11 +363,17 @@ export default function StatsPage() {
                       </a>
                     </div>
                     <p className="text-muted-foreground mb-3">{selectedRepo.description}</p>
-                    <div className="flex items-center gap-4">
+                    <div className="flex items-center gap-4 flex-wrap">
                       <Badge variant="outline">{selectedRepo.language || "Unknown"}</Badge>
                       <span className="text-sm text-muted-foreground">
                         Last updated: {selectedRepo.lastUpdated}
                       </span>
+                    </div>
+                    {/* Topics as tech stack chips if available */}
+                    <div className="mt-3 flex flex-wrap gap-2">
+                      {topics.slice(0, 10).map((topic: string) => (
+                        <Badge key={topic} variant="secondary" className="capitalize">{topic.replace(/[-_]/g, ' ')}</Badge>
+                      ))}
                     </div>
                   </div>
                 </div>
@@ -325,35 +385,28 @@ export default function StatsPage() {
         {/* Charts Grid */}
         {selectedRepo && chartData && (
           <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-8">
-            {/* Downloads Trend Chart */}
-            <div className="xl:col-span-2">
-              <DynamicDottedMultiLineChart 
-                data={chartData.lineChart}
-                title="Repository Activity Trend"
-                description={`${selectedRepo.name} activity over the last 6 months`}
-                trend={Math.floor(Math.random() * 20) - 10} // Random trend between -10 and 10
-              />
-            </div>
-            
-            {/* Package Manager Distribution */}
-            <div>
-              <DynamicRoundedPieChart 
-                data={chartData.pieChart}
-                title="Technology Distribution"
-                description={`${selectedRepo.name} technology stack`}
-                trend={Math.floor(Math.random() * 15) + 1} // Random positive trend 1-15
-              />
-            </div>
-            
-            {/* Performance Metrics */}
-            <div className="xl:col-span-3">
-              <DynamicStrokeMultipleRadarChart 
-                data={chartData.radarChart}
-                title="Performance Metrics"
-                description={`${selectedRepo.name} usage patterns across desktop and mobile platforms`}
-                trend={Math.floor(Math.random() * 12) + 3} // Random trend 3-15
-              />
-            </div>
+            <DynamicDottedMultiLineChart 
+              data={chartData.lineChart}
+              title="Repository Activity Trend"
+              description={`${selectedRepo.name} activity over the last 6 months`}
+              className="xl:col-span-2"
+            />
+            <DynamicRoundedPieChart 
+              data={languagesData ? Object.entries(languagesData).map(([lang, bytes], idx) => ({
+                browser: lang.toLowerCase(),
+                visitors: bytes,
+                fill: `var(--color-${['chrome','safari','firefox','edge','other'][idx % 5]})`,
+              })) : undefined}
+              title="Tech Stack Distribution"
+              description={`${selectedRepo.name} languages by code volume`}
+              className=""
+            />
+            <DynamicStrokeMultipleRadarChart 
+              data={chartData.radarChart}
+              title="Issues vs PRs"
+              description={`${selectedRepo.name} contribution activity over the last 6 months`}
+              className="xl:col-span-3"
+            />
           </div>
         )}
 

@@ -15,8 +15,7 @@ import {
   ChartTooltip,
   ChartTooltipContent,
 } from "@/components/ui/chart";
-import { Badge } from "@/components/ui/badge";
-import { TrendingUp, TrendingDown } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 interface ChartData {
   browser: string;
@@ -28,7 +27,7 @@ interface DynamicRoundedPieChartProps {
   data?: ChartData[];
   title?: string;
   description?: string;
-  trend?: number;
+  className?: string;
 }
 
 const chartConfig = {
@@ -61,7 +60,7 @@ export function DynamicRoundedPieChart({
   data,
   title = "Package Manager Distribution",
   description = "January - June 2024",
-  trend = 5.2
+  className
 }: DynamicRoundedPieChartProps) {
   const defaultData = [
     { browser: "chrome", visitors: 275, fill: "var(--color-chrome)" },
@@ -72,29 +71,11 @@ export function DynamicRoundedPieChart({
   ];
 
   const chartData = data || defaultData;
-  const isPositiveTrend = trend > 0;
 
   return (
-    <Card className="flex flex-col">
+    <Card className={cn("flex flex-col", className)}>
       <CardHeader className="items-center pb-0">
-        <CardTitle>
-          {title}
-          <Badge
-            variant="outline"
-            className={`${
-              isPositiveTrend 
-                ? "text-green-500 bg-green-500/10" 
-                : "text-red-500 bg-red-500/10"
-            } border-none ml-2`}
-          >
-            {isPositiveTrend ? (
-              <TrendingUp className="h-4 w-4" />
-            ) : (
-              <TrendingDown className="h-4 w-4" />
-            )}
-            <span>{isPositiveTrend ? '+' : ''}{trend}%</span>
-          </Badge>
-        </CardTitle>
+        <CardTitle>{title}</CardTitle>
         <CardDescription>{description}</CardDescription>
       </CardHeader>
       <CardContent className="flex-1 pb-0">

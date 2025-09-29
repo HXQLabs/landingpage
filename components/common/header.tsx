@@ -1,16 +1,13 @@
 "use client";
 import { useState, useRef } from "react";
-import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { motion, AnimatePresence } from "motion/react";
 import Link from "next/link";
 import { Badge } from "../ui/badge";
-import { Button } from "../ui/button";
 import { GithubStarButton } from "./github-star-button";
 import { DiscordButton } from "./discord-button";
 import { SimpleThemeToggle } from "./simple-theme-toggle";
 import { VerticalSeparator } from "./vertical-separator";
-import { Icons } from "../utils/icons";
 
 interface HelixQueHeaderProps {
   className?: string;
@@ -65,9 +62,12 @@ export default function HelixQueHeader({ className }: HelixQueHeaderProps) {
   ];
 
   return (
-    <div className={cn("bg-background theme-container", className)}>
-      <div className="bg-background/70 sticky top-0 z-40 w-full backdrop-blur-sm">
-        <div className="mx-auto flex h-16 w-full max-w-7xl items-center justify-between px-4 backdrop-blur-xs">
+    <div className={cn(
+      "bg-background/95 backdrop-blur-md theme-container relative z-50 border-b-0",
+      className
+    )}>
+      <div className="w-full">
+        <div className="mx-auto flex h-16 w-full max-w-7xl items-center justify-between px-4">
           {/* Desktop Logo */}
           <div className="hidden md:flex">
             <Link href="/" className="transition-opacity duration-200 hover:opacity-80">
@@ -192,7 +192,7 @@ export default function HelixQueHeader({ className }: HelixQueHeaderProps) {
           <>
             {/* Overlay */}
             <motion.div 
-              className="fixed inset-0 z-40 bg-black/20 md:hidden"
+              className="fixed inset-0 top-16 z-40 bg-black/20 md:hidden"
               onClick={() => setIsMenuOpen(false)}
               aria-hidden="true"
               initial={{ opacity: 0 }}
@@ -207,7 +207,7 @@ export default function HelixQueHeader({ className }: HelixQueHeaderProps) {
               id="mobile-menu"
               aria-modal="true"
               aria-label="Mobile menu"
-              className="absolute top-full left-0 right-0 z-50 bg-background/70 backdrop-blur-sm shadow-lg rounded-b-xl mx-2 border border-border/20 border-t-0 md:hidden"
+              className="absolute top-full left-0 right-0 z-[60] bg-background md:rounded-none rounded-none md:mx-0 mx-0 md:hidden"
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
