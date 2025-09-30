@@ -3,12 +3,74 @@
 import React, { useEffect, useState } from 'react';
 import { CursorCard, CursorCardsContainer } from '@/components/ui/cursor-cards';
 import { motion } from 'motion/react';
-import { ArrowRight, ShieldCheck } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { useTheme } from 'next-themes';
 import HelixqueConnection from '@/components/ui/helixque-connection';
-import { MatchMingleThrive } from '@/components/ui/match-mingle-thrive';
+import { DottedMap } from '@/components/ui/dotted-map';
 
-// Removed dynamic map to avoid hydration issues
+// ----- Dotted Map Component -----
+const MapComponent = () => {
+  return (
+    <div className="relative h-full w-full overflow-hidden rounded-lg flex items-center justify-center">
+      <div className="w-full h-full min-h-[200px]">
+        <DottedMap
+          markers={[
+            {
+              lat: 40.7128,
+              lng: -74.006,
+              size: 0.5,
+            }, // New York
+            {
+              lat: 34.0522,
+              lng: -118.2437,
+              size: 0.5,
+            }, // Los Angeles
+            {
+              lat: 51.5074,
+              lng: -0.1278,
+              size: 0.5,
+            }, // London
+            {
+              lat: -33.8688,
+              lng: 151.2093,
+              size: 0.5,
+            }, // Sydney
+            {
+              lat: 35.6762,
+              lng: 139.6503,
+              size: 0.5,
+            }, // Tokyo
+            {
+              lat: 39.9042,
+              lng: 116.4074,
+              size: 0.5,
+            }, // Beijing
+            {
+              lat: 1.3521,
+              lng: 103.8198,
+              size: 0.5,
+            }, // Singapore
+            {
+              lat: 19.0760,
+              lng: 72.8777,
+              size: 0.5,
+            }, // Mumbai
+            {
+              lat: 37.5665,
+              lng: 126.9780,
+              size: 0.5,
+            }, // Seoul
+            {
+              lat: 13.7563,
+              lng: 100.5018,
+              size: 0.5,
+            }, // Bangkok
+          ]}
+        />
+      </div>
+    </div>
+  );
+};
 
 export const FeaturesSection = () => {
   const { theme } = useTheme();
@@ -36,97 +98,49 @@ export const FeaturesSection = () => {
     {/* Feature Cards Row 1 */}
     <div className="mt-10 flex w-full flex-col gap-4 md:mt-14">
       <CursorCardsContainer className="flex flex-col md:flex-row gap-6 md:h-[380px]">
-        {/* Card 1: Anonymous Onboarding with LinkedIn Verification */}
+        {/* Card 1: Copy. Paste. Ship. */}
         <CursorCard borderColor={theme === "dark" ? "#262626" : "#e5e5e5"} className="h-full md:w-[45%] w-full rounded-xl p-7 shadow-md bg-white dark:bg-neutral-950 border-gray-200 dark:border-neutral-800 overflow-hidden">
         <div className="h-full flex flex-col">
             <div className="mb-4 text-left">
-              <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">Anonymous, Verified Onboarding</h3>
+              <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">Professional Profile</h3>
               <p className="text-muted-foreground text-sm">
-                Sign in with LinkedIn to verify authenticity while staying anonymous. Your profile is validated in the background—reveal only when you choose.
+                Build a credible profile so matches understand your background and what you're looking for learning, mentoring, or collaboration.
               </p>
             </div>
             <div className="flex-1 flex items-center justify-center rounded-lg relative min-h-[240px] overflow-hidden">
-              {/* Abstract avatar + floating tags (pattern inspired by Helixque connection visuals) */}
-              <div className="absolute inset-0 pointer-events-none">
-                <div className="absolute -top-10 -right-10 w-48 h-48 rounded-full bg-gradient-to-br from-blue-500/10 via-blue-600/10 to-indigo-500/10 blur-2xl" />
-                <div className="absolute -bottom-12 -left-12 w-56 h-56 rounded-full bg-gradient-to-tr from-fuchsia-500/10 via-violet-500/10 to-sky-400/10 blur-2xl" />
-              </div>
-
-              <div className="relative z-[1] flex flex-col items-center gap-5">
-                {/* Stylish avatar */}
-                <div className="relative">
-                  <div className="size-20 rounded-xl bg-gradient-to-br from-blue-600 to-indigo-600 shadow-lg shadow-blue-500/20 ring-1 ring-white/10 dark:ring-white/5 grid place-items-center">
-                    <div className="size-10 rounded-full bg-white/90 dark:bg-neutral-900/90 ring-1 ring-black/5 dark:ring-white/10" />
-                  </div>
-                  <motion.div
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.6 }}
-                    className="absolute -inset-1 rounded-2xl bg-gradient-to-br from-blue-500/10 to-indigo-500/10"
+              <div className="text-center space-y-4 p-4">
+                <div className="w-16 h-16 mx-auto mb-4 bg-gray-100 dark:bg-neutral-800 rounded-lg flex items-center justify-center border border-gray-200 dark:border-neutral-700 p-2">
+                  <img 
+                    src="/logo.svg" 
+                    alt="HelixQue" 
+                    className="h-10 w-10 object-contain"
                   />
-                  {/* LinkedIn Verified badge */}
-                  <div className="absolute -bottom-2 -right-2 flex items-center gap-1 rounded-full border border-gray-200 dark:border-neutral-700 bg-white/80 dark:bg-neutral-900/70 backdrop-blur px-2 py-1">
-                    <span className="inline-flex h-4 w-4 items-center justify-center rounded-[3px] bg-[#0A66C2] text-[9px] font-bold text-white leading-none">in</span>
-                    <span className="text-[10px] text-gray-900 dark:text-white">Verified</span>
-                    <ShieldCheck className="h-3 w-3 text-emerald-500" />
-                  </div>
                 </div>
-
-                {/* Anonymous state + skill hints */}
-                <div className="relative w-[280px] h-[120px]">
-                  {/* Anonymous toggle-like chip */}
-                  <motion.div
-                    className="absolute left-1/2 -translate-x-1/2 -top-1 flex items-center gap-1.5 rounded-full border border-gray-200 dark:border-neutral-700 bg-white/80 dark:bg-neutral-900/70 backdrop-blur px-3 py-1 text-xs text-gray-900 dark:text-white"
-                    initial={{ opacity: 0, y: -6 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.4 }}
-                  >
-                    <span className="inline-block h-2.5 w-2.5 rounded-full bg-amber-500" />
-                    Anonymous
-                  </motion.div>
-                  <motion.div
-                    className="absolute left-2 top-3 rounded-full border border-gray-200 dark:border-neutral-700 bg-white/70 dark:bg-neutral-900/60 backdrop-blur px-3 py-1 text-xs text-gray-900 dark:text-white"
-                    animate={{ y: [0, -8, 0] }}
-                    transition={{ duration: 3, repeat: Infinity }}
-                  >
-                    Design Systems
-                  </motion.div>
-                  <motion.div
-                    className="absolute right-4 top-1 rounded-full border border-gray-200 dark:border-neutral-700 bg-white/70 dark:bg-neutral-900/60 backdrop-blur px-3 py-1 text-xs text-gray-900 dark:text-white"
-                    animate={{ y: [0, 6, 0] }}
-                    transition={{ duration: 2.8, repeat: Infinity, delay: 0.2 }}
-                  >
-                    AI/ML
-                  </motion.div>
-                  <motion.div
-                    className="absolute left-8 bottom-3 rounded-full border border-gray-200 dark:border-neutral-700 bg-white/70 dark:bg-neutral-900/60 backdrop-blur px-3 py-1 text-xs text-gray-900 dark:text-white"
-                    animate={{ y: [0, -6, 0] }}
-                    transition={{ duration: 2.6, repeat: Infinity, delay: 0.4 }}
-                  >
-                    Product Strategy
-                  </motion.div>
-                  <motion.div
-                    className="absolute right-8 bottom-1 rounded-full border border-gray-200 dark:border-neutral-700 bg-white/70 dark:bg-neutral-900/60 backdrop-blur px-3 py-1 text-xs text-gray-900 dark:text-white"
-                    animate={{ y: [0, 7, 0] }}
-                    transition={{ duration: 3.2, repeat: Infinity, delay: 0.1 }}
-                  >
-                    Fundraising
-                  </motion.div>
+                <div className="space-y-2">
+                  <div className="text-gray-900 dark:text-white text-sm font-medium">Professional Profile</div>
+                  <div className="text-muted-foreground text-xs">Skills • Languages • Experience Level • Goals</div>
+                </div>
+                <div className="flex gap-2 justify-center">
+                  <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
+                  <div className="w-2 h-2 bg-gray-400 dark:bg-neutral-600 rounded-full"></div>
+                  <div className="w-2 h-2 bg-green-500 rounded-full"></div>
                 </div>
               </div>
             </div>
           </div>
         </CursorCard>
 
-        {/* Card 2: Match. Mingle. Thrive. */}
-        <CursorCard borderColor={theme === "dark" ? "#262626" : "#e5e5e5"} className="h-full md:w-[55%] w-full rounded-xl p-7 shadow-md bg-white dark:bg-neutral-950 border-gray-200 dark:border-neutral-800 overflow-visible">
+        {/* Card 2: Map visual with more width */}
+        <CursorCard borderColor={theme === "dark" ? "#262626" : "#e5e5e5"} className="h-full md:w-[55%] w-full rounded-xl p-7 shadow-md bg-white dark:bg-neutral-950 border-gray-200 dark:border-neutral-800 overflow-hidden">
           <div className="h-full flex flex-col">
             <div className="mb-4 text-left">
-              <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">Match. Mingle. Thrive.</h3>
-              <p className="text-muted-foreground text-sm">Helixque's algorithm sparks authentic connections. Set your interests — get matched with inspiring professionals, founders, and VCs. Zero bias, just chemistry.</p>
+              <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">Smart Matching Algorithm</h3>
+              <p className="text-muted-foreground text-sm">
+                Filter by <strong>skills</strong>, <strong>industry</strong>, and <strong>language</strong>. Balance experience levels for better conversations. Randomized pairing to reduce bias.
+              </p>
             </div>
-            <div className="flex-1 relative overflow-hidden rounded-lg min-h-[260px]">
-              <MatchMingleThrive />
+            <div className="flex-1 relative overflow-hidden rounded-lg">
+              <MapComponent />
             </div>
           </div>
         </CursorCard>
