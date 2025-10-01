@@ -33,7 +33,7 @@ export const HeroSection = () => {
             <br/>
           
             <LayoutGroup>
-              <motion.span className="relative translate-x-0 flex gap-2 justify-center flex-wrap items-center" layout>
+              <motion.span className="relative translate-x-0 flex gap-0 justify-center flex-wrap items-center" layout>
                 <TextRotate
                   texts={words}
                   mainClassName="text-white dark:text-black px-3 bg-black dark:bg-white overflow-hidden py-1.5 justify-center rounded-lg"
