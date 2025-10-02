@@ -6,7 +6,7 @@ Whether you're fixing bugs, improving documentation, enhancing UI/UX, or adding 
 
 ---
 
-##  Hacktoberfest 2025
+## Hacktoberfest 2025
 
 We're excited to participate in **Hacktoberfest 2025**! This is a great opportunity to contribute to open source and earn recognition.
 
@@ -197,7 +197,7 @@ git push origin feature/your-feature-name
 
 Please create an issue with the following information:
 
-##  Suggesting Features/Bug Fixes/UI Enhancements
+## Suggesting Features/Bug Fixes/UI Enhancements
 
 Have an idea to improve the landing page? Create an issue with:
 
@@ -430,4 +430,4 @@ Your contributions help make Helixque more accessible and engaging for professio
 Built with ❤️ for the Helixque Community
 
 
-_Connecting professionals, one conversation at a time._
+*Connecting professionals, one conversation at a time.*
