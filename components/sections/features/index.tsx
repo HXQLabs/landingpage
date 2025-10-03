@@ -1,12 +1,16 @@
 "use client";
 import { TimelineContent } from "@/components/ui/timeline-animation";
-import { ArrowRight, PencilLine, Globe } from "lucide-react";
+import { ArrowRight, PencilLine, Globe, Users, TrendingUp, Activity, Calendar, BarChart3 } from "lucide-react";
 import { motion } from "motion/react";
 import { useRef, forwardRef } from "react";
 import Pill from "@/components/ui/pill";
 import { OrbitingCircles } from "@/components/magicui/orbiting-circles";
 import { AnimatedBeam } from "@/components/magicui/animated-beam";
 import { cn } from "@/lib/utils";
+import { AnimatedBarChart } from "@/components/ui/charts/animated-bar-chart";
+import { AnimatedLineChart } from "@/components/ui/charts/animated-line-chart";
+import { AnimatedPieChart } from "@/components/ui/charts/animated-pie-chart";
+import { MetricCard } from "@/components/ui/metric-card";
 
 // User components representing different nations
 const UserIcons = {
@@ -257,6 +261,31 @@ const Feature1 = () => {
   const div6Ref = useRef<HTMLDivElement>(null);
   const div7Ref = useRef<HTMLDivElement>(null);
 
+  // Sample data for charts - this would come from your API/database
+  const monthlyUsageData = [
+    { name: 'Jan', value: 4500, color: '#3b82f6' },
+    { name: 'Feb', value: 6200, color: '#3b82f6' },
+    { name: 'Mar', value: 8100, color: '#3b82f6' },
+    { name: 'Apr', value: 7800, color: '#3b82f6' },
+    { name: 'May', value: 9200, color: '#3b82f6' },
+    { name: 'Jun', value: 11500, color: '#3b82f6' },
+  ];
+
+  const userGrowthData = [
+    { name: 'Jan', value: 15000 },
+    { name: 'Feb', value: 18500 },
+    { name: 'Mar', value: 22100 },
+    { name: 'Apr', value: 28900 },
+    { name: 'May', value: 35200 },
+    { name: 'Jun', value: 45600 },
+  ];
+
+  const platformDistribution = [
+    { name: 'Web', value: 45, color: '#3b82f6' },
+    { name: 'Mobile', value: 35, color: '#10b981' },
+    { name: 'Desktop', value: 20, color: '#f59e0b' },
+  ];
+
   const revealVariants = {
     visible: (i: number) => ({
       y: 0,
@@ -288,12 +317,17 @@ const Feature1 = () => {
   return (
     <div className="w-full min-h-screen relative bg-white dark:bg-black">
       <section className="max-w-7xl mx-auto p-4 relative z-10" ref={featuresRef}>
+        {/* Header with Last Update Pill at the top */}
         <article className="max-w-5xl mx-auto py-10 text-center space-y-2 px-8">
-          {/* Add the pill at the top */}
-          <div className="flex justify-center mb-6">
+          {/* Last Update Pill moved to top */}
+          <div className="flex justify-center items-center gap-4 mb-6">
             <Pill variant="primary">
-              Features
+              Features & Analytics
             </Pill>
+            <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-green-50 dark:bg-green-950 border border-green-200 dark:border-green-800 text-green-700 dark:text-green-300 text-sm">
+              <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+              Last updated: 2 min ago
+            </div>
           </div>
           
           <TimelineContent
@@ -303,8 +337,8 @@ const Feature1 = () => {
             customVariants={revealVariants}
             className="md:text-5xl sm:text-4xl text-3xl font-medium text-black dark:text-white"
           >
-            Seamlessly Integrated, <br />
-            Powerful Features
+            Real-time Analytics & <br />
+            Powerful Insights
           </TimelineContent>
           <TimelineContent
             as="p"
@@ -313,16 +347,141 @@ const Feature1 = () => {
             customVariants={revealVariants}
             className="text-gray-600 dark:text-gray-400 sm:text-base text-sm sm:w-[70%] w-full mx-auto"
           >
-            Discover the tools that elevate your experience—AI-powered insights,
-            real-time user states, flexible memberships, instant chat, and
-            seamless remote connectivity.
+            Track your success with comprehensive analytics, real-time user engagement, 
+            and data-driven insights that help you make informed decisions for your business growth.
           </TimelineContent>
         </article>
+
+        {/* Key Metrics Row */}
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
+          <MetricCard
+            title="Total Users"
+            value={45600}
+            subtitle="Active this month"
+            icon={Users}
+            color="blue"
+            animationDelay={200}
+            trend={{ direction: "up", value: 12.5 }}
+          />
+          <MetricCard
+            title="Monthly Growth"
+            value={28.5}
+            subtitle="Compared to last month"
+            icon={TrendingUp}
+            color="green"
+            format="percentage"
+            animationDelay={400}
+            trend={{ direction: "up", value: 8.2 }}
+          />
+          <MetricCard
+            title="Active Sessions"
+            value={3420}
+            subtitle="Currently online"
+            icon={Activity}
+            color="purple"
+            animationDelay={600}
+            trend={{ direction: "up", value: 5.8 }}
+          />
+          <MetricCard
+            title="Revenue"
+            value={127500}
+            subtitle="This quarter"
+            icon={BarChart3}
+            color="orange"
+            format="currency"
+            animationDelay={800}
+            trend={{ direction: "up", value: 15.3 }}
+          />
+        </div>
+
         <div className="grid grid-cols-12 gap-4">
-        {/* Global User Network */}
+        {/* Monthly Usage Chart */}
         <TimelineContent
           as="div"
           animationNum={0}
+          timelineRef={featuresRef}
+          customVariants={revealVariants}
+          className="lg:col-span-8 sm:col-span-12 col-span-12 relative border rounded-xl p-6 border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-900"
+        >
+          <div className="mb-4">
+            <h3 className="text-xl font-semibold text-black dark:text-white mb-1">
+              Monthly Usage Statistics
+            </h3>
+            <p className="text-sm text-gray-600 dark:text-gray-400">
+              Track user engagement and platform usage over time
+            </p>
+          </div>
+          <AnimatedBarChart 
+            data={monthlyUsageData} 
+            height={250}
+            animationDelay={1000}
+          />
+        </TimelineContent>
+
+        {/* User Growth Chart */}
+        <TimelineContent
+          as="div"
+          animationNum={1}
+          timelineRef={featuresRef}
+          customVariants={revealVariants}
+          className="lg:col-span-4 sm:col-span-12 col-span-12 relative border rounded-xl p-6 border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-900"
+        >
+          <div className="mb-4">
+            <h3 className="text-lg font-semibold text-black dark:text-white mb-1">
+              User Growth
+            </h3>
+            <p className="text-sm text-gray-600 dark:text-gray-400">
+              Exponential growth trend
+            </p>
+          </div>
+          <AnimatedLineChart 
+            data={userGrowthData} 
+            height={200}
+            color="#10b981"
+            animationDelay={1200}
+          />
+        </TimelineContent>
+
+        {/* Platform Distribution */}
+        <TimelineContent
+          as="div"
+          animationNum={2}
+          timelineRef={featuresRef}
+          customVariants={revealVariants}
+          className="lg:col-span-4 sm:col-span-6 col-span-12 relative border rounded-xl p-6 border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-900"
+        >
+          <div className="mb-4">
+            <h3 className="text-lg font-semibold text-black dark:text-white mb-1">
+              Platform Usage
+            </h3>
+            <p className="text-sm text-gray-600 dark:text-gray-400">
+              Distribution across platforms
+            </p>
+          </div>
+          <AnimatedPieChart 
+            data={platformDistribution} 
+            height={160}
+            animationDelay={1400}
+          />
+          <div className="mt-4 space-y-2">
+            {platformDistribution.map((item, index) => (
+              <div key={index} className="flex items-center justify-between text-sm">
+                <div className="flex items-center gap-2">
+                  <div 
+                    className="w-3 h-3 rounded-full" 
+                    style={{ backgroundColor: item.color }}
+                  />
+                  <span className="text-gray-600 dark:text-gray-400">{item.name}</span>
+                </div>
+                <span className="font-medium text-gray-900 dark:text-white">{item.value}%</span>
+              </div>
+            ))}
+          </div>
+        </TimelineContent>
+        {/* Global User Network */}
+        <TimelineContent
+          as="div"
+          animationNum={3}
           timelineRef={featuresRef}
           customVariants={revealVariants}
           className="lg:col-span-5 sm:col-span-6 col-span-12 relative w-full h-[350px] rounded-xl overflow-hidden border border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-900"
@@ -360,10 +519,10 @@ const Feature1 = () => {
           </article>
         </TimelineContent>
 
-        {/* Usage Stats */}
+        {/* Enhanced Usage Stats */}
         <TimelineContent
           as="div"
-          animationNum={1}
+          animationNum={4}
           timelineRef={featuresRef}
           customVariants={revealVariants}
           className="lg:col-span-3 sm:col-span-6 col-span-12 border flex flex-col justify-between rounded-lg p-4 relative border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-900"
@@ -415,131 +574,149 @@ const Feature1 = () => {
               animate={{ scale: 1 }}
               transition={{ delay: 2.8, duration: 0.3, type: "spring" }}
             >
-              10M+
+              45.6K+
             </motion.h1>
             <p className="text-sm text-gray-200 dark:text-gray-300">
-              Used by millions of teams and professionals
+              Active users this month
             </p>
+            <div className="mt-3 flex items-center text-xs text-green-300">
+              <span className="mr-1">↗</span>
+              +28.5% from last month
+            </div>
           </motion.div>
         </TimelineContent>
 
-        {/* Memberships */}
+        {/* Enhanced Memberships */}
         <TimelineContent
           as="div"
-          animationNum={2}
+          animationNum={5}
           timelineRef={featuresRef}
           customVariants={revealVariants}
-          className="lg:col-span-4 sm:col-span-6 col-span-12 border rounded-lg p-4 group border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-900"
+          className="lg:col-span-4 sm:col-span-6 col-span-12 border rounded-lg p-6 group border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-900"
         >
-          <motion.h1
-            className="text-4xl font-semibold text-black dark:text-white"
+          <motion.div
+            className="flex items-center justify-between mb-4"
             initial={{ y: -10, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 1.6, duration: 0.5 }}
           >
-            Memberships
-          </motion.h1>
-          <motion.p
-            className="text-sm text-gray-600 dark:text-gray-400"
-            initial={{ y: -10, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: 1.8, duration: 0.5 }}
-          >
-            Generate revenue by creating memberships
-          </motion.p>
-          <div className="space-y-2 mt-6">
+            <div>
+              <h1 className="text-2xl font-semibold text-black dark:text-white">
+                Membership Plans
+              </h1>
+              <p className="text-sm text-gray-600 dark:text-gray-400">
+                Choose the perfect plan for your needs
+              </p>
+            </div>
+            <div className="p-2 rounded-lg bg-gradient-to-br from-purple-500 to-purple-600 text-white">
+              <Calendar className="w-5 h-5" />
+            </div>
+          </motion.div>
+          
+          <div className="space-y-3 mt-6">
             {[
               {
-                title: "Monthly",
-                desc: "$19 per month, unlimited",
+                title: "Starter",
+                desc: "$19/month • Perfect for individuals",
                 color: "green",
                 rotation: 0,
+                popular: false,
               },
               {
-                title: "Trial",
-                desc: "Free for 30 days",
-                color: "orange",
-                rotation: 3,
-              },
-              {
-                title: "Yearly",
-                desc: "$100 per year, unlimited",
+                title: "Professional",
+                desc: "$49/month • Best for teams",
                 color: "blue",
+                rotation: 1,
+                popular: true,
+              },
+              {
+                title: "Enterprise",
+                desc: "$99/month • Advanced features",
+                color: "purple",
                 rotation: -1,
+                popular: false,
               },
             ].map((item, i) => (
               <motion.div
                 key={i}
-                className={`flex gap-2 justify-between items-center bg-neutral-50 dark:bg-neutral-800 p-2 rounded-xl border border-neutral-200 dark:border-neutral-600 shadow-lg pl-7 relative before:content-[''] before:absolute before:left-2.5 before:rounded-md before:top-1.5 before:w-1.5 before:h-[80%] ${colorClasses[item.color as keyof typeof colorClasses]} group-hover:rotate-0 transition-all`}
+                className={`flex gap-3 justify-between items-center bg-neutral-50 dark:bg-neutral-800 p-4 rounded-xl border border-neutral-200 dark:border-neutral-600 shadow-lg pl-7 relative before:content-[''] before:absolute before:left-3 before:rounded-md before:top-3 before:w-1.5 before:h-[calc(100%-24px)] ${colorClasses[item.color as keyof typeof colorClasses]} group-hover:rotate-0 transition-all hover:shadow-xl ${item.popular ? 'ring-2 ring-blue-500 ring-offset-2 dark:ring-offset-neutral-900' : ''}`}
                 style={{
                   rotate: `${item.rotation}deg`,
-                  boxShadow: `0 10px 15px -3px rgb(${item.color === "green" ? "34 197 94" : item.color === "orange" ? "249 115 22" : "59 130 246"} / 0.1)`,
+                  boxShadow: `0 10px 15px -3px rgb(${item.color === "green" ? "34 197 94" : item.color === "blue" ? "59 130 246" : "147 51 234"} / 0.1)`,
                 }}
                 initial={{ x: -30, opacity: 0, rotate: item.rotation + 10 }}
                 animate={{ x: 0, opacity: 1, rotate: item.rotation }}
                 transition={{
-                  delay: i * 0.2,
+                  delay: 1.8 + i * 0.2,
                   duration: 0.6,
                   type: "spring",
                   stiffness: 100,
                 }}
-                whileHover={{ rotate: 0 }}
+                whileHover={{ rotate: 0, scale: 1.02 }}
               >
-                <div>
-                  <h3 className="font-semibold text-black dark:text-white">{item.title}</h3>
-                  <p className="text-sm text-gray-600 dark:text-gray-400">{item.desc}</p>
+                <div className="flex-1">
+                  <div className="flex items-center gap-2">
+                    <h3 className="font-semibold text-black dark:text-white">{item.title}</h3>
+                    {item.popular && (
+                      <span className="px-2 py-0.5 text-xs bg-blue-100 dark:bg-blue-900 text-blue-600 dark:text-blue-300 rounded-full">
+                        Popular
+                      </span>
+                    )}
+                  </div>
+                  <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">{item.desc}</p>
                 </div>
-                <ArrowRight className="text-black dark:text-white" />
+                <ArrowRight className="text-black dark:text-white w-5 h-5" />
               </motion.div>
             ))}
           </div>
         </TimelineContent>
 
+        {/* Remote Connectivity */}
         <TimelineContent
           as="div"
-          animationNum={3}
+          animationNum={6}
           timelineRef={featuresRef}
           customVariants={revealVariants}
-          className="lg:col-span-7 sm:col-span-6 col-span-12 relative border p-4 rounded-xl overflow-hidden border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-900"
+          className="lg:col-span-7 sm:col-span-6 col-span-12 relative border p-6 rounded-xl overflow-hidden border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-900"
         >
           <article className="w-full bg-gradient-to-t font-helvetica from-white via-white to-transparent dark:from-neutral-900 dark:via-neutral-900 dark:to-transparent">
             <h3 className="px-1 pt-1 text-black dark:text-white text-2xl font-medium">
-              Remote Connectivity
+              Seamless Integrations
             </h3>
-            <p className="mt-1 px-1 pb-1 font-normal text-gray-600 dark:text-gray-400 text-sm w-full">
-              Break free from traditional boundaries. Connect multiple platforms and services seamlessly through our unified network.
+            <p className="mt-1 px-1 pb-4 font-normal text-gray-600 dark:text-gray-400 text-sm w-full">
+              Connect multiple platforms and services through our unified API. Real-time synchronization ensures your data is always up-to-date across all connected services.
             </p>
           </article>
           
           <div
-            className="relative flex h-[300px] w-full items-center justify-center overflow-hidden"
+            className="relative flex h-[250px] w-full items-center justify-center overflow-hidden"
             ref={containerRef}
           >
             <div className="flex size-full max-w-lg flex-row items-stretch justify-between gap-10">
-              <div className="flex flex-col justify-center gap-2">
-                <Circle ref={div1Ref}>
+              <div className="flex flex-col justify-center gap-3">
+                <Circle ref={div1Ref} className="shadow-lg hover:shadow-xl transition-shadow">
                   <Icons.googleDrive />
                 </Circle>
-                <Circle ref={div2Ref}>
+                <Circle ref={div2Ref} className="shadow-lg hover:shadow-xl transition-shadow">
                   <Icons.notion />
                 </Circle>
-                <Circle ref={div3Ref}>
+                <Circle ref={div3Ref} className="shadow-lg hover:shadow-xl transition-shadow">
                   <Icons.whatsapp />
                 </Circle>
-                <Circle ref={div4Ref}>
+                <Circle ref={div4Ref} className="shadow-lg hover:shadow-xl transition-shadow">
                   <Icons.messenger />
                 </Circle>
-                <Circle ref={div5Ref}>
+                <Circle ref={div5Ref} className="shadow-lg hover:shadow-xl transition-shadow">
                   <Icons.googleDrive />
                 </Circle>
               </div>
               <div className="flex flex-col justify-center">
-                <Circle ref={div6Ref} className="size-16">
+                <Circle ref={div6Ref} className="size-16 shadow-xl">
                   <Icons.openai />
                 </Circle>
               </div>
               <div className="flex flex-col justify-center">
-                <Circle ref={div7Ref}>
+                <Circle ref={div7Ref} className="shadow-lg hover:shadow-xl transition-shadow">
                   <Icons.user />
                 </Circle>
               </div>
@@ -581,17 +758,42 @@ const Feature1 = () => {
         {/* Real Time Chat */}
         <TimelineContent
           as="div"
-          animationNum={4}
+          animationNum={7}
           timelineRef={featuresRef}
           customVariants={revealVariants}
-          className="lg:col-span-5 sm:col-span-6 col-span-12 relative border p-4 rounded-xl overflow-hidden border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-900"
+          className="lg:col-span-5 sm:col-span-6 col-span-12 relative border p-6 rounded-xl overflow-hidden border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-900"
         >
-          <div className="flex w-full max-w-md flex-col overflow-hidden rounded-xl bg-white dark:bg-neutral-800 shadow-lg">
+          <article className="mb-4">
+            <h3 className="text-black dark:text-white text-2xl font-medium mb-1">
+              Real-Time Communication
+            </h3>
+            <p className="font-normal text-gray-600 dark:text-gray-400 text-sm">
+              Intelligent chat system with AI-powered responses and seamless user experience across all devices.
+            </p>
+          </article>
+
+          <div className="flex w-full max-w-md flex-col overflow-hidden rounded-xl bg-white dark:bg-neutral-800 shadow-lg border border-neutral-200 dark:border-neutral-600">
+            {/* Chat Header */}
+            <div className="flex items-center justify-between p-4 border-b border-gray-200 dark:border-neutral-600">
+              <div className="flex items-center gap-3">
+                <div className="w-8 h-8 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center">
+                  <span className="text-white text-xs font-semibold">AI</span>
+                </div>
+                <div>
+                  <p className="font-medium text-gray-900 dark:text-white text-sm">Assistant</p>
+                  <div className="flex items-center gap-1">
+                    <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                    <span className="text-xs text-green-600 dark:text-green-400">Online</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
             {/* Messages Area */}
-            <div className="flex-1 space-y-4 p-4 overflow-hidden">
-              {/* Agent/Other person's message */}
+            <div className="flex-1 space-y-3 p-4 max-h-[200px] overflow-hidden">
+              {/* Agent message */}
               <motion.div
-                className="mr-auto relative max-w-[80%] rounded-lg bg-gray-100 dark:bg-neutral-700 p-3 text-gray-800 dark:text-gray-200"
+                className="mr-auto relative max-w-[85%] rounded-lg bg-gray-100 dark:bg-neutral-700 p-3 text-gray-800 dark:text-gray-200"
                 variants={messageVariants}
                 initial="hidden"
                 animate="visible"
@@ -601,28 +803,25 @@ const Feature1 = () => {
                   ease: "easeOut",
                 }}
               >
-                Hey! I see that your last transaction was a dining purchase, which qualifies for 5x
-                points, but only for Platinum Status Tier members. You are currently in the{" "}
-                <span className="font-semibold text-blue-500 border-b border-dashed border-blue-500">
-                  Gold Status Tier
-                </span>
-                , which means you currently earn 3x points on dining transactions.
+                <p className="text-sm">
+                  Your analytics show a <span className="font-semibold text-blue-600 dark:text-blue-400">28% increase</span> in user engagement this month. Would you like me to generate a detailed report?
+                </p>
                 <motion.button
-                  className="absolute -bottom-2 right-0 flex items-center gap-1 rounded-full bg-blue-500 px-2 py-1 text-xs text-white shadow-sm hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+                  className="absolute -bottom-2 right-0 flex items-center gap-1 rounded-full bg-blue-500 px-2 py-1 text-xs text-white shadow-sm hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors"
                   initial={{ scale: 0, rotate: 180 }}
                   animate={{ scale: 1, rotate: 0 }}
-                  transition={{ delay: 4.6, duration: 0.4, type: "spring" }}
-                  whileHover={{ scale: 1.1 }}
+                  transition={{ delay: 4.2, duration: 0.4, type: "spring" }}
+                  whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
                   <PencilLine className="h-3 w-3" />
-                  Adjust tone
+                  Smart suggestions
                 </motion.button>
               </motion.div>
 
-              {/* Our message (user's response) */}
+              {/* User response */}
               <motion.div
-                className="ml-auto relative max-w-[80%] rounded-lg bg-blue-500 p-3 text-white"
+                className="ml-auto relative max-w-[85%] rounded-lg bg-blue-500 p-3 text-white"
                 variants={messageVariants}
                 initial="hidden"
                 animate="visible"
@@ -632,47 +831,39 @@ const Feature1 = () => {
                   ease: "easeOut",
                 }}
               >
-                That&apos;s great to know! How can I upgrade to the Platinum Status Tier to get those 5x points on dining?
+                <p className="text-sm">
+                  Yes, please generate the report with key insights and recommendations.
+                </p>
               </motion.div>
             </div>
 
-            {/* Chat Input Area */}
+            {/* Chat Input */}
             <motion.div
-              className="flex items-center gap-2 border-t border-gray-200 dark:border-neutral-600 p-4"
+              className="flex items-center gap-2 border-t border-gray-200 dark:border-neutral-600 p-3"
               initial={{ y: 20, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ delay: 4.8, duration: 0.5 }}
             >
               <motion.input
                 type="text"
-                placeholder="Type your message..."
-                className="flex-1 rounded-lg border border-gray-300 dark:border-neutral-600 bg-gray-100 dark:bg-neutral-700 text-gray-900 dark:text-gray-100 placeholder-gray-500 dark:placeholder-gray-400 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                initial={{ width: "60%" }}
+                placeholder="Ask about your analytics..."
+                className="flex-1 rounded-lg border border-gray-300 dark:border-neutral-600 bg-gray-50 dark:bg-neutral-700 text-gray-900 dark:text-gray-100 placeholder-gray-500 dark:placeholder-gray-400 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 transition-colors"
+                initial={{ width: "70%" }}
                 animate={{ width: "100%" }}
                 transition={{ delay: 5.0, duration: 0.6 }}
               />
               <motion.button
-                className="flex h-10 w-10 items-center justify-center rounded-lg bg-blue-600 text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+                className="flex h-9 w-9 items-center justify-center rounded-lg bg-blue-600 text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-1 transition-colors"
                 initial={{ scale: 0, rotate: 180 }}
                 animate={{ scale: 1, rotate: 0 }}
                 transition={{ delay: 5.2, duration: 0.4, type: "spring" }}
                 whileHover={{ scale: 1.1, rotate: 10 }}
                 whileTap={{ scale: 0.9 }}
               >
-                <ArrowRight className="h-5 w-5" />
+                <ArrowRight className="h-4 w-4" />
               </motion.button>
             </motion.div>
           </div>
-
-          <article className="absolute right-0 top-0 left-0 w-full bg-gradient-to-b from-white via-white to-transparent dark:from-neutral-900 dark:via-neutral-900 dark:to-transparent p-6 pb-[100px] z-10">
-            <h3 className="px-1 pt-1 text-black dark:text-white text-2xl font-medium">
-              Real Time Chat
-            </h3>
-            <p className="mt-1 px-1 pb-1 font-normal text-gray-600 dark:text-gray-400 text-sm w-full">
-              This component displays an interactive stack of cards with smooth
-              hover animations, gradients, and blur effects.
-            </p>
-          </article>
         </TimelineContent>
       </div>
       </section>
