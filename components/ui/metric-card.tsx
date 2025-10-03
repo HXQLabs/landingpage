@@ -28,8 +28,8 @@ export function MetricCard({
   color = "blue",
   animationDelay = 0,
   format = "number",
-  prefix = "",
-  suffix = "",
+  prefix,
+  suffix,
   trend
 }: MetricCardProps) {
   const colorClasses = {
@@ -39,6 +39,9 @@ export function MetricCard({
     orange: "from-orange-500 to-orange-600 shadow-orange-500/20",
     red: "from-red-500 to-red-600 shadow-red-500/20",
   };
+
+  const resolvedPrefix = prefix ?? (format === "currency" ? "$" : "");
+  const resolvedSuffix = suffix ?? (format === "percentage" ? "%" : "");
 
   const formatValue = (val: number) => {
     switch (format) {
@@ -82,7 +85,7 @@ export function MetricCard({
           
           <div className="space-y-1">
             <div className="text-2xl font-bold text-gray-900 dark:text-white">
-              {prefix}
+              {resolvedPrefix}
               <NumberFlow 
                 value={value} 
                 format={{ notation: format === "currency" ? "compact" : "standard" }}
@@ -91,7 +94,7 @@ export function MetricCard({
                   easing: "ease-out",
                 }}
               />
-              {suffix}
+              {resolvedSuffix}
             </div>
             
             {subtitle && (
