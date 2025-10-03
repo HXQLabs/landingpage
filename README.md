@@ -8,7 +8,7 @@
 [![Discord](https://img.shields.io/badge/💬_Discord-Join_Community-5865F2?style=for-the-badge&logo=discord&logoColor=white)](https://discord.gg/helixque)
 [![GitHub Stars](https://img.shields.io/github/stars/HXQLabs/helixque-landing?style=for-the-badge&logo=github)](https://github.com/HXQLabs/helixque-landing)
 
-[Features](#-features) • [Tech Stack](#-tech-stack) • [Quick Start](#-quick-start) • [Contributing](#-contributing)
+[Features](#features) • [Tech Stack](#tech-stack) • [Quick Start](#quick-start) • [Contributing](#contributing)
 
 </div>
 
@@ -212,7 +212,7 @@ Built with amazing open-source tools:
 [![Join Discord](https://img.shields.io/badge/💬_Discord-Join_Community-5865F2?style=for-the-badge&logo=discord&logoColor=white)](https://discord.gg/helixque)
 
 
-### Built with ❤️ by the Helixque Community**
+### Built with ❤️ by the Helixque Community
 
 *Connecting professionals, one conversation at a time.*
 
