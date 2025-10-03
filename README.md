@@ -108,7 +108,7 @@ Open [http://localhost:3000](http://localhost:3000) to see the site! 🎉
 
 ## 📁 Project Structure
 
-```
+```text
 helixque-landing/
 ├── app/                  # Next.js App Router
 │   ├── layout.tsx       # Root layout with theme provider
@@ -121,7 +121,7 @@ helixque-landing/
 │   └── ui/              # Base components (buttons, cards)
 ├── hooks/               # Custom React hooks
 ├── lib/                 # Utility functions
-└── public/              # Static assets
+└── public/ 
 ```
 
 ---
@@ -212,7 +212,7 @@ Built with amazing open-source tools:
 [![Join Discord](https://img.shields.io/badge/💬_Discord-Join_Community-5865F2?style=for-the-badge&logo=discord&logoColor=white)](https://discord.gg/helixque)
 
 
-**Built with ❤️ by the Helixque Community**
+###Built with ❤️ by the Helixque Community**
 
 *Connecting professionals, one conversation at a time.*
 
