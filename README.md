@@ -8,7 +8,7 @@
 [![Discord](https://img.shields.io/badge/💬_Discord-Join_Community-5865F2?style=for-the-badge&logo=discord&logoColor=white)](https://discord.gg/helixque)
 [![GitHub Stars](https://img.shields.io/github/stars/HXQLabs/helixque-landing?style=for-the-badge&logo=github)](https://github.com/HXQLabs/helixque-landing)
 
-[Features](#features) • [Tech Stack](#tech-stack) • [Quick Start](#quick-start) • [Contributing](#contributing)
+<a href="#features">Features</a> • <a href="#tech-stack">Tech Stack</a> • <a href="#quick-start">Quick Start</a> • <a href="#contributing">Contributing</a>
 
 </div>
 
@@ -22,7 +22,7 @@ This repository contains the **landing page** for Helixque — a professional ne
 
 ---
 
-## ✨ Features
+<h2 id="features">✨ Features</h2>
 
 <table>
 <tr>
@@ -58,7 +58,7 @@ This repository contains the **landing page** for Helixque — a professional ne
 
 ---
 
-## 🛠 Tech Stack
+<h2 id="tech-stack">🛠 Tech Stack</h2>
 
 <div align="center">
 
@@ -80,7 +80,7 @@ This repository contains the **landing page** for Helixque — a professional ne
 
 ---
 
-## 🚀 Quick Start
+<h2 id="quick-start">🚀 Quick Start</h2>
 
 ### Prerequisites
 - Node.js 18+ or [Bun](https://bun.sh/)
@@ -126,7 +126,7 @@ helixque-landing/
 
 ---
 
-## 🤝 Contributing
+<h2 id="contributing">🤝 Contributing</h2>
 
 We welcome contributions from everyone! Whether you're fixing bugs, adding features, or improving documentation.
 
