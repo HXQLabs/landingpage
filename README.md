@@ -168,7 +168,7 @@ Helixque is more than just a platform, it's a growing network of professionals p
 
 - 🌐 **Visit Platform**: [helixque.vercel.app](https://helixque.vercel.app/)
 - ⭐ **Star on GitHub**: [github.com/HXQLabs/helixque-landing](https://github.com/HXQLabs/helixque-landing)
-- 💬 **Join Discord**: [discord.gg/helixque](https://discord.gg/helixque)
+- 💬 **Join Discord**: [discord.gg/helixque](https://discord.gg/dQUh6SY9Uk)
 - 🐛 **Report Issues**: [GitHub Issues](https://github.com/HXQLabs/helixque-landing/issues)
 - 🎨 **Contribute**: Submit PRs for features, fixes, or documentation
 
