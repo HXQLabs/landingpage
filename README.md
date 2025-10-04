@@ -1,6 +1,6 @@
 <div align="center">
 
-![Helixque Header](public/HelixQue.png)
+![Helixque Header](public/HelixQue2.png)
 
 **The official marketing website for Helixque** — where developers, designers, and founders connect for instant collaboration.
 
