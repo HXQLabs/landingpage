@@ -28,11 +28,13 @@ This repository contains the **landing page** for Helixque — a professional ne
 <tr>
 <td width="50%">
 
-### 🎨 Modern Design
-- Dark/light theme with smooth transitions
-- Responsive across all devices
-- 50+ custom UI components
-- Animated hero sections & interactive demos
+<h3>🎨 Modern Design</h3>
+<ul>
+  <li>Dark/light theme with smooth transitions</li>
+  <li>Responsive across all devices</li>
+  <li>50+ custom UI components</li>
+  <li>Animated hero sections & interactive demos</li>
+</ul>
 
 </td>
 <td width="50%">
