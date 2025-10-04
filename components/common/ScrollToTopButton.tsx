@@ -4,7 +4,6 @@ import React, { RefObject } from "react";
 import { FaArrowUp } from "react-icons/fa";
 
 interface Props {
-  /** if your app uses an inner scrollable container, pass its ref */
   scrollContainerRef?: RefObject<HTMLElement>;
   className?: string;
 }
