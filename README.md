@@ -401,7 +401,7 @@ This project is open source and available under the [MIT License](LICENSE).
 ## 📞 Connect & Support
 
 - 🌐 **Platform**: [helixque.vercel.app](https://helixque.vercel.app/)
-- 💬 **Discord**: [Join our community server](https://discord.gg/helixque)
+- 💬 **Discord**: [Join our community server](https://discord.gg/dQUh6SY9Uk)
 - ⭐ **GitHub**: [Star this repo and contribute](https://github.com/HXQLabs/helixque-landing)
 
 ---
@@ -410,4 +410,4 @@ Built with ❤️ for the Helixque Community
 
 _Connecting professionals, one conversation at a time._
 
-[Visit Platform](https://helixque.vercel.app/) • [Join Discord](https://discord.gg/helixque) • [Star on GitHub](https://github.com/HXQLabs/helixque-landing)
+[Visit Platform](https://helixque.vercel.app/) • [Join Discord](https://discord.gg/dQUh6SY9Uk) • [Star on GitHub](https://github.com/HXQLabs/helixque-landing)
