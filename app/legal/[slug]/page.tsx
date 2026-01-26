@@ -5,11 +5,11 @@ import { notFound } from 'next/navigation';
 import Markdown from 'react-markdown';
 import Link from 'next/link';
 
-export default async function LegalPage({ params }: { params: any }) {
+export default async function LegalPage({ params }: { params: Promise<{ slug: string }> }) {
   const dir = path.join(process.cwd(), 'content/legal');
 
   // Next warns that params can be async — await it to be safe
-  const resolvedParams = await (params as any);
+  const resolvedParams = await params;
   const rawSlug = resolvedParams?.slug;
   // normalize requested slug: lowercased and trimmed to tolerate filenames with stray spaces
   const requested = String(rawSlug || '').toLowerCase().trim();

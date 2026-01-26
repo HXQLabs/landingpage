@@ -5,8 +5,16 @@ import { Icons } from '@/components/utils/icons';
 import { BorderBeam } from '@/components/ui/border-beam';
 import Link from "next/link";
 
+interface DiscordData {
+  guild: {
+    name: string;
+  };
+  approximate_presence_count: number;
+  approximate_member_count: number;
+}
+
 export function CTASection() {
-  const [serverData, setServerData] = useState<any>(null);
+  const [serverData, setServerData] = useState<DiscordData | null>(null);
   const [error, setError] = useState(false);
   const hasRequiredEnvVars = process.env.NEXT_PUBLIC_DISCORD_INVITE_CODE && process.env.NEXT_PUBLIC_GITHUB_REPO;
 

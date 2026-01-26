@@ -1,0 +1,34 @@
+#!/usr/bin/env sh
+
+echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+echo "🚀 PRE-PUSH CHECKS"
+echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+echo ""
+
+# Verify TypeScript compilation succeeds
+echo "┌─ [1/1] Build Verification"
+echo "│  Ensuring code compiles successfully before push..."
+echo "│"
+if pnpm exec tsc --noEmit > /dev/null 2>&1; then
+  echo "│  ✅ Build successful - code compiles without errors"
+  echo "└─────────────────────────────────────────────────────────────────────────"
+else
+  echo "│  ❌ Build failed!"
+  echo "│"
+  echo "│  The TypeScript code does not compile successfully."
+  echo "│  Please fix compilation errors before pushing."
+  echo "│"
+  echo "└─────────────────────────────────────────────────────────────────────────"
+  echo ""
+  echo "💡 Tip: Run 'pnpm build' to see detailed compilation errors"
+  exit 1
+fi
+echo ""
+
+echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+echo "✅ ALL PRE-PUSH CHECKS PASSED!"
+echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+echo ""
+echo "✨ Ready to push to remote!"
+echo ""
+

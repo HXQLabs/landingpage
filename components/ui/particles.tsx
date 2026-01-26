@@ -219,6 +219,7 @@ export function Particles({
     },
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const deepMerge = (target: any, source: any) => {
     const output = { ...target }
     if (source) {

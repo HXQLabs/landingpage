@@ -277,7 +277,17 @@ const COUNTRY_FLAGS = [
   { flag: "🇿🇦", name: "South Africa" },
 ];
 
-function SemiCircleOrbit({ radius, centerX, centerY, count, iconSize, flags, isInner = false }: any) {
+interface OrbitProps {
+  radius: number;
+  centerX: number;
+  centerY: number;
+  count: number;
+  iconSize: number;
+  flags: { flag: string; name: string }[];
+  isInner?: boolean;
+}
+
+function SemiCircleOrbit({ radius, centerX, centerY, count, iconSize, flags, isInner = false }: OrbitProps) {
   return (
     <>
       {/* Orbit flags */}
@@ -354,11 +364,13 @@ const SmartMatchingVisualization = () => {
           />
         </div>
         
-        {/* Bottom Center Helixque Logo */}
-        <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 z-10">
-          <img 
-            src="/logo.svg" 
-            alt="HelixQue" 
+          
+          {/* Bottom Center Helixque Logo */}
+          <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 z-10">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img 
+              src="/logo.svg" 
+              alt="HelixQue" 
             className="h-16 w-16 object-contain"
           />
         </div>
@@ -471,7 +483,7 @@ export const FeaturesSection = () => {
                   className="mb-1 md:mb-2"
                 >
                                     <div className="rounded-lg mb-1 ml-auto w-fit max-w-[85%] bg-blue-600 p-2 md:p-2.5 text-[10px] md:text-xs text-white text-left leading-relaxed">
-                    Sure. Let's connect now!
+                    Sure. Let&apos;s connect now!
                   </div>
                   <div className="flex items-center justify-end gap-1.5 md:gap-2">
                     <span className="text-gray-900 dark:text-white text-[10px] md:text-xs font-medium">You</span>

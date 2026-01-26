@@ -13,7 +13,7 @@ export const AuroraText = memo(
   ({
     children,
     className = "",
-    colors = ["#FF8C00", "#FF6B35", "#FF4500", "#FFA500"],
+    colors = ["#4285F4", "#EA4335", "#FBBC05", "#34A853"],
     speed = 1,
   }: AuroraTextProps) => {
     const gradientStyle = {
@@ -23,6 +23,7 @@ export const AuroraText = memo(
       WebkitBackgroundClip: "text",
       WebkitTextFillColor: "transparent",
       animationDuration: `${10 / speed}s`,
+      willChange: "background-position",
     }
 
     return (

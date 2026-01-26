@@ -91,14 +91,14 @@ const StickyFooter = () => {
                   </li>
                   <li>
                     <Link 
-                      href="https://hacktoberfest.com" 
-                      className="flex items-center gap-2 text-muted-foreground hover:text-[#5A5AB5] transition-colors duration-200 group" 
-                      aria-label="Hacktoberfest" 
+                      href="https://summerofcode.withgoogle.com/" 
+                      className="flex items-center gap-2 text-muted-foreground hover:text-[#4285F4] transition-colors duration-200 group" 
+                      aria-label="Google Summer of Code" 
                       target="_blank" 
                       rel="noopener noreferrer"
                     >
-                      <Icons.hacktoberfest className="h-4 w-4" />
-                      <span className="text-sm font-medium">Hacktoberfest</span>
+                      <Icons.google className="h-4 w-4" />
+                      <span className="text-sm font-medium">GSoC 2026</span>
                       <ArrowUpRight className="h-3 w-3 opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
                     </Link>
                   </li>

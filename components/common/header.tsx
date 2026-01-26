@@ -57,7 +57,7 @@ export default function HelixQueHeader({ className }: HelixQueHeaderProps) {
   const navigationItems = [
     { href: "/changelog", label: "Changelog", isSpecial: false },
     { href: "/announcements", label: "Announcements", isSpecial: false },
-    // { href: "/hacktoberfest", label: "Hacktoberfest", isSpecial: true }
+    { href: "/gsoc", label: "GSoC 2026", isSpecial: true }
   ];
 
   return (
@@ -97,11 +97,11 @@ export default function HelixQueHeader({ className }: HelixQueHeaderProps) {
                     href={item.href} 
                     className={`text-[13.5px] transition-all duration-300 ease-out relative ${
                       item.isSpecial 
-                        ? "text-orange-600 hover:text-orange-700 dark:text-orange-400 dark:hover:text-orange-300 font-semibold" 
+                        ? "text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300 font-semibold" 
                         : "text-muted-foreground hover:text-foreground"
                     }`}
                   >
-                    {item.label}{item.isSpecial && " 🔥"}
+                    {item.label}
                   </Link>
                 </li>
               ))}

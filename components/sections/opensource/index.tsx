@@ -99,9 +99,11 @@ export const OpensourceSection = () => {
         setRepo(r);
         setContributors(Array.isArray(c) ? c : []);
         setLanguages(l || {});
-      } catch (e: any) {
-        if (e?.name !== 'AbortError') {
-          setErr(e?.message || 'Failed to load GitHub data');
+      } catch (e: unknown) {
+        if (e instanceof Error && e.name !== 'AbortError') {
+          setErr(e.message || 'Failed to load GitHub data');
+        } else if (typeof e === 'string') {
+          setErr(e);
         }
       } finally {
         if (mounted) setLoading(false);

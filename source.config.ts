@@ -29,7 +29,7 @@ export const { docs: announcementDocs, meta: announcementMeta } = defineDocs({
     schema: frontmatterSchema.extend({
       date: z.string(),
       tags: z.array(z.string()).optional(),
-      priority: z.enum(["high", "medium", "low","hacktoberfest","milestone"]).optional(),
+      priority: z.enum(["high", "medium", "low","hacktoberfest","milestone", "gsoc"]).optional(),
     }),
   },
 })
