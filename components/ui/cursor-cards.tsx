@@ -1,74 +1,71 @@
-"use client"
+"use client";
 
-import React, { useCallback, useEffect, useRef } from "react"
-import { motion, useMotionTemplate, useMotionValue } from "motion/react"
+import React, { useCallback, useEffect, useRef } from "react";
+import { motion, useMotionTemplate, useMotionValue } from "motion/react";
 
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/utils";
 
 interface CursorCardsContainerProps {
-  children: React.ReactNode
-  className?: string
-  proximityRange?: number
+  children: React.ReactNode;
+  className?: string;
+  proximityRange?: number;
 }
 
 interface CursorCardProps {
-  children?: React.ReactNode
-  className?: string
-  illuminationRadius?: number
-  illuminationColor?: string
-  illuminationOpacity?: number
-  primaryHue?: string
-  secondaryHue?: string
-  borderColor?: string
+  children?: React.ReactNode;
+  className?: string;
+  illuminationRadius?: number;
+  illuminationColor?: string;
+  illuminationOpacity?: number;
+  primaryHue?: string;
+  secondaryHue?: string;
+  borderColor?: string;
 }
 
 interface InternalCursorCardProps extends CursorCardProps {
-  globalMouseX?: number
-  globalMouseY?: number
-  isWithinRange?: boolean
+  globalMouseX?: number;
+  globalMouseY?: number;
+  isWithinRange?: boolean;
 }
 
 function useMousePosition(proximityRange: number) {
-  const wrapperRef = useRef<HTMLDivElement>(null)
-  const proximityRangeRef = useRef(proximityRange)
+  const wrapperRef = useRef<HTMLDivElement>(null);
+  const proximityRangeRef = useRef(proximityRange);
   const [mouseState, setMouseState] = React.useState({
     mousePositionX: 0,
     mousePositionY: 0,
     isWithinRange: false,
-  })
+  });
 
   // Update the ref when proximityRange changes
-  proximityRangeRef.current = proximityRange
+  proximityRangeRef.current = proximityRange;
 
-  const handlePointerMovement = useCallback(
-    (event: PointerEvent) => {
-      if (!wrapperRef.current) return
+  const handlePointerMovement = useCallback((event: PointerEvent) => {
+    if (!wrapperRef.current) return;
 
-      const bounds = wrapperRef.current.getBoundingClientRect()
-      const { clientX, clientY } = event
+    const bounds = wrapperRef.current.getBoundingClientRect();
+    const { clientX, clientY } = event;
 
-      const isInProximity =
-        clientX >= bounds.left - proximityRangeRef.current &&
-        clientX <= bounds.right + proximityRangeRef.current &&
-        clientY >= bounds.top - proximityRangeRef.current &&
-        clientY <= bounds.bottom + proximityRangeRef.current
+    const isInProximity =
+      clientX >= bounds.left - proximityRangeRef.current &&
+      clientX <= bounds.right + proximityRangeRef.current &&
+      clientY >= bounds.top - proximityRangeRef.current &&
+      clientY <= bounds.bottom + proximityRangeRef.current;
 
-      setMouseState({
-        mousePositionX: clientX,
-        mousePositionY: clientY,
-        isWithinRange: isInProximity,
-      })
-    },
-    []
-  )
+    setMouseState({
+      mousePositionX: clientX,
+      mousePositionY: clientY,
+      isWithinRange: isInProximity,
+    });
+  }, []);
 
   useEffect(() => {
-    document.addEventListener("pointermove", handlePointerMovement)
+    document.addEventListener("pointermove", handlePointerMovement);
     return () =>
-      document.removeEventListener("pointermove", handlePointerMovement)
-  }, [handlePointerMovement])
+      document.removeEventListener("pointermove", handlePointerMovement);
+  }, [handlePointerMovement]);
 
-  return { wrapperRef, mouseState }
+  return { wrapperRef, mouseState };
 }
 
 function useCardActivation(
@@ -76,37 +73,37 @@ function useCardActivation(
   globalMouseX: number,
   globalMouseY: number,
   isWithinRange: boolean,
-  illuminationRadius: number
+  illuminationRadius: number,
 ) {
-  const localMouseX = useMotionValue(-illuminationRadius)
-  const localMouseY = useMotionValue(-illuminationRadius)
-  const [isCardActive, setIsCardActive] = React.useState(false)
+  const localMouseX = useMotionValue(-illuminationRadius);
+  const localMouseY = useMotionValue(-illuminationRadius);
+  const [isCardActive, setIsCardActive] = React.useState(false);
 
   useEffect(() => {
     if (!elementRef.current || !isWithinRange) {
-      setIsCardActive(false)
-      localMouseX.set(-illuminationRadius)
-      localMouseY.set(-illuminationRadius)
-      return
+      setIsCardActive(false);
+      localMouseX.set(-illuminationRadius);
+      localMouseY.set(-illuminationRadius);
+      return;
     }
 
-    const rect = elementRef.current.getBoundingClientRect()
-    const extendedProximity = 100
+    const rect = elementRef.current.getBoundingClientRect();
+    const extendedProximity = 100;
 
     const isNearCard =
       globalMouseX >= rect.left - extendedProximity &&
       globalMouseX <= rect.right + extendedProximity &&
       globalMouseY >= rect.top - extendedProximity &&
-      globalMouseY <= rect.bottom + extendedProximity
+      globalMouseY <= rect.bottom + extendedProximity;
 
-    setIsCardActive(isNearCard)
+    setIsCardActive(isNearCard);
 
     if (isNearCard) {
-      localMouseX.set(globalMouseX - rect.left)
-      localMouseY.set(globalMouseY - rect.top)
+      localMouseX.set(globalMouseX - rect.left);
+      localMouseY.set(globalMouseY - rect.top);
     } else {
-      localMouseX.set(-illuminationRadius)
-      localMouseY.set(-illuminationRadius)
+      localMouseX.set(-illuminationRadius);
+      localMouseY.set(-illuminationRadius);
     }
   }, [
     globalMouseX,
@@ -115,9 +112,9 @@ function useCardActivation(
     illuminationRadius,
     localMouseX,
     localMouseY,
-  ])
+  ]);
 
-  return { localMouseX, localMouseY, isCardActive }
+  return { localMouseX, localMouseY, isCardActive };
 }
 
 export function CursorCardsContainer({
@@ -125,7 +122,7 @@ export function CursorCardsContainer({
   className,
   proximityRange = 400,
 }: CursorCardsContainerProps) {
-  const { wrapperRef, mouseState } = useMousePosition(proximityRange)
+  const { wrapperRef, mouseState } = useMousePosition(proximityRange);
 
   const enhancedChildren = React.Children.map(children, (child) => {
     if (React.isValidElement(child) && child.type === CursorCard) {
@@ -135,17 +132,17 @@ export function CursorCardsContainer({
           globalMouseX: mouseState.mousePositionX,
           globalMouseY: mouseState.mousePositionY,
           isWithinRange: mouseState.isWithinRange,
-        }
-      )
+        },
+      );
     }
-    return child
-  })
+    return child;
+  });
 
   return (
     <div ref={wrapperRef} className={cn("relative", className)}>
       {enhancedChildren}
     </div>
-  )
+  );
 }
 
 export function CursorCard({
@@ -161,14 +158,14 @@ export function CursorCard({
   globalMouseY = 0,
   isWithinRange = false,
 }: InternalCursorCardProps) {
-  const elementRef = useRef<HTMLDivElement>(null)
+  const elementRef = useRef<HTMLDivElement>(null);
   const { localMouseX, localMouseY, isCardActive } = useCardActivation(
     elementRef,
     globalMouseX,
     globalMouseY,
     isWithinRange,
-    illuminationRadius
-  )
+    illuminationRadius,
+  );
 
   const gradientBackground = useMotionTemplate`
     radial-gradient(${illuminationRadius}px circle at ${localMouseX}px ${localMouseY}px,
@@ -176,12 +173,12 @@ export function CursorCard({
     ${secondaryHue},
     ${borderColor} 100%
     )
-  `
+  `;
 
   const illuminationBackground = useMotionTemplate`
     radial-gradient(${illuminationRadius}px circle at ${localMouseX}px ${localMouseY}px, 
     ${illuminationColor}, transparent 100%)
-  `
+  `;
 
   return (
     <div
@@ -196,7 +193,7 @@ export function CursorCard({
       <motion.div
         className={cn(
           "pointer-events-none absolute inset-px rounded-[inherit] opacity-0 transition-opacity duration-300",
-          isCardActive && "opacity-100"
+          isCardActive && "opacity-100",
         )}
         style={{
           background: illuminationBackground,
@@ -205,5 +202,5 @@ export function CursorCard({
       />
       <div className="relative">{children}</div>
     </div>
-  )
+  );
 }

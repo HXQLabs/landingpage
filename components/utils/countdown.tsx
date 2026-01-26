@@ -1,31 +1,31 @@
-"use client"
+"use client";
 
-import { useEffect, useState } from "react"
+import { useEffect, useState } from "react";
 
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/utils";
 
-const baseSaleEndDate = new Date("2024-12-31T23:59:59")
+const baseSaleEndDate = new Date("2024-12-31T23:59:59");
 
-const now = new Date()
-const timeSinceBase = now.getTime() - baseSaleEndDate.getTime()
+const now = new Date();
+const timeSinceBase = now.getTime() - baseSaleEndDate.getTime();
 const weeksPassed = Math.max(
   0,
-  Math.ceil(timeSinceBase / (7 * 24 * 60 * 60 * 1000))
-)
+  Math.ceil(timeSinceBase / (7 * 24 * 60 * 60 * 1000)),
+);
 const saleEndDate = new Date(
-  baseSaleEndDate.getTime() + weeksPassed * 7 * 24 * 60 * 60 * 1000
-)
+  baseSaleEndDate.getTime() + weeksPassed * 7 * 24 * 60 * 60 * 1000,
+);
 
 interface TimeLeft {
-  days: number
-  hours: number
-  minutes: number
-  seconds: number
-  isExpired: boolean
+  days: number;
+  hours: number;
+  minutes: number;
+  seconds: number;
+  isExpired: boolean;
 }
 
 interface CountdownProps {
-  className?: string
+  className?: string;
 }
 
 export function Countdown({ className }: CountdownProps) {
@@ -35,12 +35,12 @@ export function Countdown({ className }: CountdownProps) {
     minutes: 0,
     seconds: 0,
     isExpired: false,
-  })
+  });
 
   useEffect(() => {
     const calculateTimeLeft = () => {
-      const now = new Date()
-      const difference = saleEndDate.getTime() - now.getTime()
+      const now = new Date();
+      const difference = saleEndDate.getTime() - now.getTime();
 
       if (difference <= 0) {
         setTimeLeft({
@@ -49,16 +49,16 @@ export function Countdown({ className }: CountdownProps) {
           minutes: 0,
           seconds: 0,
           isExpired: true,
-        })
-        return
+        });
+        return;
       }
 
-      const days = Math.floor(difference / (1000 * 60 * 60 * 24))
+      const days = Math.floor(difference / (1000 * 60 * 60 * 24));
       const hours = Math.floor(
-        (difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-      )
-      const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60))
-      const seconds = Math.floor((difference % (1000 * 60)) / 1000)
+        (difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60),
+      );
+      const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((difference % (1000 * 60)) / 1000);
 
       setTimeLeft({
         days,
@@ -66,16 +66,16 @@ export function Countdown({ className }: CountdownProps) {
         minutes,
         seconds,
         isExpired: false,
-      })
-    }
+      });
+    };
 
-    calculateTimeLeft()
-    const timer = setInterval(calculateTimeLeft, 1000)
+    calculateTimeLeft();
+    const timer = setInterval(calculateTimeLeft, 1000);
 
-    return () => clearInterval(timer)
-  }, [])
+    return () => clearInterval(timer);
+  }, []);
 
-  if (timeLeft.isExpired) return null
+  if (timeLeft.isExpired) return null;
 
   return (
     <div className={cn("flex justify-center", className)}>
@@ -85,23 +85,39 @@ export function Countdown({ className }: CountdownProps) {
         </span>
         <div className="divide-border bg-secondary flex items-center divide-x overflow-hidden rounded-md border text-xs sm:text-sm tabular-nums w-full">
           <span className="flex h-7 sm:h-8 items-center justify-center flex-1 p-1 sm:p-2 shadow-[0_0_24px_#b9e7ec10_inset]">
-            <span className="text-xs sm:text-sm font-medium">{timeLeft.days}</span>
-            <span className="text-muted-foreground text-[10px] sm:text-xs ml-0.5">d</span>
+            <span className="text-xs sm:text-sm font-medium">
+              {timeLeft.days}
+            </span>
+            <span className="text-muted-foreground text-[10px] sm:text-xs ml-0.5">
+              d
+            </span>
           </span>
           <span className="flex h-7 sm:h-8 items-center justify-center flex-1 p-1 sm:p-2 shadow-[0_0_24px_#b9e7ec10_inset]">
-            <span className="text-xs sm:text-sm font-medium">{timeLeft.hours.toString().padStart(2, "0")}</span>
-            <span className="text-muted-foreground text-[10px] sm:text-xs ml-0.5">h</span>
+            <span className="text-xs sm:text-sm font-medium">
+              {timeLeft.hours.toString().padStart(2, "0")}
+            </span>
+            <span className="text-muted-foreground text-[10px] sm:text-xs ml-0.5">
+              h
+            </span>
           </span>
           <span className="flex h-7 sm:h-8 items-center justify-center flex-1 p-1 sm:p-2 shadow-[0_0_24px_#b9e7ec10_inset]">
-            <span className="text-xs sm:text-sm font-medium">{timeLeft.minutes.toString().padStart(2, "0")}</span>
-            <span className="text-muted-foreground text-[10px] sm:text-xs ml-0.5">m</span>
+            <span className="text-xs sm:text-sm font-medium">
+              {timeLeft.minutes.toString().padStart(2, "0")}
+            </span>
+            <span className="text-muted-foreground text-[10px] sm:text-xs ml-0.5">
+              m
+            </span>
           </span>
           <span className="flex h-7 sm:h-8 items-center justify-center flex-1 p-1 sm:p-2 shadow-[0_0_24px_#b9e7ec10_inset]">
-            <span className="text-xs sm:text-sm font-medium">{timeLeft.seconds.toString().padStart(2, "0")}</span>
-            <span className="text-muted-foreground text-[10px] sm:text-xs ml-0.5">s</span>
+            <span className="text-xs sm:text-sm font-medium">
+              {timeLeft.seconds.toString().padStart(2, "0")}
+            </span>
+            <span className="text-muted-foreground text-[10px] sm:text-xs ml-0.5">
+              s
+            </span>
           </span>
         </div>
       </div>
     </div>
-  )
+  );
 }

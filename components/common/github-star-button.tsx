@@ -1,51 +1,51 @@
-"use client"
+"use client";
 
-import { useEffect, useState } from "react"
-import Link from "next/link"
-import NumberFlow, { useCanAnimate } from "@number-flow/react"
-import { motion, MotionConfig } from "motion/react"
+import { useEffect, useState } from "react";
+import Link from "next/link";
+import NumberFlow, { useCanAnimate } from "@number-flow/react";
+import { motion, MotionConfig } from "motion/react";
 
-import { cn } from "@/lib/utils"
-import { Icons } from "@/components/utils/icons"
+import { cn } from "@/lib/utils";
+import { Icons } from "@/components/utils/icons";
 
-const MotionNumberFlow = motion.create(NumberFlow)
-const ANIMATION_DURATION = 900
+const MotionNumberFlow = motion.create(NumberFlow);
+const ANIMATION_DURATION = 900;
 
 export function GithubStarButton({ className }: { className?: string }) {
-  const [stars, setStars] = useState<number | null>(null)
-  const [displayValue, setDisplayValue] = useState<number | null>(null)
-  const [isStarHovered, setIsStarHovered] = useState(false)
-  const canAnimate = useCanAnimate()
+  const [stars, setStars] = useState<number | null>(null);
+  const [displayValue, setDisplayValue] = useState<number | null>(null);
+  const [isStarHovered, setIsStarHovered] = useState(false);
+  const canAnimate = useCanAnimate();
 
   const generateRandomNumber = (length: number) => {
-    const targetLength = length + 2
-    const min = Math.pow(10, targetLength - 1)
-    const max = Math.pow(10, targetLength) - 1
-    return Math.floor(Math.random() * (max - min + 1)) + min
-  }
+    const targetLength = length + 2;
+    const min = Math.pow(10, targetLength - 1);
+    const max = Math.pow(10, targetLength) - 1;
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  };
 
   const animateValue = (value: number) => {
-    const randomValue = generateRandomNumber(value.toString().length)
-    setDisplayValue(randomValue)
-    setTimeout(() => setDisplayValue(value), ANIMATION_DURATION)
-  }
+    const randomValue = generateRandomNumber(value.toString().length);
+    setDisplayValue(randomValue);
+    setTimeout(() => setDisplayValue(value), ANIMATION_DURATION);
+  };
 
   useEffect(() => {
     const fetchStars = async () => {
       try {
         const response = await fetch(
-          "https://api.github.com/repos/HXQLabs/helixque"
-        )
-        const data = await response.json()
-        setStars(data.stargazers_count)
-        setDisplayValue(data.stargazers_count)
+          "https://api.github.com/repos/HXQLabs/helixque",
+        );
+        const data = await response.json();
+        setStars(data.stargazers_count);
+        setDisplayValue(data.stargazers_count);
       } catch (error) {
-        console.error("Error fetching GitHub stars:", error)
+        console.error("Error fetching GitHub stars:", error);
       }
-    }
+    };
 
-    fetchStars()
-  }, [])
+    fetchStars();
+  }, []);
 
   return (
     <MotionConfig
@@ -59,20 +59,20 @@ export function GithubStarButton({ className }: { className?: string }) {
         target="_blank"
         href="https://github.com/HXQLabs/helixque"
         onMouseEnter={() => {
-          setIsStarHovered(true)
-          if (stars) animateValue(stars)
+          setIsStarHovered(true);
+          if (stars) animateValue(stars);
         }}
         onMouseLeave={() => setIsStarHovered(false)}
         onClick={() => {
           if (typeof window !== "undefined" && window.datafast) {
-            window.datafast("clicked_github_from_nav")
+            window.datafast("clicked_github_from_nav");
           }
         }}
       >
         <motion.span
           className={cn(
             "group/contribute hover:bg-muted inline-flex h-[30px] items-center gap-2 overflow-hidden rounded-md bg-transparent px-2 text-[13.5px] transition-colors duration-200 [&_svg]:pointer-events-none [&_svg]:size-3.5 [&_svg]:shrink-0",
-            className
+            className,
           )}
           layout
         >
@@ -116,5 +116,5 @@ export function GithubStarButton({ className }: { className?: string }) {
         </motion.span>
       </Link>
     </MotionConfig>
-  )
+  );
 }

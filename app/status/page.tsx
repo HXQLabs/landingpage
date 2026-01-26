@@ -3,7 +3,8 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "System Status",
-  description: "Check the current status of all our services and view incident history.",
+  description:
+    "Check the current status of all our services and view incident history.",
 };
 
 export default function StatusPage() {
@@ -16,14 +17,15 @@ export default function StatusPage() {
           </h1>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             Monitor the real-time status of our services and infrastructure.
-            Check service uptime, view incident history, and stay informed about any ongoing issues.
+            Check service uptime, view incident history, and stay informed about
+            any ongoing issues.
           </p>
         </div>
-        
+
         <div className="flex justify-center">
           <SystemStatusBlock />
         </div>
-        
+
         <div className="mt-12 text-center">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-muted text-muted-foreground text-sm">
             <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>

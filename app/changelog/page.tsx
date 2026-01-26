@@ -1,36 +1,36 @@
-import { docs, meta } from "@/.source"
-import { loader } from "fumadocs-core/source"
-import { createMDXSource } from "fumadocs-mdx"
-import { useMemo } from "react"
-import { formatDate } from "@/lib/utils"
+import { docs, meta } from "@/.source";
+import { loader } from "fumadocs-core/source";
+import { createMDXSource } from "fumadocs-mdx";
+import { useMemo } from "react";
+import { formatDate } from "@/lib/utils";
 
 const source = loader({
   baseUrl: "/docs",
   source: createMDXSource(docs, meta),
-})
+});
 
 interface ChangelogData {
-  title: string
-  date: string
-  version?: string
-  tags?: string[]
-  body: React.ComponentType
+  title: string;
+  date: string;
+  version?: string;
+  tags?: string[];
+  body: React.ComponentType;
 }
 
 interface ChangelogPage {
-  url: string
-  data: ChangelogData
+  url: string;
+  data: ChangelogData;
 }
 
 export default function ChangelogPage() {
   const sortedChangelogs = useMemo(() => {
-    const allPages = source.getPages() as ChangelogPage[]
+    const allPages = source.getPages() as ChangelogPage[];
     return allPages.sort((a, b) => {
-      const dateA = new Date(a.data.date).getTime()
-      const dateB = new Date(b.data.date).getTime()
-      return dateB - dateA
-    })
-  }, [])
+      const dateA = new Date(a.data.date).getTime();
+      const dateB = new Date(b.data.date).getTime();
+      return dateB - dateA;
+    });
+  }, []);
 
   return (
     <div className="min-h-screen bg-background relative">
@@ -42,7 +42,8 @@ export default function ChangelogPage() {
               Changelog
             </h1>
             <p className="text-muted-foreground text-base tracking-tight mt-6 max-w-2xl mx-auto sm:text-lg">
-              Stay up to date with all the latest features, improvements, and bug fixes in HelixQue.
+              Stay up to date with all the latest features, improvements, and
+              bug fixes in HelixQue.
             </p>
           </div>
         </div>
@@ -52,9 +53,9 @@ export default function ChangelogPage() {
       <div className="max-w-5xl mx-auto px-6 lg:px-10 pt-16 pb-16">
         <div className="relative">
           {sortedChangelogs.map((changelog) => {
-            const MDX = changelog.data.body
-            const date = new Date(changelog.data.date)
-            const formattedDate = formatDate(date)
+            const MDX = changelog.data.body;
+            const date = new Date(changelog.data.date);
+            const formattedDate = formatDate(date);
 
             return (
               <div key={changelog.url} className="relative">
@@ -109,10 +110,10 @@ export default function ChangelogPage() {
                   </div>
                 </div>
               </div>
-            )
+            );
           })}
         </div>
       </div>
     </div>
-  )
+  );
 }

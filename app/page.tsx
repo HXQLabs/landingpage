@@ -8,7 +8,7 @@ export default function Home() {
     <div className="flex flex-col">
       <HeroSection />
       <FeaturesSection />
-      <OpensourceSection/>
+      <OpensourceSection />
       <CTASection />
     </div>
   );

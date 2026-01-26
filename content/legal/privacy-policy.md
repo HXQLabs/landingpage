@@ -9,18 +9,22 @@ Helixque is a professional networking and collaboration platform that provides r
 ## 1. Information We Collect
 
 ### a) Account Information
+
 - Username, display name, and profile picture (from your sign-up process or connected account such as LinkedIn).
 
 ### b) Usage Information
+
 - Matchmaking preferences (e.g., topics of interest).
 - Session metadata (connection time, duration, participant IDs).
 
 ### c) Device and Technical Data
+
 - Camera and microphone access (with your explicit permission).
 - Device type, browser version, and operating system.
 - IP address (for security and troubleshooting).
 
 ### d) Communications
+
 - Messages or interactions you send via in-app chat or feedback forms.
 
 > **Note:** Audio and video streams are transmitted using **WebRTC** in a peer-to-peer manner whenever possible. We do not record or store your conversations by default. If recording features are introduced in the future, you will be notified and asked for consent.
@@ -30,6 +34,7 @@ Helixque is a professional networking and collaboration platform that provides r
 ## 2. How We Use Your Information
 
 We use the collected information to:
+
 - Provide preference-based matching and enable video/audio calls.
 - Ensure secure, low-latency peer-to-peer communication.
 - Improve our platform, user experience, and technical performance.
@@ -41,6 +46,7 @@ We use the collected information to:
 ## 3. Sharing of Information
 
 We do **not** sell or rent your personal information. We may share data only in the following cases:
+
 - **With service providers:** e.g., TURN/STUN servers, cloud hosting, analytics tools.
 - **For legal reasons:** when required to comply with applicable laws, regulations, or legal processes.
 - **For platform integrity:** to investigate, prevent, or address security issues, fraud, or technical problems.
@@ -49,15 +55,16 @@ We do **not** sell or rent your personal information. We may share data only in 
 
 ## 4. Data Security
 
-- All media streams use **end-to-end encryption via WebRTC** whenever possible.  
-- We apply standard industry practices (HTTPS, encryption in transit, access controls) to safeguard your information.  
-- However, no system is 100% secure. You are responsible for keeping your account credentials safe.  
+- All media streams use **end-to-end encryption via WebRTC** whenever possible.
+- We apply standard industry practices (HTTPS, encryption in transit, access controls) to safeguard your information.
+- However, no system is 100% secure. You are responsible for keeping your account credentials safe.
 
 ---
 
 ## 5. Your Rights
 
 Depending on your jurisdiction, you may have the right to:
+
 - Access, correct, or delete your personal data.
 - Restrict or object to certain data processing.
 - Withdraw your consent for camera/microphone access at any time via browser/device settings.
@@ -68,9 +75,9 @@ To exercise your rights, please contact us at **support@helixque.com**.
 
 ## 6. Data Retention
 
-- Session metadata and logs are retained only as long as necessary for security and troubleshooting.  
-- Account information is stored until you delete your account.  
-- Audio/video streams are not stored unless explicitly stated and consented to.  
+- Session metadata and logs are retained only as long as necessary for security and troubleshooting.
+- Account information is stored until you delete your account.
+- Audio/video streams are not stored unless explicitly stated and consented to.
 
 ---
 

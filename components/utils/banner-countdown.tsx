@@ -1,30 +1,30 @@
-"use client"
+"use client";
 
-import { useEffect, useState } from "react"
-import { cn } from "@/lib/utils"
+import { useEffect, useState } from "react";
+import { cn } from "@/lib/utils";
 
-const baseSaleEndDate = new Date("2024-12-31T23:59:59")
+const baseSaleEndDate = new Date("2024-12-31T23:59:59");
 
-const now = new Date()
-const timeSinceBase = now.getTime() - baseSaleEndDate.getTime()
+const now = new Date();
+const timeSinceBase = now.getTime() - baseSaleEndDate.getTime();
 const weeksPassed = Math.max(
   0,
-  Math.ceil(timeSinceBase / (7 * 24 * 60 * 60 * 1000))
-)
+  Math.ceil(timeSinceBase / (7 * 24 * 60 * 60 * 1000)),
+);
 const saleEndDate = new Date(
-  baseSaleEndDate.getTime() + weeksPassed * 7 * 24 * 60 * 60 * 1000
-)
+  baseSaleEndDate.getTime() + weeksPassed * 7 * 24 * 60 * 60 * 1000,
+);
 
 interface TimeLeft {
-  days: number
-  hours: number
-  minutes: number
-  seconds: number
-  isExpired: boolean
+  days: number;
+  hours: number;
+  minutes: number;
+  seconds: number;
+  isExpired: boolean;
 }
 
 interface BannerCountdownProps {
-  className?: string
+  className?: string;
 }
 
 export function BannerCountdown({ className }: BannerCountdownProps) {
@@ -34,12 +34,12 @@ export function BannerCountdown({ className }: BannerCountdownProps) {
     minutes: 0,
     seconds: 0,
     isExpired: false,
-  })
+  });
 
   useEffect(() => {
     const calculateTimeLeft = () => {
-      const now = new Date()
-      const difference = saleEndDate.getTime() - now.getTime()
+      const now = new Date();
+      const difference = saleEndDate.getTime() - now.getTime();
 
       if (difference <= 0) {
         setTimeLeft({
@@ -48,16 +48,16 @@ export function BannerCountdown({ className }: BannerCountdownProps) {
           minutes: 0,
           seconds: 0,
           isExpired: true,
-        })
-        return
+        });
+        return;
       }
 
-      const days = Math.floor(difference / (1000 * 60 * 60 * 24))
+      const days = Math.floor(difference / (1000 * 60 * 60 * 24));
       const hours = Math.floor(
-        (difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-      )
-      const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60))
-      const seconds = Math.floor((difference % (1000 * 60)) / 1000)
+        (difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60),
+      );
+      const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((difference % (1000 * 60)) / 1000);
 
       setTimeLeft({
         days,
@@ -65,16 +65,16 @@ export function BannerCountdown({ className }: BannerCountdownProps) {
         minutes,
         seconds,
         isExpired: false,
-      })
-    }
+      });
+    };
 
-    calculateTimeLeft()
-    const timer = setInterval(calculateTimeLeft, 1000)
+    calculateTimeLeft();
+    const timer = setInterval(calculateTimeLeft, 1000);
 
-    return () => clearInterval(timer)
-  }, [])
+    return () => clearInterval(timer);
+  }, []);
 
-  if (timeLeft.isExpired) return null
+  if (timeLeft.isExpired) return null;
 
   return (
     <div className={cn("flex items-center gap-1 text-xs", className)}>
@@ -97,5 +97,5 @@ export function BannerCountdown({ className }: BannerCountdownProps) {
         </span>
       </div>
     </div>
-  )
+  );
 }

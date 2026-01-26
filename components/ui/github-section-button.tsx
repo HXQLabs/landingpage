@@ -1,9 +1,9 @@
-"use client"
+"use client";
 
-import Link from "next/link"
+import Link from "next/link";
 
-import { Button } from "@/components/ui/button"
-import { Icons } from "../utils/icons"
+import { Button } from "@/components/ui/button";
+import { Icons } from "../utils/icons";
 
 export default function GithubSectionButton() {
   return (
@@ -18,12 +18,12 @@ export default function GithubSectionButton() {
         target="_blank"
         onClick={() => {
           if (typeof window !== "undefined" && window.datafast) {
-            window.datafast("clicked_github_from_section")
+            window.datafast("clicked_github_from_section");
           }
         }}
       >
         <Icons.github /> Star BadtzUI
       </Link>
     </Button>
-  )
+  );
 }

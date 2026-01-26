@@ -10,7 +10,7 @@ interface Props {
 
 export default function ScrollToTopButton({
   className,
-  threshold = 50, 
+  threshold = 50,
 }: Props) {
   const [visible, setVisible] = useState(false);
 

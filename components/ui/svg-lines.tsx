@@ -1,19 +1,19 @@
-"use client"
+"use client";
 
-import { useId } from "react"
+import { useId } from "react";
 
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/utils";
 
 export interface SvgLinesProps {
-  className?: string
-  path: string
-  pathColor?: string
-  pathOpacity?: number
-  gradientStartColor?: string
-  gradientStopColor?: string
-  delay?: number
-  duration?: number
-  viewBox?: string
+  className?: string;
+  path: string;
+  pathColor?: string;
+  pathOpacity?: number;
+  gradientStartColor?: string;
+  gradientStopColor?: string;
+  delay?: number;
+  duration?: number;
+  viewBox?: string;
 }
 
 export const SvgLines: React.FC<SvgLinesProps> = ({
@@ -27,8 +27,8 @@ export const SvgLines: React.FC<SvgLinesProps> = ({
   gradientStopColor = "#7876c5",
   viewBox = "0 0 195 200",
 }) => {
-  const id = useId()
-  const cleanId = id.replace(/:/g, "-")
+  const id = useId();
+  const cleanId = id.replace(/:/g, "-");
 
   return (
     <div className={cn("pointer-events-none absolute inset-0", className)}>
@@ -95,5 +95,5 @@ export const SvgLines: React.FC<SvgLinesProps> = ({
         </svg>
       </div>
     </div>
-  )
-}
+  );
+};

@@ -43,7 +43,7 @@ export const PillButton = ({ className, ...props }: PillButtonProps) => (
   <Button
     className={cn(
       "-my-2 -mr-2 size-6 rounded-full p-0.5 hover:bg-foreground/5",
-      className
+      className,
     )}
     size="icon"
     variant="ghost"
@@ -64,7 +64,7 @@ export const PillStatus = ({
   <div
     className={cn(
       "flex items-center gap-2 border-r pr-2 font-medium",
-      className
+      className,
     )}
     {...props}
   >
@@ -89,7 +89,7 @@ export const PillIndicator = ({
           variant === "success" && "bg-emerald-400",
           variant === "error" && "bg-rose-400",
           variant === "warning" && "bg-amber-400",
-          variant === "info" && "bg-sky-400"
+          variant === "info" && "bg-sky-400",
         )}
       />
     )}
@@ -99,7 +99,7 @@ export const PillIndicator = ({
         variant === "success" && "bg-emerald-500",
         variant === "error" && "bg-rose-500",
         variant === "warning" && "bg-amber-500",
-        variant === "info" && "bg-sky-500"
+        variant === "info" && "bg-sky-500",
       )}
     />
   </span>
@@ -157,7 +157,7 @@ export const PillAvatarGroup = ({
     className={cn(
       "-space-x-1 flex items-center",
       "[&>*:not(:first-of-type)]:[mask-image:radial-gradient(circle_9px_at_-4px_50%,transparent_99%,white_100%)]",
-      className
+      className,
     )}
     {...props}
   >

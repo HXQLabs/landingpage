@@ -138,8 +138,8 @@ const HelixqueConnection = () => {
               user.status === "connected"
                 ? "bg-green-500"
                 : user.status === "connecting"
-                ? "bg-yellow-500"
-                : "bg-neutral-500"
+                  ? "bg-yellow-500"
+                  : "bg-neutral-500"
             }`}
             animate={{
               scale: user.status === "connected" ? [1, 1.2, 1] : 1,
@@ -203,13 +203,13 @@ const HelixqueConnection = () => {
           borderColor: isActive
             ? "#3b82f6"
             : theme === "dark"
-            ? "#525252"
-            : "#9ca3af",
+              ? "#525252"
+              : "#9ca3af",
           backgroundColor: isActive
             ? "rgba(59, 130, 246, 0.1)"
             : theme === "dark"
-            ? "#262626"
-            : "#e5e7eb",
+              ? "#262626"
+              : "#e5e7eb",
         }}
         transition={{ duration: 0.5 }}
       >
@@ -223,8 +223,8 @@ const HelixqueConnection = () => {
             backgroundColor: isActive
               ? "#2563eb"
               : theme === "dark"
-              ? "#525252"
-              : "#6b7280",
+                ? "#525252"
+                : "#6b7280",
           }}
           transition={{
             scale: { duration: 2, repeat: Infinity },
@@ -283,28 +283,28 @@ const HelixqueConnection = () => {
               connectionStatus === "connected"
                 ? "bg-green-500"
                 : connectionStatus === "user_connecting"
-                ? "bg-yellow-500"
-                : connectionStatus === "system_activated"
-                ? "bg-blue-400"
-                : connectionStatus === "system_searching"
-                ? "bg-blue-500"
-                : connectionStatus === "match_found"
-                ? "bg-orange-500"
-                : "bg-neutral-500"
+                  ? "bg-yellow-500"
+                  : connectionStatus === "system_activated"
+                    ? "bg-blue-400"
+                    : connectionStatus === "system_searching"
+                      ? "bg-blue-500"
+                      : connectionStatus === "match_found"
+                        ? "bg-orange-500"
+                        : "bg-neutral-500"
             }`}
           />
           <span className="text-xs sm:text-sm font-medium text-gray-700 dark:text-neutral-300">
             {connectionStatus === "user_connecting"
               ? "Connecting..."
               : connectionStatus === "system_activated"
-              ? "Connected..."
-              : connectionStatus === "system_searching"
-              ? "Searching..."
-              : connectionStatus === "match_found"
-              ? "Connecting..."
-              : connectionStatus === "connected"
-              ? "Connected..."
-              : "Skipped..."}
+                ? "Connected..."
+                : connectionStatus === "system_searching"
+                  ? "Searching..."
+                  : connectionStatus === "match_found"
+                    ? "Connecting..."
+                    : connectionStatus === "connected"
+                      ? "Connected..."
+                      : "Skipped..."}
           </span>
         </div>
       </div>

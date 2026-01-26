@@ -1,5 +1,5 @@
-import * as React from 'react';
-import * as motion from 'motion/react-client';
+import * as React from "react";
+import * as motion from "motion/react-client";
 
 import {
   AvatarGroup as AvatarGroupPrimitive,
@@ -7,8 +7,8 @@ import {
   AvatarGroupTooltipArrow as AvatarGroupTooltipArrowPrimitive,
   type AvatarGroupProps as AvatarGroupPropsPrimitive,
   type AvatarGroupTooltipProps as AvatarGroupTooltipPropsPrimitive,
-} from '@/components/animate-ui/primitives/animate/avatar-group';
-import { cn } from '@/lib/utils';
+} from "@/components/animate-ui/primitives/animate/avatar-group";
+import { cn } from "@/lib/utils";
 
 type AvatarGroupProps = AvatarGroupPropsPrimitive;
 
@@ -19,7 +19,7 @@ function AvatarGroup({
 }: AvatarGroupProps) {
   return (
     <AvatarGroupPrimitive
-      className={cn('h-12 -space-x-3', className)}
+      className={cn("h-12 -space-x-3", className)}
       invertOverlap={invertOverlap}
       {...props}
     />
@@ -28,22 +28,22 @@ function AvatarGroup({
 
 type AvatarGroupTooltipProps = Omit<
   AvatarGroupTooltipPropsPrimitive,
-  'asChild'
+  "asChild"
 > & {
   children: React.ReactNode;
-  layout?: boolean | 'position' | 'size' | 'preserve-aspect';
+  layout?: boolean | "position" | "size" | "preserve-aspect";
 };
 
 function AvatarGroupTooltip({
   className,
   children,
-  layout = 'preserve-aspect',
+  layout = "preserve-aspect",
   ...props
 }: AvatarGroupTooltipProps) {
   return (
     <AvatarGroupTooltipPrimitive
       className={cn(
-        'bg-primary text-primary-foreground z-50 w-fit rounded-md px-3 py-1.5 text-xs text-balance',
+        "bg-primary text-primary-foreground z-50 w-fit rounded-md px-3 py-1.5 text-xs text-balance",
         className,
       )}
       {...props}

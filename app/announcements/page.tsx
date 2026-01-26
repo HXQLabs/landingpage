@@ -1,53 +1,53 @@
-import { announcementDocs, announcementMeta } from "@/.source"
-import { loader } from "fumadocs-core/source"
-import { createMDXSource } from "fumadocs-mdx"
-import { useMemo } from "react"
-import { formatDate } from "@/lib/utils"
+import { announcementDocs, announcementMeta } from "@/.source";
+import { loader } from "fumadocs-core/source";
+import { createMDXSource } from "fumadocs-mdx";
+import { useMemo } from "react";
+import { formatDate } from "@/lib/utils";
 
 const source = loader({
   baseUrl: "/announcements",
   source: createMDXSource(announcementDocs, announcementMeta),
-})
+});
 
 interface AnnouncementData {
-  title: string
-  date: string
-  priority?: "high" | "medium" | "low"
-  tags?: string[]
-  body: React.ComponentType
+  title: string;
+  date: string;
+  priority?: "high" | "medium" | "low";
+  tags?: string[];
+  body: React.ComponentType;
 }
 
 interface AnnouncementPage {
-  url: string
-  data: AnnouncementData
+  url: string;
+  data: AnnouncementData;
 }
 
 const getPriorityColor = (priority?: string) => {
   switch (priority) {
     case "high":
-      return "bg-red-100 text-red-800 dark:bg-red-900/20 dark:text-red-400"
+      return "bg-red-100 text-red-800 dark:bg-red-900/20 dark:text-red-400";
     case "medium":
-      return "bg-yellow-100 text-yellow-800 dark:bg-yellow-900/20 dark:text-yellow-400"
+      return "bg-yellow-100 text-yellow-800 dark:bg-yellow-900/20 dark:text-yellow-400";
     case "low":
-      return "bg-green-100 text-green-800 dark:bg-green-900/20 dark:text-green-400"
+      return "bg-green-100 text-green-800 dark:bg-green-900/20 dark:text-green-400";
     case "hacktoberfest":
-        return "bg-orange-100 text-orange-800 dark:bg-orange-900/20 dark:text-orange-400"
+      return "bg-orange-100 text-orange-800 dark:bg-orange-900/20 dark:text-orange-400";
     case "milestone":
-       return "bg-purple-100 text-purple-800 dark:bg-purple-900/20 dark:text-purple-400"
+      return "bg-purple-100 text-purple-800 dark:bg-purple-900/20 dark:text-purple-400";
     default:
-      return "bg-blue-100 text-blue-800 dark:bg-blue-900/20 dark:text-blue-400"
+      return "bg-blue-100 text-blue-800 dark:bg-blue-900/20 dark:text-blue-400";
   }
-}
+};
 
 export default function AnnouncementsPage() {
   const sortedAnnouncements = useMemo(() => {
-    const allPages = source.getPages() as AnnouncementPage[]
+    const allPages = source.getPages() as AnnouncementPage[];
     return allPages.sort((a, b) => {
-      const dateA = new Date(a.data.date).getTime()
-      const dateB = new Date(b.data.date).getTime()
-      return dateB - dateA
-    })
-  }, [])
+      const dateA = new Date(a.data.date).getTime();
+      const dateB = new Date(b.data.date).getTime();
+      return dateB - dateA;
+    });
+  }, []);
 
   return (
     <div className="min-h-screen bg-background relative">
@@ -59,7 +59,8 @@ export default function AnnouncementsPage() {
               Announcements
             </h1>
             <p className="text-muted-foreground text-base tracking-tight mt-6 max-w-2xl mx-auto sm:text-lg">
-              Stay informed with the latest updates, important notices, and announcements from HelixQue.
+              Stay informed with the latest updates, important notices, and
+              announcements from HelixQue.
             </p>
           </div>
         </div>
@@ -69,9 +70,9 @@ export default function AnnouncementsPage() {
       <div className="max-w-5xl mx-auto px-6 lg:px-10 pt-16 pb-16">
         <div className="relative">
           {sortedAnnouncements.map((announcement) => {
-            const MDX = announcement.data.body
-            const date = new Date(announcement.data.date)
-            const formattedDate = formatDate(date)
+            const MDX = announcement.data.body;
+            const date = new Date(announcement.data.date);
+            const formattedDate = formatDate(date);
 
             return (
               <div key={announcement.url} className="relative">
@@ -83,7 +84,9 @@ export default function AnnouncementsPage() {
                       </time>
 
                       {announcement.data.priority && (
-                        <div className={`inline-flex relative z-10 items-center justify-center px-3 py-1 text-xs font-medium rounded-full ${getPriorityColor(announcement.data.priority)}`}>
+                        <div
+                          className={`inline-flex relative z-10 items-center justify-center px-3 py-1 text-xs font-medium rounded-full ${getPriorityColor(announcement.data.priority)}`}
+                        >
                           {announcement.data.priority.toUpperCase()}
                         </div>
                       )}
@@ -126,10 +129,10 @@ export default function AnnouncementsPage() {
                   </div>
                 </div>
               </div>
-            )
+            );
           })}
         </div>
       </div>
     </div>
-  )
+  );
 }

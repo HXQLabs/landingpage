@@ -7,13 +7,13 @@
 - [ ] 📢 **I have checked the `#pull-request` channel** in Discord to make sure no one else is working on this issue
 - [ ] 📝 **I have mentioned this PR in the Discord `#pull-request` channel**
 
-***
+---
 
 ## Summary
 
 _A clear, concise description of what this PR accomplishes._
 
-***
+---
 
 ## Type of Changes
 
@@ -25,9 +25,9 @@ _A clear, concise description of what this PR accomplishes._
 - [ ] ⚡ Performance optimizations
 - [ ] 📱 Mobile responsiveness
 - [ ] ♿ Accessibility improvements
-- [ ] Other: _____
+- [ ] Other: **\_**
 
-***
+---
 
 ## Testing Completed
 
@@ -39,7 +39,7 @@ _A clear, concise description of what this PR accomplishes._
 - [ ] 🔄 Tested edge cases (disconnections, reconnections, etc.)
 - [ ] 🧪 All existing functionality remains unaffected
 
-***
+---
 
 ## Development Setup Verification
 
@@ -47,7 +47,7 @@ _A clear, concise description of what this PR accomplishes._
 - [ ] 🚀 Development servers start without errors
 - [ ] 🏗️ Code builds successfully
 
-***
+---
 
 ## Code Quality
 
@@ -57,24 +57,24 @@ _A clear, concise description of what this PR accomplishes._
 - [ ] 🎯 Code is properly formatted
 - [ ] 🔍 Self-review performed
 
-***
+---
 
 ## Related Issues
 
 _Closes #_
 
-***
+---
 
 ## Screenshots/Videos
 
 <!-- For UI changes, please provide screenshots or videos -->
 
-***
+---
 
 ## Additional Notes
 
 _Any extra information or relevant context about the changes._
 
-***
+---
 
 **Note:** For faster PR review and approval, please stay active in our Discord server!

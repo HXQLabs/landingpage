@@ -166,7 +166,7 @@
 //             Pricing
 //           </Pill>
 //         </div>
-        
+
 //         <h2 className="text-4xl font-medium text-gray-900 dark:text-white mb-3">
 //           <VerticalCutReveal
 //             splitBy="words"
@@ -218,8 +218,8 @@
 //           >
 //             <Card
 //               className={`relative border-neutral-200 dark:border-neutral-800 ${
-//                 plan.popular 
-//                   ? "ring-2 ring-blue-500 bg-blue-50 dark:bg-blue-950/20" 
+//                 plan.popular
+//                   ? "ring-2 ring-blue-500 bg-blue-50 dark:bg-blue-950/20"
 //                   : "bg-white dark:bg-neutral-900"
 //               }`}
 //             >
@@ -263,7 +263,7 @@
 //                 >
 //                   {plan.buttonText}
 //                 </button>
-                
+
 //                 <ul className="space-y-2 font-semibold py-5">
 //                   {plan.features.map((feature, featureIndex) => (
 //                     <li key={featureIndex} className="flex items-center">

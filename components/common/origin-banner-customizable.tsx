@@ -1,22 +1,27 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { ArrowUpRight, XIcon } from "lucide-react"
+import { useState } from "react";
+import { ArrowUpRight, XIcon } from "lucide-react";
 
-import { cn } from "@/lib/utils"
-import Link from "next/link"
+import { cn } from "@/lib/utils";
+import Link from "next/link";
 
 interface OriginBannerCustomizableProps {
-  className?: string
+  className?: string;
 }
 
 export default function OriginBannerCustomizable({
   className,
 }: OriginBannerCustomizableProps) {
-  const [isVisible, setIsVisible] = useState(true)
-  if (!isVisible) return null
+  const [isVisible, setIsVisible] = useState(true);
+  if (!isVisible) return null;
   return (
-    <div className={cn("relative dark text-foreground px-4 py-2 sm:py-3", className)}>
+    <div
+      className={cn(
+        "relative dark text-foreground px-4 py-2 sm:py-3",
+        className,
+      )}
+    >
       <button
         type="button"
         className="group absolute right-0 top-1/2 -translate-y-1/2 size-8 p-0 hover:bg-transparent cursor-pointer"
@@ -52,8 +57,17 @@ export default function OriginBannerCustomizable({
 
           <p className="inline-flex items-center gap-1 text-xs sm:text-sm leading-tight">
             <picture className="max-md:mt-0.5 flex-shrink-0">
-              <source srcSet="https://fonts.gstatic.com/s/e/notoemoji/latest/1f6a8/512.webp" type="image/webp" />
-              <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f6a8/512.gif" className="w-6 h-6" alt="🚨" width="32" height="32" />
+              <source
+                srcSet="https://fonts.gstatic.com/s/e/notoemoji/latest/1f6a8/512.webp"
+                type="image/webp"
+              />
+              <img
+                src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f6a8/512.gif"
+                className="w-6 h-6"
+                alt="🚨"
+                width="32"
+                height="32"
+              />
             </picture>
             {/* Mobile concise message */}
             <span className="font-semibold md:hidden">Helixque</span>
@@ -63,7 +77,9 @@ export default function OriginBannerCustomizable({
             {/* Desktop full message */}
             <span className="font-semibold hidden md:inline">Helixque</span>
             <span className="hidden md:inline"> is proudly backed by </span>
-            <span className="font-semibold hidden md:inline">Vercel OSS Program under Fall Cohort ’25 - </span>
+            <span className="font-semibold hidden md:inline">
+              Vercel OSS Program under Fall Cohort ’25 -{" "}
+            </span>
             {/* Future announcement link — uncomment after official confirmation */}
             <Link
               href="/announcements"
@@ -75,12 +91,9 @@ export default function OriginBannerCustomizable({
                 strokeWidth={2}
               />
             </Link>
-  
           </p>
         </div>
       </div>
     </div>
-  )
+  );
 }
-
-

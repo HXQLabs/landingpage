@@ -68,19 +68,30 @@ export function ProposalTemplate({ className }: { className?: string }) {
   };
 
   return (
-    <div className={cn("rounded-xl border bg-zinc-950 p-4 overflow-hidden relative group flex flex-col", className)}>
-      <div 
-        className="absolute top-2 right-2 z-10"
-        onClick={handleCopy}
-      >
-        <Badge variant="secondary" className="cursor-pointer flex items-center gap-1 transition-colors">
-          {copied ? <Check className="w-3 h-3" /> : <Copy className="w-3 h-3" />}
+    <div
+      className={cn(
+        "rounded-xl border bg-zinc-950 p-4 overflow-hidden relative group flex flex-col",
+        className,
+      )}
+    >
+      <div className="absolute top-2 right-2 z-10" onClick={handleCopy}>
+        <Badge
+          variant="secondary"
+          className="cursor-pointer flex items-center gap-1 transition-colors"
+        >
+          {copied ? (
+            <Check className="w-3 h-3" />
+          ) : (
+            <Copy className="w-3 h-3" />
+          )}
           {copied ? "Copied" : "Copy"}
         </Badge>
       </div>
       <div className="flex items-center gap-2 border-b border-zinc-800 pb-2 mb-2 shrink-0">
         <Terminal className="w-4 h-4 text-zinc-400" />
-        <span className="text-xs font-mono text-zinc-400">proposal-template.md</span>
+        <span className="text-xs font-mono text-zinc-400">
+          proposal-template.md
+        </span>
       </div>
       <pre className="text-xs text-zinc-300 font-mono overflow-auto flex-1 leading-relaxed scrollbar-thin scrollbar-thumb-zinc-700 scrollbar-track-transparent">
         {TEMPLATE_CONTENT}

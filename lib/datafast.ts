@@ -2,13 +2,13 @@
 // Use this for API routes, Server Actions, and other server-side code
 
 export interface GoalOptions {
-  visitorId?: string
-  metadata?: Record<string, string | number | boolean>
+  visitorId?: string;
+  metadata?: Record<string, string | number | boolean>;
 }
 
 export interface GoalResponse {
-  success: boolean
-  error?: string
+  success: boolean;
+  error?: string;
 }
 
 /**
@@ -18,15 +18,15 @@ export interface GoalResponse {
  */
 export async function trackGoalServer(
   goalName: string,
-  options: GoalOptions = {}
+  options: GoalOptions = {},
 ): Promise<GoalResponse> {
   try {
     // Validate goal name according to DataFast rules
-    const validatedGoalName = validateGoalName(goalName)
+    const validatedGoalName = validateGoalName(goalName);
 
-    const apiKey = process.env.DATA_FAST_API_KEY
+    const apiKey = process.env.DATA_FAST_API_KEY;
     if (!apiKey) {
-      throw new Error("DATA_FAST_API_KEY environment variable is not set")
+      throw new Error("DATA_FAST_API_KEY environment variable is not set");
     }
 
     const response = await fetch("https://api.datafa.st/goal", {
@@ -40,19 +40,19 @@ export async function trackGoalServer(
         visitor_id: options.visitorId,
         metadata: options.metadata,
       }),
-    })
+    });
 
     if (!response.ok) {
-      throw new Error(`DataFast API error: ${response.statusText}`)
+      throw new Error(`DataFast API error: ${response.statusText}`);
     }
 
-    return { success: true }
+    return { success: true };
   } catch (error) {
-    console.error("Failed to track goal server-side:", error)
+    console.error("Failed to track goal server-side:", error);
     return {
       success: false,
       error: error instanceof Error ? error.message : "Unknown error",
-    }
+    };
   }
 }
 
@@ -64,25 +64,25 @@ export async function trackGoalServer(
  */
 function validateGoalName(goalName: string): string {
   if (!goalName || typeof goalName !== "string") {
-    throw new Error("Goal name must be a non-empty string")
+    throw new Error("Goal name must be a non-empty string");
   }
 
   // Convert to lowercase and replace spaces with underscores
-  const validated = goalName.toLowerCase().replace(/\s+/g, "_")
+  const validated = goalName.toLowerCase().replace(/\s+/g, "_");
 
   // Check length
   if (validated.length > 32) {
-    throw new Error("Goal name must be 32 characters or less")
+    throw new Error("Goal name must be 32 characters or less");
   }
 
   // Check for invalid characters (only letters, numbers, underscores allowed)
   if (!/^[a-z0-9_]+$/.test(validated)) {
     throw new Error(
-      "Goal name can only contain lowercase letters, numbers, and underscores"
-    )
+      "Goal name can only contain lowercase letters, numbers, and underscores",
+    );
   }
 
-  return validated
+  return validated;
 }
 
 // Common goal names for type safety
@@ -96,6 +96,6 @@ export const GOAL_NAMES = {
   PRICING_CLICKED_UNLOCK: "pricing_clicked_unlock",
   CHECKOUT_INITIATED: "checkout_initiated",
   COMPONENTS_CLICKED_DOCS: "components_clicked_docs",
-} as const
+} as const;
 
-export type GoalName = (typeof GOAL_NAMES)[keyof typeof GOAL_NAMES] | string
+export type GoalName = (typeof GOAL_NAMES)[keyof typeof GOAL_NAMES] | string;

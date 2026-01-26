@@ -1,7 +1,7 @@
-'use client';
+"use client";
 
-import * as React from 'react';
-import { HTMLMotionProps, motion, type Transition } from 'motion/react';
+import * as React from "react";
+import { HTMLMotionProps, motion, type Transition } from "motion/react";
 
 import {
   TooltipProvider,
@@ -13,13 +13,13 @@ import {
   type TooltipProps,
   type TooltipContentProps,
   type TooltipArrowProps,
-} from '@/components/animate-ui/primitives/animate/tooltip';
+} from "@/components/animate-ui/primitives/animate/tooltip";
 
-type AvatarProps = Omit<HTMLMotionProps<'div'>, 'translate'> & {
+type AvatarProps = Omit<HTMLMotionProps<"div">, "translate"> & {
   children: React.ReactNode;
   zIndex: number;
   translate?: string | number;
-} & Omit<TooltipProps, 'children'>;
+} & Omit<TooltipProps, "children">;
 
 function AvatarContainer({
   zIndex,
@@ -43,7 +43,7 @@ function AvatarContainer({
           initial="initial"
           whileHover="hover"
           whileTap="hover"
-          style={{ position: 'relative', zIndex }}
+          style={{ position: "relative", zIndex }}
         >
           <motion.div
             variants={{
@@ -58,29 +58,29 @@ function AvatarContainer({
   );
 }
 
-type AvatarGroupProps = Omit<React.ComponentProps<'div'>, 'translate'> & {
+type AvatarGroupProps = Omit<React.ComponentProps<"div">, "translate"> & {
   children: React.ReactElement[];
   invertOverlap?: boolean;
   translate?: string | number;
   transition?: Transition;
   tooltipTransition?: Transition;
-} & Omit<TooltipProviderProps, 'children'> &
-  Omit<TooltipProps, 'children'>;
+} & Omit<TooltipProviderProps, "children"> &
+  Omit<TooltipProps, "children">;
 
 function AvatarGroup({
   ref,
   children,
   id,
-  transition = { type: 'spring', stiffness: 300, damping: 17 },
+  transition = { type: "spring", stiffness: 300, damping: 17 },
   invertOverlap = false,
-  translate = '-30%',
+  translate = "-30%",
   openDelay = 0,
   closeDelay = 0,
-  side = 'top',
+  side = "top",
   sideOffset = 25,
-  align = 'center',
+  align = "center",
   alignOffset = 0,
-  tooltipTransition = { type: 'spring', stiffness: 300, damping: 35 },
+  tooltipTransition = { type: "spring", stiffness: 300, damping: 35 },
   style,
   ...props
 }: AvatarGroupProps) {
@@ -95,8 +95,8 @@ function AvatarGroup({
         ref={ref}
         data-slot="avatar-group"
         style={{
-          display: 'flex',
-          alignItems: 'center',
+          display: "flex",
+          alignItems: "center",
           ...style,
         }}
         {...props}

@@ -1,5 +1,5 @@
-import HelixQueHeader from './header';
-import OriginBannerCustomizable from './origin-banner-customizable';
+import HelixQueHeader from "./header";
+import OriginBannerCustomizable from "./origin-banner-customizable";
 
 interface AppLayoutProps {
   children: React.ReactNode;
@@ -44,9 +44,7 @@ export function AppLayout({ children }: AppLayoutProps) {
       </div>
 
       {/* Main content - no top padding needed as content flows naturally */}
-      <main className="relative z-10 flex-1">
-        {children}
-      </main>
+      <main className="relative z-10 flex-1">{children}</main>
     </div>
   );
 }

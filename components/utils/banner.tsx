@@ -1,16 +1,16 @@
-'use client';
+"use client";
 
-import { type HTMLAttributes, useCallback, useEffect, useState } from 'react';
-import Link from 'next/link';
-import { X } from 'lucide-react';
-import { cn } from '@/lib/utils';
-import { buttonVariants } from '@/components/ui/buttons/buttons';
+import { type HTMLAttributes, useCallback, useEffect, useState } from "react";
+import Link from "next/link";
+import { X } from "lucide-react";
+import { cn } from "@/lib/utils";
+import { buttonVariants } from "@/components/ui/buttons/buttons";
 
 interface BannerProps extends HTMLAttributes<HTMLDivElement> {
   /**
    * @defaultValue 'normal'
    */
-  variant?: 'rainbow' | 'normal';
+  variant?: "rainbow" | "normal";
   /**
    * @defaultValue true
    */
@@ -30,11 +30,11 @@ interface BannerProps extends HTMLAttributes<HTMLDivElement> {
 
 export function Banner({
   id,
-  variant = 'normal',
+  variant = "normal",
   changeLayout = true,
   message,
-  href = 'https://pro.ui-layouts.com',
-  target = '_blank',
+  href = "https://pro.ui-layouts.com",
+  target = "_blank",
   height,
   ...props
 }: BannerProps): React.ReactElement {
@@ -42,36 +42,41 @@ export function Banner({
   const globalKey = id ? `banner-${id}` : undefined;
 
   useEffect(() => {
-    if (globalKey) setOpen(sessionStorage.getItem(globalKey) !== 'true');
+    if (globalKey) setOpen(sessionStorage.getItem(globalKey) !== "true");
   }, [globalKey]);
 
-  const onClick = useCallback((e: React.MouseEvent) => {
-    e.preventDefault();
-    e.stopPropagation();
-    setOpen(false);
-    if (globalKey) {
-      sessionStorage.setItem(globalKey, 'true');
-      // Dispatch custom event for immediate state updates
-      window.dispatchEvent(new CustomEvent('bannerClosed', { detail: { bannerId: globalKey } }));
-    }
-  }, [globalKey]);
+  const onClick = useCallback(
+    (e: React.MouseEvent) => {
+      e.preventDefault();
+      e.stopPropagation();
+      setOpen(false);
+      if (globalKey) {
+        sessionStorage.setItem(globalKey, "true");
+        // Dispatch custom event for immediate state updates
+        window.dispatchEvent(
+          new CustomEvent("bannerClosed", { detail: { bannerId: globalKey } }),
+        );
+      }
+    },
+    [globalKey],
+  );
 
   const bannerContent = (
     <div
       id={id}
       {...props}
-      style={{ height: open ? height : '0' }}
+      style={{ height: open ? height : "0" }}
       className={cn(
-        'relative z-50 flex flex-row font-mono items-center justify-center px-4 text-center text-sm font-medium transition-all duration-300',
-        variant === 'rainbow' && ' ',
-        'dark:bg-zinc-950 bg-zinc-50',
-        !open && 'hidden',
-        props.className
+        "relative z-50 flex flex-row font-mono items-center justify-center px-4 text-center text-sm font-medium transition-all duration-300",
+        variant === "rainbow" && " ",
+        "dark:bg-zinc-950 bg-zinc-50",
+        !open && "hidden",
+        props.className,
       )}
     >
       {changeLayout && open ? (
         <style>{`
-        :root:not(.${globalKey ?? 'banner-never'}) { --banner-height: ${height}; }
+        :root:not(.${globalKey ?? "banner-never"}) { --banner-height: ${height}; }
         `}</style>
       ) : null}
       {globalKey ? (
@@ -85,23 +90,23 @@ export function Banner({
         />
       ) : null}
 
-      {variant === 'rainbow' ? <RainbowLayer /> : null}
+      {variant === "rainbow" ? <RainbowLayer /> : null}
       {message || props.children}
       {id ? (
         <button
-          type='button'
-          aria-label='Close Banner'
+          type="button"
+          aria-label="Close Banner"
           onClick={onClick}
           className={cn(
             buttonVariants({
-              variant: 'ghost',
+              variant: "ghost",
               className:
-                'absolute end-2 top-1/2 -translate-y-1/2 text-muted-foreground',
-              size: 'icon',
-            })
+                "absolute end-2 top-1/2 -translate-y-1/2 text-muted-foreground",
+              size: "icon",
+            }),
           )}
         >
-          <X className='h-4 w-4' />
+          <X className="h-4 w-4" />
         </button>
       ) : null}
     </div>
@@ -109,12 +114,12 @@ export function Banner({
 
   return (
     <>
-      {target === '_self' ? (
-        <Link href={href} className='block group w-full relative'>
+      {target === "_self" ? (
+        <Link href={href} className="block group w-full relative">
           {bannerContent}
         </Link>
       ) : (
-        <a href={href} target={target} className='block group w-full relative'>
+        <a href={href} target={target} className="block group w-full relative">
           {bannerContent}
         </a>
       )}
@@ -125,8 +130,8 @@ export function Banner({
 const RainbowLayer = () => {
   return (
     <>
-      <div className='absolute inset-0 z-[-1] rainbow-banner-gradient-1' />
-      <div className='absolute inset-0 z-[-1] rainbow-banner-gradient-2' />
+      <div className="absolute inset-0 z-[-1] rainbow-banner-gradient-1" />
+      <div className="absolute inset-0 z-[-1] rainbow-banner-gradient-2" />
     </>
   );
 };

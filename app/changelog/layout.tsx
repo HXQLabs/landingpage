@@ -1,9 +1,5 @@
-import type { ReactNode } from "react"
+import type { ReactNode } from "react";
 
-export default function ChangelogLayout({
-  children,
-}: {
-  children: ReactNode
-}) {
-  return <>{children}</>
+export default function ChangelogLayout({ children }: { children: ReactNode }) {
+  return <>{children}</>;
 }

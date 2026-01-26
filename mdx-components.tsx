@@ -1,12 +1,12 @@
-import defaultMdxComponents from "fumadocs-ui/mdx"
-import type { MDXComponents } from "mdx/types"
+import defaultMdxComponents from "fumadocs-ui/mdx";
+import type { MDXComponents } from "mdx/types";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from "@/components/ui/accordion"
-import { cn } from "@/lib/utils"
+} from "@/components/ui/accordion";
+import { cn } from "@/lib/utils";
 
 export function getMDXComponents(components?: MDXComponents): MDXComponents {
   return {
@@ -27,7 +27,7 @@ export function getMDXComponents(components?: MDXComponents): MDXComponents {
     AccordionTrigger,
     AccordionContent,
     ...components,
-  }
+  };
 }
 
-export const useMDXComponents = getMDXComponents
+export const useMDXComponents = getMDXComponents;

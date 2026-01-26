@@ -5,21 +5,22 @@ import { Badge } from "../ui/badge";
 import Link from "next/link";
 import BuyMeCoffee from "../utils/buy-me-coffee-btn";
 
-
 // Inline BadtzLogo from badtz-header
 const BadtzLogo = () => (
   <div className="text-foreground flex items-end gap-2.5 [&_svg]:h-5">
-    <img 
-      src="/logo.svg" 
-      alt="HelixQue Logo" 
-      width={20} 
-      height={20} 
+    <img
+      src="/logo.svg"
+      alt="HelixQue Logo"
+      width={20}
+      height={20}
       className="h-5 w-auto"
     />
     <div className="relative">
-      <span className="font-heading text-lg leading-none font-semibold">HelixQue</span>
-      <Badge 
-        variant="secondary" 
+      <span className="font-heading text-lg leading-none font-semibold">
+        HelixQue
+      </span>
+      <Badge
+        variant="secondary"
         className="absolute -top-1 -right-1 translate-x-full text-[8px] px-0.5 py-0 h-auto"
       >
         Beta
@@ -28,24 +29,31 @@ const BadtzLogo = () => (
   </div>
 );
 
-
-
 const StickyFooter = () => {
   return (
-    <footer className="bg-background border-t border-border/40" aria-label="Site footer">
+    <footer
+      className="bg-background border-t border-border/40"
+      aria-label="Site footer"
+    >
       <div className="mx-auto max-w-7xl px-6 pt-12 pb-12 lg:px-8">
         <div className="flex flex-col items-start justify-between gap-12 md:flex-row md:gap-20">
           {/* Brand Section */}
           <div className="flex w-full flex-col items-start space-y-6 md:max-w-80">
-            <Link href="#hero" className="flex items-center gap-2" aria-label="Navigate to homepage">
+            <Link
+              href="#hero"
+              className="flex items-center gap-2"
+              aria-label="Navigate to homepage"
+            >
               <BadtzLogo />
             </Link>
-            
+
             <div className="space-y-4">
               <p className="text-muted-foreground text-sm leading-relaxed max-w-sm">
-                Match instantly by skills, industry, and language. Learn, mentor, and collaborate through text or video on our professional networking platform.
+                Match instantly by skills, industry, and language. Learn,
+                mentor, and collaborate through text or video on our
+                professional networking platform.
               </p>
-              
+
               {/* Status Indicator */}
               <Pill>
                 <PillIndicator pulse variant="success" />
@@ -60,15 +68,17 @@ const StickyFooter = () => {
             <nav aria-label="Useful Links">
               <div className="flex flex-col md:text-sm">
                 <div>
-                  <h3 className="text-foreground mb-6 font-medium">Useful Links</h3>
+                  <h3 className="text-foreground mb-6 font-medium">
+                    Useful Links
+                  </h3>
                 </div>
                 <ul className="text-muted-foreground space-y-3">
                   <li>
-                    <Link 
-                      href="https://github.com/HXQLabs/" 
-                      className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors duration-200 group" 
-                      aria-label="Visit our GitHub profile" 
-                      target="_blank" 
+                    <Link
+                      href="https://github.com/HXQLabs/"
+                      className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors duration-200 group"
+                      aria-label="Visit our GitHub profile"
+                      target="_blank"
                       rel="noopener noreferrer"
                     >
                       <Icons.github className="h-4 w-4" />
@@ -77,11 +87,11 @@ const StickyFooter = () => {
                     </Link>
                   </li>
                   <li>
-                    <Link 
-                      href="https://discord.com/invite/XC4YsUBg2" 
-                      className="flex items-center gap-2 text-muted-foreground hover:text-[#5865F2] transition-colors duration-200 group" 
-                      aria-label="Join our Discord" 
-                      target="_blank" 
+                    <Link
+                      href="https://discord.com/invite/XC4YsUBg2"
+                      className="flex items-center gap-2 text-muted-foreground hover:text-[#5865F2] transition-colors duration-200 group"
+                      aria-label="Join our Discord"
+                      target="_blank"
                       rel="noopener noreferrer"
                     >
                       <Icons.discord className="h-4 w-4" />
@@ -90,11 +100,11 @@ const StickyFooter = () => {
                     </Link>
                   </li>
                   <li>
-                    <Link 
-                      href="https://summerofcode.withgoogle.com/" 
-                      className="flex items-center gap-2 text-muted-foreground hover:text-[#4285F4] transition-colors duration-200 group" 
-                      aria-label="Google Summer of Code" 
-                      target="_blank" 
+                    <Link
+                      href="https://summerofcode.withgoogle.com/"
+                      className="flex items-center gap-2 text-muted-foreground hover:text-[#4285F4] transition-colors duration-200 group"
+                      aria-label="Google Summer of Code"
+                      target="_blank"
                       rel="noopener noreferrer"
                     >
                       <Icons.google className="h-4 w-4" />
@@ -119,17 +129,23 @@ const StickyFooter = () => {
             </nav>
           </div>
         </div>
-        
+
         {/* Copyright and Legal Links */}
         <div className="flex flex-col sm:flex-row justify-between items-center gap-4 mt-10">
           <p className="text-muted-foreground text-xs">
             &copy; {new Date().getFullYear()} HXQLabs. All rights reserved.
           </p>
           <div className="flex items-center gap-6 text-xs text-muted-foreground">
-            <Link href="/legal/privacy-policy" className="hover:text-foreground transition-colors duration-200">
+            <Link
+              href="/legal/privacy-policy"
+              className="hover:text-foreground transition-colors duration-200"
+            >
               Privacy Policy
             </Link>
-            <Link href="/legal/terms-condition" className="hover:text-foreground transition-colors duration-200">
+            <Link
+              href="/legal/terms-condition"
+              className="hover:text-foreground transition-colors duration-200"
+            >
               Terms &amp; Conditions
             </Link>
             {/* <Link href="/legal/license" className="hover:text-foreground transition-colors duration-200">
@@ -143,4 +159,3 @@ const StickyFooter = () => {
 };
 
 export default StickyFooter;
-

@@ -96,7 +96,18 @@ export function Sparkles({
       },
       move: {
         enable: true,
-        direction: direction as "none" | "bottom" | "left" | "right" | "top" | "bottomLeft" | "bottomRight" | "topLeft" | "topRight" | "outside" | "inside",
+        direction: direction as
+          | "none"
+          | "bottom"
+          | "left"
+          | "right"
+          | "top"
+          | "bottomLeft"
+          | "bottomRight"
+          | "topLeft"
+          | "topRight"
+          | "outside"
+          | "inside",
         speed: {
           min: minSpeed || speed / 130,
           max: speed,

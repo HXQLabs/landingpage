@@ -1,15 +1,15 @@
-"use client"
+"use client";
 
 // Client-side DataFast utilities
 // Use this for React components, client-side interactions
-import { useCallback } from "react"
+import { useCallback } from "react";
 
-import type { GoalName } from "@/lib/datafast"
+import type { GoalName } from "@/lib/datafast";
 
 // Extend window interface for DataFast
 declare global {
   interface Window {
-    datafast?: (goalName: string) => void
+    datafast?: (goalName: string) => void;
   }
 }
 
@@ -19,15 +19,15 @@ declare global {
  */
 export function trackGoal(goalName: GoalName): void {
   try {
-    const validatedGoalName = validateGoalNameClient(goalName)
+    const validatedGoalName = validateGoalNameClient(goalName);
 
     if (typeof window !== "undefined" && window.datafast) {
-      window.datafast(validatedGoalName)
+      window.datafast(validatedGoalName);
     } else {
-      console.warn("DataFast not initialized. Make sure the script is loaded.")
+      console.warn("DataFast not initialized. Make sure the script is loaded.");
     }
   } catch (error) {
-    console.error("Failed to track goal client-side:", error)
+    console.error("Failed to track goal client-side:", error);
   }
 }
 
@@ -37,12 +37,12 @@ export function trackGoal(goalName: GoalName): void {
  */
 export function useDataFast() {
   const track = useCallback((goalName: GoalName) => {
-    trackGoal(goalName)
-  }, [])
+    trackGoal(goalName);
+  }, []);
 
   return {
     track,
-  }
+  };
 }
 
 /**
@@ -53,27 +53,27 @@ export function useDataFast() {
  */
 function validateGoalNameClient(goalName: string): string {
   if (!goalName || typeof goalName !== "string") {
-    throw new Error("Goal name must be a non-empty string")
+    throw new Error("Goal name must be a non-empty string");
   }
 
   // Convert to lowercase and replace spaces with underscores
-  const validated = goalName.toLowerCase().replace(/\s+/g, "_")
+  const validated = goalName.toLowerCase().replace(/\s+/g, "_");
 
   // Check length
   if (validated.length > 32) {
-    throw new Error("Goal name must be 32 characters or less")
+    throw new Error("Goal name must be 32 characters or less");
   }
 
   // Check for invalid characters (only letters, numbers, underscores allowed)
   if (!/^[a-z0-9_]+$/.test(validated)) {
     throw new Error(
-      "Goal name can only contain lowercase letters, numbers, and underscores"
-    )
+      "Goal name can only contain lowercase letters, numbers, and underscores",
+    );
   }
 
-  return validated
+  return validated;
 }
 
 // Re-export common goal names for convenience
-export { GOAL_NAMES } from "@/lib//datafast"
-export type { GoalName } from "@/lib/datafast"
+export { GOAL_NAMES } from "@/lib//datafast";
+export type { GoalName } from "@/lib/datafast";

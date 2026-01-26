@@ -8,8 +8,8 @@ export default function BlogPage() {
         <div className="max-w-5xl mx-auto relative">
           <div className="p-3 flex items-center justify-between">
             <div className="flex items-center gap-4">
-              <Link 
-                href="/" 
+              <Link
+                href="/"
                 className="text-sm text-muted-foreground hover:text-foreground transition-colors"
               >
                 ← Back to Home
@@ -26,7 +26,8 @@ export default function BlogPage() {
           <div className="text-center py-12">
             <h2 className="text-2xl font-semibold mb-4">Coming Soon</h2>
             <p className="text-muted-foreground">
-              Our blog is currently under construction. Check back soon for updates and insights!
+              Our blog is currently under construction. Check back soon for
+              updates and insights!
             </p>
           </div>
         </div>

@@ -9,19 +9,18 @@ import ScrollToTopButton from "@/components/common/scrollToTopButton";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 
-
-const instrumentSans = Instrument_Sans({ 
-  variable: "--font-instrument-sans", 
+const instrumentSans = Instrument_Sans({
+  variable: "--font-instrument-sans",
   subsets: ["latin"],
-  display: "swap"
+  display: "swap",
 });
 
-const instrumentSerif = Instrument_Serif({ 
-  variable: "--font-instrument-serif", 
+const instrumentSerif = Instrument_Serif({
+  variable: "--font-instrument-serif",
   subsets: ["latin"],
   weight: ["400"],
   style: ["normal", "italic"],
-  display: "swap"
+  display: "swap",
 });
 
 export const viewport: Viewport = {
@@ -89,14 +88,13 @@ export const metadata: Metadata = {
       { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
       { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
     ],
-    apple: [{ url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" }],
-    other: [
-      { rel: "mask-icon", url: "/logo.svg", color: "#0b0b0b" }
+    apple: [
+      { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
     ],
+    other: [{ rel: "mask-icon", url: "/logo.svg", color: "#0b0b0b" }],
   },
 
   manifest: "/site.webmanifest",
-
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {
@@ -106,7 +104,12 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         className={`${instrumentSans.variable} ${instrumentSerif.variable} font-sans antialiased`}
         suppressHydrationWarning
       >
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
           <AppLayout>{children}</AppLayout>
           <StickyFooter />
           <ScrollToTopButton />
