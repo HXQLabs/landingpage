@@ -5,30 +5,56 @@ echo "🚀 PRE-PUSH CHECKS"
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
 echo ""
 
-# Verify TypeScript compilation succeeds
-echo "┌─ [1/1] Build Verification"
-echo "│  Ensuring code compiles successfully before push..."
-echo "│"
-if pnpm exec tsc --noEmit > /dev/null 2>&1; then
-  echo "│  ✅ Build successful - code compiles without errors"
-  echo "└─────────────────────────────────────────────────────────────────────────"
+# 1. Type Check
+echo "┌─ [1/4] Type Safety Verification"
+echo "│  Running TypeScript type check..."
+if pnpm run type-check; then
+  echo "│  ✅ Type check passed"
 else
-  echo "│  ❌ Build failed!"
-  echo "│"
-  echo "│  The TypeScript code does not compile successfully."
-  echo "│  Please fix compilation errors before pushing."
-  echo "│"
-  echo "└─────────────────────────────────────────────────────────────────────────"
-  echo ""
-  echo "💡 Tip: Run 'pnpm build' to see detailed compilation errors"
+  echo "│  ❌ Type check failed!"
   exit 1
 fi
+echo "└─────────────────────────────────────────────────────────────────────────"
+echo ""
+
+# 2. Lint Check
+echo "┌─ [2/4] Code Quality Verification"
+echo "│  Running ESLint..."
+if pnpm run lint; then
+  echo "│  ✅ Lint checks passed"
+else
+  echo "│  ❌ Lint checks failed!"
+  exit 1
+fi
+echo "└─────────────────────────────────────────────────────────────────────────"
+echo ""
+
+# 3. Format Check
+echo "┌─ [3/4] Format Verification"
+echo "│  Checking code formatting..."
+if pnpm run format:check; then
+  echo "│  ✅ Formatting check passed"
+else
+  echo "│  ❌ Formatting check failed! Run 'pnpm exec prettier --write .' to fix."
+  exit 1
+fi
+echo "└─────────────────────────────────────────────────────────────────────────"
+echo ""
+
+# 4. Build Check
+echo "┌─ [4/4] Build Verification"
+echo "│  Simulating production build..."
+# We run next build directly to avoid re-running lint/type-check which we just did
+if pnpm exec next build --turbopack; then
+  echo "│  ✅ Build verification passed"
+else
+  echo "│  ❌ Build failed!"
+  exit 1
+fi
+echo "└─────────────────────────────────────────────────────────────────────────"
 echo ""
 
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-echo "✅ ALL PRE-PUSH CHECKS PASSED!"
+echo "✅ ALL 4 CHECKS PASSED - READY TO PUSH!"
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
 echo ""
-echo "✨ Ready to push to remote!"
-echo ""
-
