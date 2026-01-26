@@ -8,6 +8,7 @@
     "start": "next start",
     "type-check": "tsc --noEmit",
     "lint": "eslint",
+    "format:check": "prettier --check .",
     "postinstall": "fumadocs-mdx",
     "prepare": "husky"
   },
