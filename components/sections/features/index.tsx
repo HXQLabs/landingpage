@@ -1,5 +1,7 @@
 "use client";
 
+import Image from "next/image";
+
 import React, { useEffect, useState } from "react";
 import { CursorCard, CursorCardsContainer } from "@/components/ui/cursor-cards";
 import { motion } from "motion/react";
@@ -398,10 +400,11 @@ const SmartMatchingVisualization = () => {
 
         {/* Bottom Center Helixque Logo */}
         <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 z-10">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
+          <Image
             src="/logo.svg"
             alt="HelixQue"
+            width={64}
+            height={64}
             className="h-16 w-16 object-contain"
           />
         </div>

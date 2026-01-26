@@ -1,5 +1,7 @@
 "use client";
 
+import Image from "next/image";
+
 import React, { useEffect, useMemo, useState } from "react";
 import { motion } from "motion/react";
 import { Heart } from "lucide-react";
@@ -208,9 +210,11 @@ export const OpensourceSection = () => {
                     transition={{ delay: index * 0.05, duration: 0.3 }}
                     className="relative group flex-shrink-0"
                   >
-                    <img
+                    <Image
                       src={(c as GhContributor).avatar_url}
                       alt={(c as GhContributor).login}
+                      width={64}
+                      height={64}
                       className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 rounded-full border-2 border-neutral-300 dark:border-neutral-600 group-hover:border-purple-400 transition-all duration-300 cursor-pointer hover:scale-110 hover:shadow-lg"
                       onClick={() =>
                         window.open((c as GhContributor).html_url, "_blank")

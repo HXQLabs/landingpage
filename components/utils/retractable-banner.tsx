@@ -1,5 +1,7 @@
 "use client";
 
+import Image from "next/image";
+
 import { useEffect, useState } from "react";
 import { ArrowUpRight, XIcon } from "lucide-react";
 import Link from "next/link";
@@ -100,12 +102,12 @@ export default function OriginBannerCustomizable({
               srcSet="https://fonts.gstatic.com/s/e/notoemoji/latest/1f383/512.webp"
               type="image/webp"
             />
-            <img
+            <Image
               src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f383/513.gif"
               alt="🎃"
               className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 flex-shrink-0"
-              width="32"
-              height="32"
+              width={32}
+              height={32}
             />
           </picture>
           <div className="flex grow flex-col justify-between gap-3 md:flex-row md:items-center">

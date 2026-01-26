@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Icons } from "../utils/icons";
 import { ArrowUpRight } from "lucide-react";
 import { Pill, PillIndicator } from "../ui/kibo-ui/pill";
@@ -8,7 +9,7 @@ import BuyMeCoffee from "../utils/buy-me-coffee-btn";
 // Inline BadtzLogo from badtz-header
 const BadtzLogo = () => (
   <div className="text-foreground flex items-end gap-2.5 [&_svg]:h-5">
-    <img
+    <Image
       src="/logo.svg"
       alt="HelixQue Logo"
       width={20}

@@ -1,5 +1,6 @@
 "use client";
 import { useState, useRef } from "react";
+import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { motion, AnimatePresence } from "motion/react";
 import Link from "next/link";
@@ -39,7 +40,7 @@ export default function HelixQueHeader({ className }: HelixQueHeaderProps) {
     showFullLogo?: boolean;
   }) => (
     <div className="text-foreground flex items-end gap-2.5 [&_svg]:h-5">
-      <img
+      <Image
         src="/logo.svg"
         alt="HelixQue Logo"
         width={20}

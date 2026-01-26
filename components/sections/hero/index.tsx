@@ -11,7 +11,12 @@ import { ArrowUpRightIcon } from "lucide-react";
 import { LayoutGroup, motion } from "motion/react";
 import TextRotate from "@/components/fancy/text/text-rotate";
 import Link from "next/link";
-import { Particles } from "@/components/ui/particles";
+import dynamic from "next/dynamic";
+
+const Particles = dynamic(
+  () => import("@/components/ui/particles").then((mod) => mod.Particles),
+  { ssr: false },
+);
 
 export const HeroSection = () => {
   const words = ["builders", "learners", "mentors"];

@@ -1,5 +1,7 @@
 "use client";
 
+import Image from "next/image";
+
 import { useState } from "react";
 import { ArrowUpRight, XIcon } from "lucide-react";
 
@@ -61,12 +63,12 @@ export default function OriginBannerCustomizable({
                 srcSet="https://fonts.gstatic.com/s/e/notoemoji/latest/1f6a8/512.webp"
                 type="image/webp"
               />
-              <img
+              <Image
                 src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f6a8/512.gif"
                 className="w-6 h-6"
                 alt="🚨"
-                width="32"
-                height="32"
+                width={32}
+                height={32}
               />
             </picture>
             {/* Mobile concise message */}
